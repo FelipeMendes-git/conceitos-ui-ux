@@ -12,9 +12,11 @@ e é desenhada com ele.
 ![CSS puro](https://img.shields.io/badge/CSS-puro-0d1330?style=flat-square)
 ![Telas prontas](https://img.shields.io/badge/telas_prontas-1_de_83-c2361a?style=flat-square)
 
+**[🌐 Ver o guia online: conceitos-ui-ux.vercel.app](https://conceitos-ui-ux.vercel.app/)**
+
 <br>
 
-<img src="docs/assets/tela-glassmorphism.jpg" alt="Tela de Glassmorphism: painéis de vidro fosco sobre círculos coloridos, com o menu lateral também em vidro" width="699">
+<a href="https://conceitos-ui-ux.vercel.app/"><img src="docs/assets/tela-glassmorphism.jpg" alt="Tela de Glassmorphism: painéis de vidro fosco sobre círculos coloridos, com o menu lateral também em vidro" width="699"></a>
 
 </div>
 
