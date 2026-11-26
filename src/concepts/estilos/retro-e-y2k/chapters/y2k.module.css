@@ -53,6 +53,9 @@
 .cover {
   position: relative;
   padding: clamp(3.5rem, 10vh, 6.5rem) clamp(1.25rem, 5cqi, 4.5rem) 0;
+  /* O espaço lateral cresce em janelas largas para o texto da capa começar
+     na mesma coluna de 70rem do resto do capítulo. */
+  padding-inline: calc(max(0px, (100% - 70rem) / 2) + clamp(1.25rem, 5cqi, 4.5rem));
 }
 
 /* A malha de linhas onduladas, como uma superfície em três dimensões. */
@@ -175,7 +178,7 @@
   display: grid;
   gap: clamp(3rem, 7cqi, 5rem);
   max-width: 70rem;
-  margin-top: clamp(3rem, 7cqi, 5rem);
+  margin: clamp(3rem, 7cqi, 5rem) auto 0;
   padding-inline: clamp(1.25rem, 5cqi, 4.5rem);
 }
 

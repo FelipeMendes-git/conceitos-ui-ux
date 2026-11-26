@@ -18,9 +18,12 @@
   scroll-margin-top: 3.5rem;
 }
 
+/* A área de trabalho usa a mesma coluna de 70rem dos outros capítulos, no
+   meio da janela; o verde-água e a barra de tarefas vão de ponta a ponta. */
 .desktop {
-  max-width: 74rem;
-  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(0.75rem, 4cqi, 4rem) clamp(2.5rem, 6vh, 4rem);
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(0.75rem, 5cqi, 4.5rem) clamp(2.5rem, 6vh, 4rem);
 }
 
 /* ---------- Janelas ---------- */
@@ -49,6 +52,9 @@
 }
 
 .titleText {
+  /* Deixa o título encolher e ganhar reticências em janelas estreitas, em
+     vez de empurrar a janela para fora da tela. */
+  min-width: 0;
   overflow: hidden;
   font-family: var(--ui-font);
   font-size: 1rem;
@@ -651,7 +657,7 @@
 
 @media (max-width: 760px) {
   .windows {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .fonts,

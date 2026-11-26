@@ -17,8 +17,15 @@
 /* ---------- Página ---------- */
 
 /* Os capítulos vão de ponta a ponta, então a página abre mão da margem e da
-   largura máxima da moldura comum; cada bloco cuida da própria margem. */
+   largura máxima da moldura comum; cada bloco cuida da própria margem.
+
+   Todos os blocos da tela usam a mesma coluna: 70rem de largura máxima, no
+   meio da área ao lado do menu. Assim o conteúdo fica centralizado em
+   monitores largos e todos os capítulos começam na mesma linha vertical. */
 .page {
+  /* As medidas "cqi" dos blocos abaixo acompanham a largura da página, a
+     mesma régua que os capítulos usam; assim todos têm a mesma margem. */
+  container-type: inline-size;
   max-width: none;
   padding: 0;
 }
@@ -26,15 +33,16 @@
 .hero,
 .intro,
 .index {
-  max-width: 62rem;
-  padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5cqi, 4.5rem);
 }
 
-/* O rodapé de navegação entre telas volta a ter margem. */
+/* O rodapé de navegação entre telas entra na mesma coluna. */
 .page > nav:last-child {
-  margin: 0;
-  padding: 2rem clamp(1.25rem, 5vw, 4.5rem) 5rem;
-  background: var(--page-bg);
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1.25rem, 5cqi, 4.5rem) 5rem;
 }
 
 /* ---------- Abertura: hoje ---------- */

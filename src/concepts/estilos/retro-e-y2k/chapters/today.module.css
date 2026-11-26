@@ -6,8 +6,9 @@
  */
 
 .today {
-  max-width: 62rem;
-  padding: clamp(4rem, 12vh, 7rem) clamp(1.25rem, 5vw, 4.5rem) 3rem;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: clamp(4rem, 12vh, 7rem) clamp(1.25rem, 5cqi, 4.5rem) 3rem;
   color: var(--page-fg);
 }
 
