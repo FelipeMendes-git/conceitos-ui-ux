@@ -1,0 +1,92 @@
+/*
+ * Pele da tela de GSAP e sites premiados: moderna, colorida e animada.
+ *
+ * A base é escura, para as seis cores vivas saltarem. Cada cena tem uma cor
+ * de destaque, que também veste o marcador do menu e o contador do canto. A
+ * cena do cavalo de Muybridge é a única com tema de época: a fotografia do
+ * movimento do século XIX, num campo âmbar (ver scenes/muybridge.module.css).
+ *
+ * Só variáveis; o desenho está nos arquivos .module.css.
+ */
+
+/* Anybody: largura variável de 50% a 150%. É ela que faz os títulos
+   comprimidos e a letra elástica.
+   Atkinson Hyperlegible Next: desenhada pelo Braille Institute para quem
+   enxerga pouco. A tela fala de acessibilidade, e o texto corrido pratica.
+   Carregadas só quando esta tela é aberta. */
+@import url('https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Atkinson+Hyperlegible+Next:wght@200..800&display=swap');
+
+[data-concept='gsap'] {
+  /* A base. */
+  --veludo: #121110;
+  --gesso: #ece6da;
+  --prata: #a8a196;
+  --grade: rgb(236 230 218 / 0.1);
+
+  /* As seis cores vivas da página. */
+  --ambar: #ffb02e;
+  --rosa: #ff6fa8;
+  --azul: #5b8cff;
+  --verde: #3fd58a;
+  --vermelho: #ff5a3c;
+  --lavanda: #b39bff;
+  --azul-noite: #0b1533;
+  --azul-noite-claro: #13204a;
+
+  /* A cor da cena em vista: muda com a rolagem (atributo data-tint). */
+  --cor-cena: var(--rosa);
+
+  --page-bg: var(--veludo);
+  --page-fg: var(--gesso);
+  --page-muted: var(--prata);
+  --page-accent: var(--cor-cena);
+  --page-rule: rgb(236 230 218 / 0.14);
+
+  --font-display: 'Anybody', 'Arial Narrow', sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  /* Os números do menu usam a mesma Anybody: a tela não tem letra monoespaçada. */
+  --font-mono: 'Anybody', 'Arial Narrow', sans-serif;
+
+  /* A coluna comum: todos os blocos começam na mesma linha vertical e ficam
+     no meio da área ao lado do menu. */
+  --coluna: 76rem;
+  --margem: clamp(1.25rem, 5vw, 4.5rem);
+
+  /* Menu: escuro, um tom acima da página. O marcador da tela atual leva a
+     cor da cena em vista. */
+  --menu-inset: 0px;
+  --menu-bg: #171513;
+  --menu-fg: var(--gesso);
+  --menu-muted: var(--prata);
+  --menu-accent: var(--cor-cena);
+  --menu-border: 0 solid transparent;
+  --menu-divider: 1px solid rgb(236 230 218 / 0.12);
+  --menu-radius: 0px;
+  --menu-shadow: none;
+  --menu-blur: none;
+  --menu-font: var(--font-body);
+}
+
+[data-concept='gsap'][data-tint='ambar'] {
+  --cor-cena: var(--ambar);
+}
+
+[data-concept='gsap'][data-tint='azul'] {
+  --cor-cena: var(--azul);
+}
+
+[data-concept='gsap'][data-tint='rosa'] {
+  --cor-cena: var(--rosa);
+}
+
+[data-concept='gsap'][data-tint='verde'] {
+  --cor-cena: var(--verde);
+}
+
+[data-concept='gsap'][data-tint='lavanda'] {
+  --cor-cena: var(--lavanda);
+}
+
+[data-concept='gsap'][data-tint='vermelho'] {
+  --cor-cena: var(--vermelho);
+}

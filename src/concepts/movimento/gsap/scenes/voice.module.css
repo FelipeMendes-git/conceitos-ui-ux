@@ -1,0 +1,149 @@
+/*
+ * Cena "O que comunica": o cartão de lançamento com três temperamentos e as
+ * listas do que combina e do que não combina.
+ */
+
+.stage {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+}
+
+@media (min-width: 900px) {
+  .stage {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+  }
+}
+
+/* O cartão: um lançamento fictício em rosa, sem marca. */
+.card {
+  position: relative;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  gap: 0.6rem;
+  min-height: clamp(18rem, 36vw, 26rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: hidden;
+  background: var(--rosa);
+  color: var(--veludo);
+}
+
+.cardShape {
+  position: absolute;
+  top: clamp(1.5rem, 4vw, 3rem);
+  right: clamp(1.5rem, 4vw, 3rem);
+  width: clamp(4rem, 10vw, 7rem);
+  height: clamp(4rem, 10vw, 7rem);
+}
+
+.cardShapeInner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--veludo);
+  transform: rotate(45deg);
+}
+
+.cardLabel {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 6rem);
+  font-weight: 850;
+  font-stretch: 58%;
+  line-height: 0.9;
+}
+
+.cardButton {
+  margin-top: 0.75rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--veludo);
+  color: var(--rosa);
+  font-weight: 700;
+}
+
+.panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.legend {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-stretch: 70%;
+  font-weight: 700;
+}
+
+/* As escolhas em rosa sobre o veludo. */
+.choice {
+  --fundo-escolha: var(--veludo);
+  color: var(--rosa);
+}
+
+.note {
+  max-width: 42ch;
+  min-height: 4.8em;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.replay {
+  justify-self: start;
+}
+
+/* ---------- Listas ---------- */
+
+.lists {
+  display: grid;
+  gap: 2rem;
+  margin-top: clamp(3rem, 8vh, 5rem);
+}
+
+@media (min-width: 900px) {
+  .lists {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+}
+
+.list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* Um losango antes de cada item: cheio no que combina, vazado no que não. */
+.list li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.45;
+}
+
+.list li::before {
+  content: '';
+  position: absolute;
+  top: 0.45em;
+  left: 0.15rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--rosa);
+  transform: rotate(45deg);
+}
+
+.misfit li::before {
+  border: 1.5px solid var(--rosa);
+  background: transparent;
+}
+
+.risk {
+  max-width: 40ch;
+  margin-top: 1rem;
+  line-height: 1.6;
+}

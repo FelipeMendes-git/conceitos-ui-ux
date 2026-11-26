@@ -1,0 +1,347 @@
+/*
+ * Cena "O repertório": uma faixa de cor viva por truque, de ponta a ponta,
+ * com o texto em veludo. A cor de cada faixa vem do código (--cor).
+ */
+
+.opening {
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+}
+
+/* ---------- A faixa ---------- */
+
+.band {
+  /* Sobre a cor viva, o texto, o foco do teclado e as escolhas em veludo. */
+  --page-accent: var(--veludo);
+  --fundo-escolha: var(--cor);
+  padding-block: clamp(3.5rem, 10vh, 6.5rem);
+  background: var(--cor);
+  color: var(--veludo);
+}
+
+/* A faixa que fica parada ocupa exatamente uma janela enquanto isso. */
+.pinWrap[data-mode='pin'] > .band {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.bandInner {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 1000px) {
+  .bandInner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+  }
+
+  /* A palavra elástica precisa da largura toda para esticar. */
+  .bandInner[data-wide] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bandInner[data-wide] .bandText {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+  }
+
+  .bandInner[data-wide] .bandTitle {
+    grid-row: span 2;
+  }
+
+  .bandInner[data-wide] .bandText > p:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.bandText > p {
+  max-width: 46ch;
+  margin-top: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.bandTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.6vw, 4.25rem);
+  font-weight: 800;
+  font-stretch: 60%;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.bandText > .note {
+  font-size: 0.9375rem;
+}
+
+.noteLabel {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-stretch: 75%;
+  font-weight: 700;
+}
+
+.demo {
+  min-width: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.reducedNote {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+/* ---------- 1. Texto que entra em cena ---------- */
+
+.bigLine {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.8vw, 4.5rem);
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 0.95;
+}
+
+/* ---------- 2. Cena que fica parada ---------- */
+
+.pinDemo {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.timer {
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 12vw, 10rem);
+  font-weight: 800;
+  font-stretch: 55%;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.85;
+}
+
+.timerTrack {
+  display: block;
+  height: 6px;
+  background: rgb(18 17 16 / 0.2);
+}
+
+.timerBar {
+  display: block;
+  height: 100%;
+  background: var(--veludo);
+  transform-origin: 0 50%;
+}
+
+.steps {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid var(--veludo);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Com o movimento, os passos acendem um por vez; parados, ficam todos acesos. */
+.pinDemo:has(.step[data-active]) .step {
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+
+.pinDemo:has(.step[data-active]) .step[data-active] {
+  opacity: 1;
+}
+
+.step[data-active] .stepNumber {
+  background: var(--veludo);
+  color: var(--cor);
+}
+
+/* ---------- 3. Letra que estica ---------- */
+
+/* O tamanho é medido para a palavra caber mesmo com todas as letras na
+   largura máxima. */
+.stretchWord {
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7.5vw, 8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.stretchChar {
+  display: inline-block;
+  font-stretch: calc(var(--largura, 100) * 1%);
+}
+
+.slider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  font-weight: 600;
+}
+
+.slider input {
+  flex: 1;
+  min-width: 10rem;
+  accent-color: var(--veludo);
+}
+
+.sliderValue {
+  min-width: 3.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 4. Arrastar com peso ---------- */
+
+.dragFrame {
+  overflow: hidden;
+  cursor: grab;
+}
+
+.dragFrame:active {
+  cursor: grabbing;
+}
+
+.dragStrip {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  touch-action: pan-y;
+}
+
+.card {
+  display: grid;
+  align-content: space-between;
+  width: clamp(10rem, 17vw, 13.5rem);
+  aspect-ratio: 3 / 4;
+  padding: 1.1rem;
+  background: var(--veludo);
+  color: var(--gesso);
+  user-select: none;
+}
+
+.cardKey {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0.4rem;
+  background: var(--cor-cartao);
+  transform: rotate(45deg);
+}
+
+.cardName {
+  margin-top: auto;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-stretch: 70%;
+  font-weight: 750;
+  line-height: 1;
+}
+
+.cardMarks {
+  margin-top: 0.3rem;
+  color: var(--prata);
+  font-size: 0.9375rem;
+}
+
+.dragHint {
+  font-size: 0.9375rem;
+}
+
+/* ---------- 5. Rolagem suave ---------- */
+
+.smoothDemo {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .smoothDemo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.scrollLabel {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-stretch: 75%;
+  font-weight: 700;
+}
+
+.scrollBox {
+  height: 17rem;
+  overflow-y: auto;
+  padding: 0.4rem 1rem;
+  background: var(--veludo);
+  color: var(--gesso);
+}
+
+.scrollBox:focus-visible {
+  outline: 3px solid var(--veludo);
+  outline-offset: 3px;
+}
+
+.scrollList li {
+  display: flex;
+  gap: 0.8rem;
+  padding-block: 0.8rem;
+  border-bottom: 1px solid var(--grade);
+}
+
+.scrollNumber {
+  color: var(--lavanda);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 6. Forma que vira outra ---------- */
+
+.morphDemo {
+  display: grid;
+  justify-items: start;
+  gap: 1.5rem;
+}
+
+.morphArt {
+  width: min(100%, 16rem);
+  height: auto;
+  overflow: visible;
+}
+
+.morphArt path {
+  fill: var(--veludo);
+}

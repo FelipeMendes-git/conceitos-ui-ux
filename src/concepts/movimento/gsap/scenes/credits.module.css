@@ -1,0 +1,52 @@
+/*
+ * Fontes e créditos, e a lista "Para ir além".
+ */
+
+.credits {
+  display: grid;
+  margin-top: clamp(2rem, 5vh, 3rem);
+}
+
+.credit {
+  display: grid;
+  gap: 0.25rem 2rem;
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--grade);
+}
+
+@media (min-width: 760px) {
+  .credit {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+}
+
+.credit dt {
+  color: var(--prata);
+  font-size: 0.9375rem;
+}
+
+.credit dd {
+  margin: 0;
+  max-width: 70ch;
+  line-height: 1.5;
+}
+
+.relatedTitle {
+  margin-top: clamp(3rem, 8vh, 5rem);
+}
+
+/* A lista comum de telas relacionadas, com os títulos na letra da tela. */
+.related {
+  margin-top: 1rem;
+}
+
+.related li > a,
+.related li > span:first-child {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-stretch: 72%;
+}
+
+.related a:hover {
+  color: var(--cor-cena);
+}

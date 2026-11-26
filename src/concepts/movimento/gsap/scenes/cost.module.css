@@ -1,0 +1,157 @@
+/*
+ * Cena "Quanto custa": quatro custos com medidor de risco e a lista de
+ * perguntas, que o leitor pode marcar.
+ */
+
+.costs {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+}
+
+.cost {
+  display: grid;
+  gap: 0.75rem 3rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--grade);
+}
+
+@media (min-width: 900px) {
+  .cost {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  }
+}
+
+.costHead {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+}
+
+.costName {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-weight: 750;
+  font-stretch: 64%;
+  line-height: 1;
+}
+
+/* O medidor: três segmentos; os acesos dizem o tamanho do risco. */
+.meter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--vermelho);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.segments {
+  display: flex;
+  gap: 4px;
+}
+
+.segment {
+  width: 2.25rem;
+  height: 0.55rem;
+  background: rgb(236 230 218 / 0.12);
+}
+
+.segment[data-on] {
+  background: var(--vermelho);
+}
+
+.costText {
+  max-width: 62ch;
+  line-height: 1.6;
+}
+
+/* ---------- As perguntas ---------- */
+
+.questions {
+  margin-top: clamp(3rem, 8vh, 5rem);
+}
+
+.questionsHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+
+.count {
+  color: var(--vermelho);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-stretch: 70%;
+}
+
+.checklist {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .checklist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.check {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid var(--grade);
+  cursor: pointer;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s;
+}
+
+.check:hover {
+  border-color: rgb(255 90 60 / 0.6);
+}
+
+.check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.check:has(input:focus-visible) {
+  outline: 2px solid var(--vermelho);
+  outline-offset: 3px;
+}
+
+/* A caixa de marcar: um losango que se enche. */
+.box {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.2rem;
+  border: 2px solid var(--vermelho);
+  transform: rotate(45deg);
+  transition:
+    background-color 0.25s,
+    transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.check:has(input:checked) {
+  border-color: var(--vermelho);
+  background: rgb(255 90 60 / 0.08);
+}
+
+.check:has(input:checked) .box {
+  background: var(--vermelho);
+  transform: rotate(225deg);
+}
+
+.question {
+  line-height: 1.5;
+}

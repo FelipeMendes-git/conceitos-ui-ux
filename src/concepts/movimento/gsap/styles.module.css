@@ -1,0 +1,315 @@
+/*
+ * Desenho da abertura (losangos, faixa de truques, barras de cor da entrada)
+ * e do console do canto. Cada cena tem o seu próprio arquivo de estilos, na
+ * pasta scenes/.
+ */
+
+/* ---------- Página ---------- */
+
+/* As cenas vão de ponta a ponta, então a página abre mão da largura máxima
+   da moldura comum; cada bloco se centraliza na coluna --coluna. */
+.page {
+  max-width: none;
+  padding: 0;
+}
+
+/* O rodapé "anterior / próxima" da moldura entra na mesma coluna. */
+.page > nav:last-child {
+  max-width: var(--coluna);
+  margin: 0 auto;
+  padding: 2rem var(--margem) 6rem;
+}
+
+/* ---------- Abertura ---------- */
+
+/* A altura da faixa de truques, que fica logo abaixo da abertura. */
+.backdrop,
+.hero,
+.ticker {
+  --faixa: 4.25rem;
+}
+
+/* A abertura e a faixa de truques ocupam juntas a primeira janela; o título
+   fica embaixo, logo acima da faixa. Se o texto não couber (celular), a
+   abertura cresce e empurra a faixa, em vez de passar por baixo dela. */
+.hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: calc(100svh - var(--faixa));
+  max-width: var(--coluna);
+  margin-inline: auto;
+  padding: 6.5rem var(--margem) clamp(2.5rem, 7vh, 4.5rem);
+}
+
+/* A linha de cima ("Spec 806 · Movimento") fala baixo: é ficha técnica. */
+.hero > p:first-child {
+  color: var(--prata);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hero h1 {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 12vw, 12.5rem);
+  font-weight: 800;
+  font-stretch: 58%;
+  line-height: 0.84;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+/* A cópia do título que se move (a outra cópia, inteira, é só para leitores
+   de tela). Cada letra tem a própria largura, que o mouse estica. */
+.titleVisual {
+  display: block;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+  font-stretch: calc(var(--largura, 58) * 1%);
+}
+
+.hero h1 + p {
+  max-width: 34ch;
+  margin-top: 2rem;
+  color: var(--gesso);
+  font-size: clamp(1.125rem, 1.5vw, 1.4rem);
+  line-height: 1.5;
+}
+
+/* ---------- O fundo da abertura ---------- */
+
+/* Ocupa a primeira janela, de ponta a ponta da área ao lado do menu, atrás
+   do título. */
+.backdrop {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 100svh;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Os losangos: três camadas, para três movimentos que não se atrapalham.
+   A de fora sobe com a rolagem, a do meio foge do mouse e a de dentro
+   flutua e gira. */
+.diamond {
+  position: absolute;
+  width: var(--tamanho);
+  height: var(--tamanho);
+}
+
+.diamondMouse {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.diamondShape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--cor);
+  transform: rotate(45deg);
+}
+
+.diamondShape[data-outline] {
+  border: 2px solid var(--cor);
+  background: transparent;
+}
+
+.cue {
+  position: absolute;
+  right: var(--margem);
+  bottom: calc(var(--faixa) + 1.1rem);
+  color: var(--prata);
+  font-size: 0.875rem;
+}
+
+/* ---------- A faixa de truques ---------- */
+
+.ticker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  height: var(--faixa);
+  overflow: hidden;
+  border-block: 1px solid var(--grade);
+}
+
+.tickerTrack {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Cada etiqueta numa das seis cores. A margem à direita (e não um espaço
+   entre etiquetas) faz as duas metades da faixa terem a mesma largura:
+   assim ela corre sem emenda. */
+.chip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.6rem;
+  margin-right: 0.6rem;
+  padding: 0.55rem 1.05rem 0.6rem;
+  background: var(--cor);
+  color: var(--veludo);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-stretch: 78%;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* O losango pequeno de cada etiqueta. */
+.chipKey {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--veludo);
+  transform: rotate(45deg);
+}
+
+/* ---------- As barras de cor da entrada ---------- */
+
+.bars {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  pointer-events: none;
+}
+
+.bar {
+  transform-origin: 50% 0;
+}
+
+/* ---------- Console do canto ---------- */
+
+.console {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid rgb(236 230 218 / 0.18);
+  background: rgb(18 17 16 / 0.94);
+}
+
+.progressText {
+  display: grid;
+  align-content: center;
+  min-width: 5rem;
+  padding: 0.45rem 0.9rem 0.55rem;
+  line-height: 1.1;
+}
+
+.progressLabel {
+  color: var(--prata);
+  font-size: 0.6875rem;
+}
+
+/* O número leva a cor da cena em vista. */
+.progressValue {
+  color: var(--cor-cena);
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-stretch: 70%;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.6s ease;
+}
+
+.motionSwitch {
+  display: grid;
+  align-content: center;
+  min-width: 9.5rem;
+  padding: 0.45rem 0.9rem 0.55rem;
+  border-left: 1px solid rgb(236 230 218 / 0.18);
+  line-height: 1.15;
+  text-align: left;
+}
+
+.motionSwitch:hover {
+  background: rgb(236 230 218 / 0.06);
+}
+
+.motionSwitch:focus-visible {
+  outline-offset: -3px;
+}
+
+.switchLabel {
+  color: var(--prata);
+  font-size: 0.6875rem;
+}
+
+.switchState {
+  color: var(--gesso);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* A barra fina de progresso da página, no pé do console. */
+.progressBar {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--cor-cena);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: background-color 0.6s ease;
+}
+
+/* ---------- Telas estreitas ---------- */
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 5rem;
+  }
+
+  /* No celular o título cresce até quase encostar nas margens. */
+  .hero h1 {
+    font-size: 19vw;
+  }
+
+  /* Os losangos ficam menores e mais apagados: no celular o texto passa
+     por cima deles. */
+  .diamond {
+    width: calc(var(--tamanho) * 0.6);
+    height: calc(var(--tamanho) * 0.6);
+    opacity: 0.55;
+  }
+
+  /* O console do canto ocupa o pé da tela; a dica sai para não ficar embaixo dele. */
+  .cue {
+    display: none;
+  }
+
+  .chip {
+    font-size: 1rem;
+  }
+
+  .console {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+
+  .motionSwitch {
+    min-width: 0;
+  }
+}

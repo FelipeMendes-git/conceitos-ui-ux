@@ -1,0 +1,320 @@
+/*
+ * Cena do cavalo de Muybridge: um rolo tingido de âmbar.
+ *
+ * Sem animação (movimento reduzido ou falha), é a folha de contato: os doze
+ * quadros lado a lado, como no cartão de 1878. Com animação, o atributo
+ * data-mode da seção troca o desenho do palco:
+ *   pin   — palco com os lugares da folha e o visor no centro;
+ *   scrub — palco do tamanho de um quadro (janela estreita).
+ */
+
+.scene {
+  /* Sobre o âmbar, o texto e o foco do teclado ficam em veludo. */
+  --tinta-cena: var(--veludo);
+  --page-accent: var(--veludo);
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding-block: clamp(4rem, 10vh, 7rem);
+  color: var(--tinta-cena);
+}
+
+/* O banho de cor da cena, com a grade de medição que Muybridge e Marey
+   punham atrás dos modelos, aqui em veludo bem fraco. */
+.field {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ambar);
+  background-image:
+    linear-gradient(rgb(18 17 16 / 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(18 17 16 / 0.1) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  background-position: center top;
+}
+
+/* Fixada, a cena ocupa exatamente uma janela. */
+.scene[data-mode='pin'] {
+  height: 100vh;
+  min-height: 0;
+  padding-block: 2rem;
+}
+
+/* O texto em cima (título e legenda lado a lado) e o palco embaixo, na
+   largura toda da coluna: o quadro é o protagonista. */
+.layout {
+  position: relative;
+  display: grid;
+  gap: clamp(1.5rem, 3.5vh, 2.25rem);
+  width: 100%;
+  max-width: var(--coluna);
+  margin-inline: auto;
+  padding-inline: var(--margem);
+}
+
+@media (min-width: 768px) {
+  .text {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: end;
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  .text .captions {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Texto ---------- */
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.4vw, 5.25rem);
+  font-weight: 800;
+  font-stretch: 58%;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.titleLine {
+  display: block;
+}
+
+.captions {
+  margin-top: 1.5rem;
+}
+
+.caption {
+  max-width: 40ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.caption + .caption {
+  margin-top: 1rem;
+}
+
+/* Fixada, uma legenda por trecho da cena, no mesmo lugar. */
+.scene[data-mode='pin'] .captions {
+  display: grid;
+}
+
+/* A legenda que sai some depressa; a que entra espera a outra sumir, para
+   as duas nunca aparecerem uma sobre a outra. */
+.scene[data-mode='pin'] .caption {
+  grid-area: 1 / 1;
+  margin: 0;
+  opacity: 0;
+  translate: 0 0.6rem;
+  transition:
+    opacity 0.2s ease,
+    translate 0.2s ease;
+}
+
+.scene[data-mode='pin'] .caption[data-active] {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity 0.45s ease 0.2s,
+    translate 0.45s ease 0.2s;
+}
+
+/* ---------- Palco ---------- */
+
+.figure {
+  min-width: 0;
+}
+
+.stage {
+  position: relative;
+}
+
+.slots,
+.viewer,
+.number {
+  display: none;
+}
+
+/* A folha de contato: o estado parado. */
+.frames {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+/* Cada quadro é uma cópia fotográfica, com a margem branca do papel. */
+.frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 4px solid #f6efdf;
+  box-shadow: 0 12px 28px rgb(18 17 16 / 0.28);
+}
+
+@media (max-width: 767.98px) {
+  .frames {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 479.98px) {
+  .frames {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Fixada: a folha ocupa o palco inteiro; o visor fica no centro. As medidas
+   do visor (19%, 8,95% e 62%) centralizam um quadro de 680 × 435 dentro de
+   um palco com a proporção da folha de 4 × 3 quadros. */
+.scene[data-mode='pin'] .stage {
+  aspect-ratio: 2.07;
+}
+
+.scene[data-mode='pin'] .slots {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  visibility: hidden;
+}
+
+/* Cada lugar da folha tem o tamanho de um quadro; o centro dele é o ponto
+   de partida do quadro na animação. */
+.slot {
+  min-width: 0;
+  min-height: 0;
+}
+
+.scene[data-mode='pin'] .frames {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.scene[data-mode='pin'] .frame,
+.scene[data-mode='pin'] .viewer {
+  position: absolute;
+  top: 8.95%;
+  left: 19%;
+  width: 62%;
+  aspect-ratio: 680 / 435;
+}
+
+.scene[data-mode='pin'] .frame {
+  height: auto;
+  will-change: transform;
+}
+
+/* O visor vira a moldura do quadro da resposta. */
+.scene[data-mode='pin'] .viewer {
+  z-index: 20;
+  display: block;
+  outline: 3px solid transparent;
+  outline-offset: 8px;
+  pointer-events: none;
+  transition: outline-color 0.4s ease;
+}
+
+.stage[data-answer='true'] .viewer {
+  outline-color: var(--veludo);
+}
+
+/* Durante o galope, só o quadro da vez aparece. */
+.stage[data-playing='true'] .frame {
+  opacity: 0;
+}
+
+.stage[data-playing='true'] .frame[data-active] {
+  opacity: 1;
+}
+
+/* ---------- O número do quadro, que rola como um contador ---------- */
+
+.scene[data-mode='pin'] .number {
+  position: absolute;
+  right: 0;
+  bottom: 8.95%;
+  display: block;
+  width: 17%;
+  text-align: right;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.digits {
+  display: inline-flex;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6.5vw, 6.75rem);
+  font-weight: 800;
+  font-stretch: 55%;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* Cada algarismo é uma janela de uma linha só; a fita de 0 a 9 corre atrás. */
+.digit {
+  display: block;
+  height: 1em;
+  overflow: hidden;
+}
+
+.digitStrip {
+  display: flex;
+  flex-direction: column;
+}
+
+.numberOf {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 0.8125rem;
+}
+
+/* Janela estreita: um quadro só, que troca conforme a cena atravessa a tela. */
+.scene[data-mode='scrub'] .stage {
+  aspect-ratio: 680 / 435;
+}
+
+.scene[data-mode='scrub'] .frames {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.scene[data-mode='scrub'] .frame {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+}
+
+.scene[data-mode='scrub'] .number {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  z-index: 20;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--ambar);
+}
+
+.scene[data-mode='scrub'] .digits {
+  font-size: 2.25rem;
+}
+
+.scene[data-mode='scrub'] .numberOf {
+  margin: 0;
+}
+
+.credit {
+  margin-top: 1rem;
+  color: rgb(18 17 16 / 0.78);
+  font-size: 0.8125rem;
+}
+
+.credit cite {
+  font-style: italic;
+}

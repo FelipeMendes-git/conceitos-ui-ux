@@ -1,0 +1,549 @@
+/*
+ * Cena da linha do tempo: o cartaz, a linha do tempo e as escolhas, sobre
+ * um azul profundo.
+ *
+ * Cada elemento do cartaz tem uma cor, a mesma da sua faixa na linha do
+ * tempo (a cor vem do código, pela variável --cor). A mesa de trabalho é uma
+ * faixa de ponta a ponta, um tom acima do azul da cena.
+ */
+
+.scene {
+  --nome: 6rem; /* largura da coluna com os nomes das faixas */
+  --apoio: #a9b4d6; /* texto de apoio sobre o azul-noite (8,8:1) */
+  padding-top: clamp(5rem, 14vh, 9rem);
+  background: var(--azul-noite);
+}
+
+.head {
+  display: grid;
+  gap: 1.5rem;
+  max-width: var(--coluna);
+  margin-inline: auto;
+  padding-inline: var(--margem);
+}
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 6vw, 6rem);
+  font-weight: 800;
+  font-stretch: 58%;
+  line-height: 0.86;
+  letter-spacing: -0.01em;
+}
+
+.titleLine {
+  display: block;
+}
+
+.intro {
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* ---------- A mesa ---------- */
+
+.desk {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-block: clamp(2rem, 5vh, 3.5rem) clamp(3rem, 8vh, 5rem);
+  border-top: 1px solid rgb(236 230 218 / 0.1);
+  background: var(--azul-noite-claro);
+}
+
+.deskInner {
+  display: grid;
+  gap: clamp(1.75rem, 4vh, 2.75rem);
+  max-width: var(--coluna);
+  margin-inline: auto;
+  padding-inline: var(--margem);
+}
+
+/* ---------- O cartaz ---------- */
+
+/* Um cartaz de cinema em veludo, com as doze linhas da pista ao fundo. */
+.poster {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+  aspect-ratio: 16 / 8.4;
+  padding: clamp(1.25rem, 3.4vw, 3.25rem);
+  overflow: hidden;
+  border: 1px solid rgb(236 230 218 / 0.14);
+  background-color: var(--veludo);
+  background-image: linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+}
+
+.posterText {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+}
+
+/* Cada elemento na cor da sua faixa. */
+.posterLabel {
+  color: var(--ambar);
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+  font-weight: 600;
+}
+
+.posterTitle {
+  margin-top: 0.6rem;
+  color: var(--rosa);
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9.5vw, 10.5rem);
+  font-weight: 900;
+  font-stretch: 52%;
+  line-height: 0.84;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+
+.posterTitleLine {
+  display: block;
+}
+
+.posterDate {
+  margin-top: clamp(0.9rem, 2vw, 1.5rem);
+  color: var(--verde);
+  font-size: clamp(0.875rem, 1.25vw, 1.125rem);
+  font-weight: 600;
+}
+
+.posterButton {
+  position: relative;
+  margin-top: clamp(0.9rem, 1.8vw, 1.4rem);
+  padding: 0.6rem 1rem 0.7rem;
+  border: 1px solid var(--vermelho);
+  color: var(--vermelho);
+  font-size: clamp(0.8125rem, 1.05vw, 1rem);
+  font-weight: 600;
+}
+
+/* O fio que se desenha embaixo do botão. */
+.posterButtonLine {
+  position: absolute;
+  inset: auto -1px -1px;
+  height: 4px;
+  background: var(--vermelho);
+  transform-origin: 0 50%;
+}
+
+/* A imagem do cartaz: um equalizador em veludo sobre o azul. */
+.posterImage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 680 / 435;
+  background: var(--azul);
+}
+
+.equalizer {
+  position: absolute;
+  inset: 14% 8% 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 3.5%;
+}
+
+/* Cada barra tem duas camadas: a de fora entra com a linha do tempo e a de
+   dentro pulsa, sempre crescendo a partir do chão. */
+.eqBar {
+  flex: 1;
+  height: calc(var(--altura) * 100%);
+  transform-origin: 50% 100%;
+}
+
+.eqLevel {
+  display: block;
+  height: 100%;
+  background: var(--veludo);
+  transform-origin: 50% 100%;
+}
+
+@media (max-width: 699.98px) {
+  .poster {
+    grid-template-columns: minmax(0, 1fr);
+    aspect-ratio: auto;
+  }
+}
+
+/* ---------- A linha do tempo ---------- */
+
+.table {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.transport {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.transportButton {
+  padding: 0.55rem 1.05rem 0.6rem;
+  border: 1px solid rgb(236 230 218 / 0.35);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.transportButton:hover {
+  border-color: var(--azul);
+  color: var(--azul);
+}
+
+.readout {
+  margin-left: auto;
+  color: var(--azul);
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-stretch: 72%;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.readoutTotal {
+  color: var(--apoio);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--nome) minmax(0, 1fr);
+  row-gap: 0.35rem;
+}
+
+.corner {
+  align-self: end;
+  padding-bottom: 0.35rem;
+  color: var(--apoio);
+  font-size: 0.75rem;
+}
+
+.ruler {
+  position: relative;
+  height: 2.25rem;
+  border-bottom: 1px solid rgb(236 230 218 / 0.25);
+}
+
+.ruler:has(.range:focus-visible) {
+  outline: 2px solid var(--azul);
+  outline-offset: 4px;
+}
+
+.tick {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  padding-left: 0.3rem;
+  border-left: 1px solid rgb(236 230 218 / 0.3);
+  color: var(--apoio);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* As marcas de meio segundo são curtas e sem número. */
+.tick:nth-child(even) {
+  height: 35%;
+}
+
+/* A agulha se arrasta pela régua; o controle nativo fica invisível por cima
+   dela e continua respondendo ao teclado. */
+.range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.range::-webkit-slider-thumb {
+  width: 2px;
+  height: 2.25rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.range::-moz-range-thumb {
+  width: 2px;
+  height: 2.25rem;
+  border: 0;
+}
+
+/* Cada faixa ocupa as duas colunas da grade: nome e pista. */
+.track {
+  display: contents;
+}
+
+.trackName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: center;
+  font-size: 0.875rem;
+}
+
+/* A amostra de cor da faixa, ao lado do nome. */
+.swatch {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  background: var(--cor);
+}
+
+.lane {
+  position: relative;
+  height: 1.9rem;
+  background: rgb(236 230 218 / 0.04);
+}
+
+.bar {
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0;
+  width: 20%; /* 0,9 s de 4,5 s */
+  background: var(--cor);
+  opacity: 0.72;
+  transform-origin: 0 50%;
+  transition:
+    opacity 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Acesa enquanto a agulha passa: é o elemento que está se movendo. */
+.bar[data-active] {
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--gesso);
+}
+
+/* Os quadros-chave: um losango no começo e outro no fim de cada entrada. */
+.key {
+  position: absolute;
+  top: 50%;
+  width: 0.62rem;
+  height: 0.62rem;
+  background: var(--gesso);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.keyStart {
+  left: 0;
+}
+
+.keyEnd {
+  left: 100%;
+}
+
+.playheadTrack {
+  position: absolute;
+  inset: 0 0 0 var(--nome);
+  pointer-events: none;
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  bottom: -0.35rem;
+  left: 0;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--gesso);
+  transform-origin: 50% 0;
+}
+
+/* A cabeça da agulha, em cima da régua. */
+.playhead::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--gesso);
+  transform: translate(-50%, -35%) rotate(45deg);
+}
+
+/* ---------- As escolhas ---------- */
+
+.choices {
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .choices {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+  }
+}
+
+.group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.legend {
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-stretch: 70%;
+  font-weight: 700;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.option {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  padding: 0.85rem 0.85rem 0.95rem;
+  border: 1px solid rgb(236 230 218 / 0.16);
+  color: var(--apoio);
+  cursor: pointer;
+  transition:
+    border-color 0.25s,
+    color 0.25s,
+    background-color 0.25s;
+}
+
+.option:hover {
+  border-color: rgb(236 230 218 / 0.42);
+  color: var(--gesso);
+}
+
+.option:has(.radio:checked) {
+  border-color: var(--azul);
+  background: rgb(91 140 255 / 0.12);
+  color: var(--gesso);
+}
+
+.option:has(.radio:focus-visible) {
+  outline: 2px solid var(--azul);
+  outline-offset: 3px;
+}
+
+/* O botão de rádio de verdade continua lá, invisível, para o teclado. */
+.radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.optionArt {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 100 / 44;
+  overflow: visible;
+}
+
+/* As barrinhas de cada arrumação, nas cores das faixas (vêm do código). */
+.optionArt rect {
+  opacity: 0.55;
+}
+
+.option:has(.radio:checked) .optionArt rect {
+  opacity: 1;
+}
+
+.curveBase,
+.curve {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.curveBase {
+  stroke: currentColor;
+  stroke-width: 1.5;
+  opacity: 0.22;
+}
+
+/* Cada ritmo tem a sua cor. */
+.curve {
+  stroke: var(--cor, currentColor);
+  stroke-width: 2.5;
+  opacity: 0.7;
+}
+
+.option:has(.radio:checked) .curve {
+  opacity: 1;
+}
+
+/* O losango que percorre a curva escolhida. */
+.marker {
+  fill: var(--cor, currentColor);
+}
+
+.option:has(.radio:checked) .marker {
+  fill: var(--gesso);
+}
+
+.optionName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.note {
+  min-height: 3.2em;
+  max-width: 52ch;
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+/* ---------- Telas estreitas ---------- */
+
+@media (max-width: 640px) {
+  .scene {
+    --nome: 4.25rem;
+  }
+
+  .option {
+    padding: 0.7rem 0.6rem 0.8rem;
+  }
+
+  .optionName {
+    font-size: 0.875rem;
+  }
+
+  .readout {
+    margin-left: 0;
+    width: 100%;
+  }
+}

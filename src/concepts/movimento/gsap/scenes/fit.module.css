@@ -1,0 +1,153 @@
+/*
+ * Cena "Onde serve": seis cartões, cada um com um roteiro de três quadros e
+ * o veredito.
+ */
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+}
+
+@media (min-width: 760px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: grid;
+  align-content: start;
+  gap: 1.1rem;
+  padding: clamp(1.1rem, 2.5vw, 1.6rem);
+  border: 1px solid var(--grade);
+  background: rgb(236 230 218 / 0.03);
+}
+
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.siteName {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 750;
+  font-stretch: 66%;
+  line-height: 1;
+}
+
+/* ---------- Veredito: losango cheio, meio cheio ou vazado ---------- */
+
+.verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.verdict[data-verdict='ok'] {
+  color: var(--verde);
+}
+
+.verdict[data-verdict='warn'] {
+  color: var(--ambar);
+}
+
+.verdict[data-verdict='avoid'] {
+  color: var(--vermelho);
+}
+
+.verdictMark {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.verdict[data-verdict='ok'] .verdictMark {
+  background: currentColor;
+}
+
+.verdict[data-verdict='warn'] .verdictMark {
+  background: linear-gradient(135deg, currentColor 50%, transparent 50%);
+}
+
+/* ---------- O roteiro ---------- */
+
+.frames {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.frame {
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* Um quadro de roteiro: um esboço de página com três linhas. */
+.sketch {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  aspect-ratio: 4 / 3;
+  padding: 0.55rem;
+  border: 1px solid rgb(236 230 218 / 0.28);
+}
+
+.sketch > span:not(.motionKey) {
+  display: block;
+  height: 0.3rem;
+  background: rgb(236 230 218 / 0.22);
+}
+
+.sketch > span:nth-child(1) {
+  width: 70%;
+}
+
+.sketch > span:nth-child(2) {
+  width: 90%;
+}
+
+.sketch > span:nth-child(3) {
+  width: 50%;
+}
+
+/* No quadro com movimento, o esboço acende e o losango marca o lugar. */
+.frame[data-moves] .sketch {
+  border-color: var(--verde);
+}
+
+.motionKey {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.55rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  background: var(--verde);
+  transform: rotate(45deg);
+}
+
+.frameLabel {
+  color: var(--prata);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+}
+
+.why {
+  color: var(--gesso);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
