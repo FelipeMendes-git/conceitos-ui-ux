@@ -10,7 +10,7 @@ e é desenhada com ele.
 ![React](https://img.shields.io/badge/React-19-0d1330?style=flat-square)
 ![Vite](https://img.shields.io/badge/Vite-8-0d1330?style=flat-square)
 ![CSS puro](https://img.shields.io/badge/CSS-puro-0d1330?style=flat-square)
-![Telas prontas](https://img.shields.io/badge/telas_prontas-1_de_83-c2361a?style=flat-square)
+![Telas prontas](https://img.shields.io/badge/telas_prontas-2_de_83-c2361a?style=flat-square)
 
 **[🌐 Ver o guia online: conceitos-ui-ux.vercel.app](https://conceitos-ui-ux.vercel.app/)**
 
@@ -51,7 +51,7 @@ O guia está em construção. São 83 telas planejadas em 9 temas, e eu escolho 
 
 | Tema | Telas | Prontas |
 |---|:-:|:-:|
-| Estilos visuais | 17 | 1 |
+| Estilos visuais | 17 | 2 |
 | Tipografia | 7 | 0 |
 | Cores | 9 | 0 |
 | Composição | 8 | 0 |
@@ -61,7 +61,7 @@ O guia está em construção. São 83 telas planejadas em 9 temas, e eu escolho 
 | Movimento | 7 | 0 |
 | Experiência do usuário | 8 | 0 |
 
-**Pronta:** Glassmorphism.
+**Prontas:** Glassmorphism e Retrô e Y2K.
 
 O mapa completo, com todas as telas planejadas, aparece na página inicial do guia.
 
