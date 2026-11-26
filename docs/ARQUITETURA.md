@@ -12,12 +12,12 @@ Este documento é para quem clonou o repositório e quer entender como o código
 | Rotas | Roteador próprio (`src/app/router.jsx`, ~40 linhas) | A navegação é só "início + um endereço por tela"; o navegador já oferece o necessário e uma biblioteca seria peso sem ganho. |
 | Fontes | Google Fonts, por uma linha no `index.html` | Fraunces, IBM Plex Sans e IBM Plex Mono são a pele padrão. Não é biblioteca, mas exige internet. Cada tela pode trocar as suas. |
 | Estilos | CSS Modules + variáveis CSS | Cada tela tem uma linguagem visual diferente; CSS Modules impede que o estilo de uma vaze para outra. |
-| Animação | GSAP onde o movimento for o assunto ou exigir | Fora disso, transições em CSS. |
-| Deploy | Só local por enquanto (`npm run dev`) | Vercel quando chegar a hora. |
+| Animação | GSAP 3, só na tela que fala dele (`concepts/movimento/gsap/`) | A tela é sobre a ferramenta e é feita com ela. Nas outras, transições em CSS. |
+| Deploy | Vercel ([conceitos-ui-ux.vercel.app](https://conceitos-ui-ux.vercel.app/)); localmente, `npm run dev` | Site estático, sem servidor próprio. |
 
 Deliberadamente **sem** Tailwind e **sem** biblioteca de componentes: um framework visual imporia um estilo único, e o projeto existe para mostrar estilos diferentes lado a lado.
 
-As únicas dependências instaladas são `react`, `react-dom`, `vite` e `@vitejs/plugin-react`. Nenhuma outra entra sem um bom motivo.
+As dependências instaladas são `react`, `react-dom`, `vite`, `@vitejs/plugin-react` e `gsap`. Nenhuma outra entra sem um bom motivo. O GSAP entrou com a tela que o explica; como cada tela é carregada à parte, só quem abre essa tela baixa a biblioteca (cerca de 96 kB comprimidos, junto com o código da própria tela), e a página inicial continua sem ela.
 
 ## Estrutura de pastas
 
