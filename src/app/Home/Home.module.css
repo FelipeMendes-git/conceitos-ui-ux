@@ -84,6 +84,18 @@
   font-size: 0.9375rem;
 }
 
+/* O link para o repositório: na cor do texto principal, para se destacar do
+   parágrafo sem precisar de uma cor nova. */
+.principleText a {
+  color: var(--page-fg);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.principleText a:hover {
+  color: var(--page-accent);
+}
+
 /* ---------- Mapa ---------- */
 
 .mapHeading {

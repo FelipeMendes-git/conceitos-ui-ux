@@ -8,14 +8,27 @@ import styles from './Home.module.css'
  * A versão definitiva é a SPEC-001 (docs/specs/ROADMAP.md).
  */
 
+const REPOSITORY_URL = 'https://github.com/FelipeMendes-git/conceitos-ui-ux'
+
+// "text" aceita texto simples ou um trecho com link, como no segundo item.
 const PRINCIPLES = [
   {
     title: 'Cada página pratica o que ensina',
     text: 'A página sobre vidro é de vidro. A do minimalismo quase não tem nada. Você entende o conceito antes de ler a primeira linha.',
   },
   {
-    title: 'Sem código',
-    text: 'Tudo é explicado pelo que se vê. Onde há o que experimentar, você mexe em controles e observa o resultado.',
+    title: 'Conceito aqui, código no GitHub',
+    text: (
+      <>
+        Estas páginas são só o conceito, explicado pelo que se vê. O código que
+        constrói cada uma fica em outro lugar:{' '}
+        <a href={REPOSITORY_URL} target="_blank" rel="noreferrer">
+          no repositório do projeto
+          <span className="sr-only"> (abre em outra aba)</span>
+        </a>
+        , aberto para quem quiser ver como foi feito.
+      </>
+    ),
   },
   {
     title: 'Com contexto',
