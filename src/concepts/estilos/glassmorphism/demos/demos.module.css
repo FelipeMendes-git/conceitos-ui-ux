@@ -1,0 +1,175 @@
+/*
+ * Estilos das demonstrações interativas da tela de Glassmorphism.
+ */
+
+/* ---------- Interruptor ---------- */
+
+.switch {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  width: 100%;
+  text-align: left;
+}
+
+.track {
+  flex: none;
+  width: 2.75rem;
+  height: 1.6rem;
+  margin-top: 0.1rem;
+  padding: 0.2rem;
+  border: 1px solid rgb(255 255 255 / 0.75);
+  border-radius: 999px;
+  background: rgb(13 19 48 / 0.2);
+  transition: background-color 0.25s ease;
+}
+
+.knob {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgb(13 19 48 / 0.3);
+  transition: transform 0.25s cubic-bezier(0.3, 0.8, 0.3, 1);
+}
+
+/* Ligado: trilho na cor da tinta e botão deslocado para a direita.
+   O estado é dado pela posição e pelo contraste, não por uma cor "de ligado". */
+.switch[aria-checked='true'] .track {
+  background: var(--page-fg);
+}
+
+.switch[aria-checked='true'] .knob {
+  transform: translateX(1.15rem);
+}
+
+.label {
+  display: block;
+}
+
+.name {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.role {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--page-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Desligado: o nome perde força, reforçando o estado. */
+.switch[aria-checked='false'] .name {
+  font-weight: 500;
+  color: var(--page-muted);
+}
+
+/* ---------- Anatomia ---------- */
+
+.anatomy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: clamp(3.5rem, 9vh, 6rem);
+}
+
+.controls {
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--page-rule);
+}
+
+.number {
+  color: var(--page-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.intro {
+  margin-top: 1.5rem;
+  font-size: 1.0625rem;
+}
+
+.switches {
+  display: grid;
+  gap: 1.15rem;
+  margin-top: 1.75rem;
+}
+
+/* O palco: sem painel, para o exemplo ficar direto sobre o fundo da página. */
+.stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  min-height: 24rem;
+  padding: 1rem clamp(0rem, 2vw, 1.5rem);
+}
+
+/* O painel de exemplo usa a mesma receita dos painéis da página, mas cada
+   peça vem de uma variável que os interruptores ligam e desligam. */
+.specimen {
+  padding: 1.75rem 1.75rem 2rem;
+  border: 1px solid var(--edge);
+  border-radius: var(--glass-radius);
+  background: var(--film);
+  box-shadow:
+    var(--shadow),
+    inset 0 1px 0 var(--highlight);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  transition:
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.specimenTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.specimenText {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.status {
+  padding: 0.9rem 1.2rem;
+  border-radius: 18px;
+  color: var(--page-muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 1080px) {
+  .anatomy {
+    grid-template-columns: 1fr;
+  }
+
+  .stage {
+    min-height: 0;
+    padding: 0.5rem 0 0;
+  }
+}

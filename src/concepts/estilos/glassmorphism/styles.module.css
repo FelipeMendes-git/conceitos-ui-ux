@@ -1,0 +1,350 @@
+/*
+ * Desenho da tela de Glassmorphism. Cores e medidas do vidro vêm do theme.css.
+ */
+
+/* ---------- Fundo vivo ---------- */
+
+/* Cobre a janela inteira, inclusive atrás do menu, e fica atrás do conteúdo. */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Círculos de cor chapada e contorno nítido. Como a forma é nítida fora dos
+   painéis e fosca atrás deles, dá para ver exatamente o que o vidro faz. */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  transition: opacity 0.7s ease;
+  /* Só "transform" é animado: é o tipo de movimento mais leve para o aparelho. */
+  animation: drift var(--duration) ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+.coral {
+  top: -16vmax;
+  left: 4%;
+  width: 44vmax;
+  height: 44vmax;
+  background: #ff6b4a;
+  --dx: 9vmax;
+  --dy: 7vmax;
+  --duration: 46s;
+}
+
+.cobalt {
+  top: 24vh;
+  right: -9vmax;
+  width: 34vmax;
+  height: 34vmax;
+  background: #2f6bff;
+  --dx: -8vmax;
+  --dy: 10vmax;
+  --duration: 58s;
+}
+
+.amber {
+  bottom: -18vmax;
+  left: 30%;
+  width: 38vmax;
+  height: 38vmax;
+  background: #ffb020;
+  --dx: -10vmax;
+  --dy: -8vmax;
+  --duration: 52s;
+}
+
+.teal {
+  top: 34vh;
+  left: 44%;
+  width: 15vmax;
+  height: 15vmax;
+  background: #12b5a6;
+  --dx: 12vmax;
+  --dy: -9vmax;
+  --duration: 40s;
+}
+
+/* Peça 1 da anatomia desligada: os círculos somem e sobra só o papel. */
+.backdrop[data-live='false'] .circle {
+  opacity: 0;
+}
+
+/* Quem pede menos movimento vê os círculos parados. */
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    animation: none;
+  }
+}
+
+/* ---------- O vidro ---------- */
+
+/* As quatro peças que dependem do painel, na ordem da anatomia:
+   película, desfoque do fundo, borda de luz, sombra.
+
+   A película e o desfoque ficam em uma camada própria (::before), atrás do
+   conteúdo, e não no painel em si. Motivo: vários painéis têm exemplos de
+   vidro dentro deles, e vidro dentro de vidro fazia o conteúdo do painel de
+   fora desaparecer no navegador. Com a camada separada, nenhum vidro fica
+   "dentro" de outro. */
+.glass {
+  position: relative;
+  /* Mantém a camada ::before presa a este painel. */
+  isolation: isolate;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--glass-film);
+  /* Um fio de luz na aresta de cima, como vidro de verdade. */
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.65);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: background-color 0.4s ease;
+}
+
+/* ---------- Página ---------- */
+
+.page {
+  max-width: 66rem;
+}
+
+/* Abertura: um painel grande. O título se ajusta à largura do painel
+   (unidade cqi), para a palavra longa caber em qualquer tela. */
+.hero {
+  container-type: inline-size;
+  padding: clamp(1.75rem, 5vw, 4rem);
+}
+
+.hero p:first-child {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.hero h1 {
+  margin-top: 1rem;
+  font-size: clamp(2rem, 13cqi, 6.75rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.hero h1 + p {
+  max-width: 30ch;
+  font-weight: 500;
+}
+
+.toolbar {
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.25rem 0 0 auto;
+  padding: 0.85rem 1.25rem;
+  border-radius: 20px;
+}
+
+.panel {
+  padding: clamp(1.5rem, 3.5vw, 2.75rem);
+}
+
+.panel h2 {
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* Só os parágrafos soltos da seção; os que ficam dentro de exemplos e
+   listas têm tamanho próprio. */
+.panel > div > p {
+  font-size: 1.0625rem;
+}
+
+/* ---------- Linha do tempo ---------- */
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2.25rem;
+  border-top: 1px solid var(--page-rule);
+}
+
+.moment {
+  padding: 1.1rem 1.25rem 0 0;
+}
+
+.moment + .moment {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--page-rule);
+}
+
+.year {
+  display: block;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.momentText {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* ---------- O que comunica ---------- */
+
+/* As quatro sensações em letra grande e leve: a própria tipografia já passa
+   a leveza de que o texto fala. */
+.sensations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 2rem;
+  font-size: clamp(1.75rem, 4.2vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+.fit {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--page-rule);
+}
+
+.fit p {
+  margin-top: 0.4rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+.smallHeading {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.panel .footnote {
+  margin-top: 2rem;
+  color: var(--page-muted);
+  font-size: 0.875rem;
+}
+
+/* ---------- Quanto custa ---------- */
+
+.costs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 2.5rem;
+}
+
+.costName {
+  color: var(--page-muted);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.costHeadline {
+  margin-top: 0.35rem;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.costText {
+  margin-top: 0.5rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------- No mundo real ---------- */
+
+.company {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
+  gap: 0.5rem 2rem;
+}
+
+.company + .company {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--page-rule);
+}
+
+.company p + p {
+  margin-top: 1em;
+}
+
+.companyName {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* A história do Liquid Glass, em três datas. */
+.story {
+  margin: 1.5rem 0;
+  border-top: 1px solid var(--page-rule);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--page-rule);
+  font-size: 0.9375rem;
+}
+
+.stepWhen {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.lesson {
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .fit,
+  .costs,
+  .company {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .moment {
+    padding-bottom: 1.25rem;
+  }
+
+  .moment:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .moment:nth-child(n + 3) {
+    border-top: 1px solid var(--page-rule);
+  }
+}

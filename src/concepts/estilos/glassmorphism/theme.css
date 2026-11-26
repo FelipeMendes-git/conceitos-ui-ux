@@ -1,0 +1,62 @@
+/*
+ * Pele da tela de Glassmorphism: vidro claro sobre círculos de cor.
+ *
+ * Só variáveis; o desenho da página está em styles.module.css.
+ */
+
+/* Manrope: sem serifa geométrica, na linha das interfaces de sistema que
+   popularizaram o vidro. Carregada só quando esta tela é aberta. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300..700&display=swap');
+
+[data-concept='glassmorphism'] {
+  /* Página: papel frio e tinta azul-escura. Texto escuro sobre vidro claro
+     mantém a leitura mesmo quando o círculo mais escuro passa atrás. */
+  --page-bg: #e9ecf5;
+  --page-fg: #0d1330;
+  --page-muted: #333b5c;
+  --page-accent: #1d3fd0;
+  --page-rule: rgb(13 19 48 / 0.14);
+
+  /* Uma família só, em pesos diferentes. */
+  --font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+
+  /* A receita do vidro, usada por todos os painéis da página:
+     película + desfoque do fundo + borda de luz + sombra. */
+  --glass-film: rgb(255 255 255 / 0.34);
+  --glass-blur: blur(22px) saturate(150%);
+  --glass-edge: rgb(255 255 255 / 0.7);
+  --glass-shadow: 0 18px 48px rgb(22 32 90 / 0.16);
+  --glass-radius: 28px;
+
+  /* Menu: outra placa de vidro, descolada das bordas da janela. Tem o texto
+     mais miúdo da tela, então leva película e desfoque um pouco mais fortes. */
+  --menu-inset: 16px;
+  --menu-bg: rgb(255 255 255 / 0.36);
+  --menu-fg: #0d1330;
+  --menu-muted: #333b5c;
+  --menu-accent: #1d3fd0;
+  --menu-border: 1px solid var(--glass-edge);
+  --menu-divider: 1px solid var(--glass-edge);
+  --menu-radius: 24px;
+  --menu-shadow: 0 16px 44px rgb(22 32 90 / 0.14);
+  --menu-blur: blur(26px) saturate(160%);
+  --menu-font: var(--font-body);
+}
+
+/* "Vidro mais sólido": o leitor pede painéis quase opacos. É a mesma saída
+   que a Apple deu aos usuários do Liquid Glass. */
+[data-concept='glassmorphism'][data-glass='solid'] {
+  --glass-film: rgb(255 255 255 / 0.92);
+  --menu-bg: rgb(255 255 255 / 0.92);
+}
+
+/* Navegador sem suporte ao desfoque do fundo: sem ele o vidro seria só
+   transparência, então os painéis ficam quase opacos para garantir a leitura. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [data-concept='glassmorphism'] {
+    --glass-film: rgb(255 255 255 / 0.9);
+    --menu-bg: rgb(255 255 255 / 0.9);
+  }
+}

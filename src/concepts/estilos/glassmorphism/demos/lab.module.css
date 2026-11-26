@@ -1,0 +1,236 @@
+/*
+ * Estilos do laboratório: construtor de vidro, "o fundo importa" e "dá para ler?".
+ *
+ * Os três usam um palco próprio (.stage), com fundo desenhado aqui dentro, em
+ * vez do fundo da página. Assim cada demonstração controla o que há atrás do
+ * painel de exemplo.
+ */
+
+.demo + .demo {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--page-rule);
+}
+
+.demoTitle {
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Palco e painel de exemplo ---------- */
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 17rem;
+  overflow: hidden;
+  border-radius: 20px;
+  /* Isola o palco: o painel de exemplo desfoca só o que está aqui dentro. */
+  isolation: isolate;
+}
+
+.wide {
+  margin-top: 1.25rem;
+  min-height: 14rem;
+}
+
+.specimen {
+  width: min(78%, 19rem);
+  padding: 1.4rem 1.5rem 1.6rem;
+  border: 1px solid var(--edge, var(--glass-edge));
+  border-radius: var(--radius, 24px);
+  background: var(--film, var(--glass-film));
+  box-shadow: 0 14px 36px rgb(22 32 90 / 0.18);
+  backdrop-filter: var(--blur, var(--glass-blur));
+  -webkit-backdrop-filter: var(--blur, var(--glass-blur));
+}
+
+.specimenTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.specimenText {
+  margin-top: 0.3rem;
+  font-size: 0.9375rem;
+}
+
+/* ---------- Fundos do palco ---------- */
+
+.plain {
+  background: #dfe3ee;
+}
+
+.soft {
+  background: linear-gradient(120deg, #f1d9d2, #dfe3ee 55%, #cfdcf5);
+}
+
+/* Formas de cor: três círculos chapados, como o fundo da página. */
+.shapes {
+  background:
+    radial-gradient(circle at 18% 22%, #ff6b4a 0 24%, transparent 24.4%),
+    radial-gradient(circle at 84% 34%, #2f6bff 0 28%, transparent 28.4%),
+    radial-gradient(circle at 52% 104%, #ffb020 0 34%, transparent 34.4%), #e4e8f2;
+}
+
+/* Cheio de detalhes: listras finas de alto contraste, como uma foto movimentada. */
+.busy {
+  background:
+    repeating-linear-gradient(48deg, transparent 0 14px, rgb(13 19 48 / 0.85) 14px 20px),
+    repeating-linear-gradient(-36deg, #ff6b4a 0 22px, #ffb020 22px 40px, #12b5a6 40px 58px, #2f6bff 58px 80px);
+}
+
+/* ---------- Construtor ---------- */
+
+.builder {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 2rem;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.sliders {
+  display: grid;
+  gap: 1rem;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+}
+
+.sliderName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.sliderValue {
+  color: var(--page-muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.slider input {
+  grid-column: 1 / -1;
+  width: 100%;
+  /* Pinta o controle nativo com a cor da tinta da página. */
+  accent-color: var(--page-fg);
+}
+
+.reset {
+  justify-self: start;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------- Opções de fundo ---------- */
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+}
+
+.option {
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(13 19 48 / 0.3);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.option[aria-pressed='true'] {
+  border-color: var(--page-fg);
+  background: var(--page-fg);
+  color: #fff;
+}
+
+/* ---------- Dá para ler? ---------- */
+
+.bands {
+  display: flex;
+  place-items: stretch;
+}
+
+.bands > span {
+  flex: 1;
+}
+
+.sliding {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  --blur: blur(16px) saturate(140%);
+}
+
+.readControls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem 2.5rem;
+  align-items: start;
+  margin-top: 1.25rem;
+}
+
+/* ---------- Frases de resultado ---------- */
+
+.verdict {
+  margin-top: 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.aside {
+  max-width: 62ch;
+  margin-top: 0.6rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 0.5rem;
+  font-weight: 700;
+}
+
+/* Mesmo símbolo dos vereditos: cheio, meio cheio ou vazio. */
+.ratingMark {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+[data-level='ok'] .ratingMark {
+  background: currentColor;
+}
+
+[data-level='warn'] .ratingMark {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+@media (max-width: 860px) {
+  .builder,
+  .readControls {
+    grid-template-columns: 1fr;
+  }
+
+  .builder .stage {
+    order: -1;
+  }
+}
