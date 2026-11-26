@@ -5,7 +5,7 @@ import styles from './Home.module.css'
 
 /*
  * Página inicial PROVISÓRIA: apresenta o guia e mostra o mapa completo.
- * A versão definitiva é a SPEC-001 (docs/specs/ROADMAP.md).
+ * A versão definitiva é a tela SPEC-001, ainda por fazer.
  */
 
 const REPOSITORY_URL = 'https://github.com/FelipeMendes-git/conceitos-ui-ux'

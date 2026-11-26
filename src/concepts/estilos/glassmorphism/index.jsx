@@ -21,7 +21,6 @@ import styles from './styles.module.css'
  *
  * Este arquivo tem o texto e a ordem das seções. Cada demonstração interativa
  * ou exemplo visual mora em um arquivo próprio, na pasta demos/.
- * Conteúdo e fontes: docs/specs/estilos/glassmorphism.md
  */
 
 const TIMELINE = [

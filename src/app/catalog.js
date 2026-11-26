@@ -5,7 +5,7 @@
  * pasta src/concepts/<categoria>/<slug>/index.jsx (ver pages.js). Até lá ela
  * aparece no menu como "em breve".
  *
- * O número de cada tela (spec) é o mesmo do docs/specs/ROADMAP.md.
+ * O número de cada tela (spec) só a identifica; não define a ordem de construção.
  */
 
 const allCategories = [

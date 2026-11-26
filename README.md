@@ -63,7 +63,7 @@ O guia está em construção. São 83 telas planejadas em 9 temas, e eu escolho 
 
 **Pronta:** Glassmorphism.
 
-O mapa completo, com uma linha para cada tela, está em [docs/specs/ROADMAP.md](docs/specs/ROADMAP.md).
+O mapa completo, com todas as telas planejadas, aparece na página inicial do guia.
 
 <div align="center">
 <br>
@@ -77,12 +77,12 @@ O mapa completo, com uma linha para cada tela, está em [docs/specs/ROADMAP.md](
 Cada tela passa pelas mesmas etapas antes de entrar aqui:
 
 1. **Pesquisa.** O que mudou, quem usa hoje, o que as fontes dizem. Nada é citado de memória.
-2. **Especificação.** Um documento por tela, em [docs/specs](docs/specs), com o conteúdo, a direção visual e os critérios para considerar a tela pronta.
+2. **Especificação.** Um documento por tela com o conteúdo, a direção visual e os critérios para considerar a tela pronta. São meus documentos de trabalho e ficam fora do repositório.
 3. **Aula.** Antes de construir, eu estudo o conceito.
 4. **Protótipo.** Primeiro a aparência e uma seção; só depois de aprovar a direção, o resto.
 5. **Tela completa**, testada em computador e celular.
 
-Desenvolvo com o apoio do [Claude Code](https://claude.com/claude-code). As regras que ele segue neste projeto estão em [CLAUDE.md](CLAUDE.md).
+Desenvolvo com o apoio do [Claude Code](https://claude.com/claude-code).
 
 ## Por dentro
 

@@ -2,3 +2,9 @@ node_modules
 dist
 *.local
 .DS_Store
+
+# Documentos de desenvolvimento: ficam só na máquina do autor.
+# (regras para o Claude, specs de cada tela, roadmap e configuração local)
+CLAUDE.md
+docs/specs/
+.claude/

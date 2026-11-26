@@ -1,8 +1,6 @@
 # Arquitetura
 
-> Status: casca implementada (SPEC-000). Nenhuma tela de conceito construída ainda.
-
-Este documento é sobre como o projeto é construído. Ele fala de código porque é para quem desenvolve; **as telas do guia não falam de código** (ver regra 4 do CLAUDE.md).
+Este documento é para quem clonou o repositório e quer entender como o código está organizado. Ele fala de código; **as telas do guia não falam**: lá tudo é explicado pelo que se vê.
 
 ## Stack
 
@@ -19,7 +17,7 @@ Este documento é sobre como o projeto é construído. Ele fala de código porqu
 
 Deliberadamente **sem** Tailwind e **sem** biblioteca de componentes: um framework visual imporia um estilo único, e o projeto existe para mostrar estilos diferentes lado a lado.
 
-As únicas dependências instaladas são `react`, `react-dom`, `vite` e `@vitejs/plugin-react`. Qualquer outra precisa ser justificada e aprovada (ver CLAUDE.md).
+As únicas dependências instaladas são `react`, `react-dom`, `vite` e `@vitejs/plugin-react`. Nenhuma outra entra sem um bom motivo.
 
 ## Estrutura de pastas
 
@@ -34,7 +32,7 @@ src/
 │   ├── catalog.js          # mapa do guia: categorias e telas (fonte do menu)
 │   ├── pages.js            # descobre sozinho quais telas já têm pasta
 │   ├── Menu/               # o menu, estilizado só por variáveis --menu-*
-│   ├── Home/               # página inicial provisória (definitiva: SPEC-001)
+│   ├── Home/               # página inicial (provisória)
 │   └── Placeholder.jsx     # "em breve" e "página não encontrada"
 ├── shared/                 # peças comuns a todas as telas
 │   ├── base.css            # reset + pele padrão (todas as variáveis)
@@ -61,7 +59,7 @@ A regra de dependência é de mão única: `concepts/*` importa de `shared/`, `s
 
 O menu é um componente só, estruturalmente igual em todas as telas (mesmos itens, mesma posição — consistência é um princípio de UX e não vamos quebrá-lo). O que muda é a **pele**.
 
-1. O menu é estilizado apenas com variáveis CSS: `--menu-bg`, `--menu-border`, `--menu-blur`, `--menu-radius`, `--menu-shadow`, `--menu-font`, `--menu-inset`, etc. A lista completa, com os valores padrão, está em `src/shared/base.css` e na SPEC-000.
+1. O menu é estilizado apenas com variáveis CSS: `--menu-bg`, `--menu-border`, `--menu-blur`, `--menu-radius`, `--menu-shadow`, `--menu-font`, `--menu-inset`, etc. A lista completa, com os valores padrão, está em `src/shared/base.css`.
 2. Cada conceito define essas variáveis no seu `theme.css`, sob um seletor `[data-concept="glassmorphism"]`.
 3. O `Shell` coloca `data-concept="<slug>"` no elemento raiz ao trocar de rota.
 
@@ -84,17 +82,17 @@ Toda tela segue a mesma sequência, para que o leitor saiba onde encontrar cada 
 9. **No mundo real** — produtos e marcas conhecidos que usam o conceito.
 10. **Para ir além** — conceitos relacionados (links para outras telas).
 
-Nem toda tela usa todas as seções com o mesmo peso (uma tela de "Tipos de site" não tem a mesma anatomia que uma de estilo visual); a spec de cada tela diz o que entra.
+Nem toda tela usa todas as seções com o mesmo peso: uma tela de "Tipos de site" não tem a mesma anatomia que uma de estilo visual.
 
 Dentro de cada seção vale a autoaplicação em nível de exemplo: cada item explicado é mostrado usando ele mesmo. Na tela de tipografia, o parágrafo sobre uma fonte é escrito nessa fonte; na de ritmo de animação, o cartão de cada curva se move com essa curva.
 
 ## Independência entre telas
 
-As telas não dependem umas das outras: nenhuma importa código de outra, e os links "relacionados" para telas ainda não construídas simplesmente não aparecem. Por isso a ordem de construção é livre. A única dependência real é a casca (SPEC-000), que precisa existir primeiro.
+As telas não dependem umas das outras: nenhuma importa código de outra, e os links "relacionados" para telas ainda não construídas simplesmente não aparecem. Por isso a ordem de construção é livre. A única dependência real é a casca (`src/app/`), que precisa existir primeiro.
 
 ## Catálogo e descoberta de telas
 
-`src/app/catalog.js` lista todas as categorias e telas do guia (espelho do ROADMAP). Menu, página inicial e links "anterior/próxima" saem dele.
+`src/app/catalog.js` lista todas as categorias e telas do guia, prontas ou planejadas. Menu, página inicial e links "anterior/próxima" saem dele.
 
 `src/app/pages.js` procura as pastas `src/concepts/<categoria>/<slug>/index.jsx` e considera pronta toda tela que tiver a sua. Telas do catálogo sem pasta aparecem no menu apagadas, como "em breve".
 
