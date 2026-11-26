@@ -1,5 +1,6 @@
 .wrap {
   max-width: 44rem;
+  margin-inline: auto;
   padding: clamp(3rem, 12vh, 8rem) clamp(1.25rem, 5vw, 4rem);
 }
 

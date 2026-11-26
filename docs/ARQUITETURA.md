@@ -86,6 +86,14 @@ Nem toda tela usa todas as seções com o mesmo peso: uma tela de "Tipos de site
 
 Dentro de cada seção vale a autoaplicação em nível de exemplo: cada item explicado é mostrado usando ele mesmo. Na tela de tipografia, o parágrafo sobre uma fonte é escrito nessa fonte; na de ritmo de animação, o cartão de cada curva se move com essa curva.
 
+## Larguras de tela
+
+Toda tela precisa funcionar do celular ao monitor largo. O conteúdo fica em uma coluna de largura máxima, no meio da área ao lado do menu: em janelas largas a sobra se divide entre os dois lados, em vez de ficar toda à direita. O texto continua alinhado à esquerda dentro da coluna.
+
+A moldura comum (`ConceptPage`) já faz isso. Uma tela que queira fundos de ponta a ponta, como a de Retrô e Y2K, abre mão da largura máxima da moldura e passa a centralizar cada bloco por conta própria, sempre na mesma coluna, para que todos comecem na mesma linha vertical.
+
+Abaixo de 900 px o menu vira uma gaveta e o conteúdo ocupa a janela inteira.
+
 ## Independência entre telas
 
 As telas não dependem umas das outras: nenhuma importa código de outra, e os links "relacionados" para telas ainda não construídas simplesmente não aparecem. Por isso a ordem de construção é livre. A única dependência real é a casca (`src/app/`), que precisa existir primeiro.

@@ -8,8 +8,12 @@
 
 /* ---------- ConceptPage ---------- */
 
+/* A coluna de conteúdo tem largura máxima e fica no meio da área ao lado do
+   menu. Em monitores largos, a sobra se divide entre os dois lados em vez de
+   ficar toda à direita. O texto continua alinhado à esquerda dentro dela. */
 .page {
   max-width: 68rem;
+  margin-inline: auto;
   padding: clamp(2.5rem, 9vh, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 6rem;
 }
 

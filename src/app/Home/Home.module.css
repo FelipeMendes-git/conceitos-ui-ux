@@ -4,8 +4,11 @@
  * monoespaçada. Sem cartões, sem sombras, sem ícones.
  */
 
+/* A coluna fica no meio da área ao lado do menu: em monitores largos a
+   sobra se divide entre os dois lados. */
 .page {
   max-width: 76rem;
+  margin-inline: auto;
   padding: clamp(2.5rem, 9vh, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 6rem;
 }
 
