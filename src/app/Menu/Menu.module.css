@@ -1,0 +1,156 @@
+/*
+ * Toda a aparência do menu vem de variáveis --menu-*. Este arquivo define só
+ * a estrutura (o que fica onde). Para mudar o visual em uma tela, redefina as
+ * variáveis no theme.css dela; não edite este arquivo.
+ */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  border: var(--menu-border);
+  border-inline-end: var(--menu-divider);
+  border-radius: var(--menu-radius);
+  background: var(--menu-bg);
+  box-shadow: var(--menu-shadow);
+  color: var(--menu-fg);
+  font-family: var(--menu-font);
+  backdrop-filter: var(--menu-blur);
+  -webkit-backdrop-filter: var(--menu-blur);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--menu-fg) 28%, transparent) transparent;
+}
+
+/* Dentro do menu, o foco usa a cor de destaque do próprio menu. */
+.menu :focus-visible {
+  outline-color: var(--menu-accent);
+}
+
+/* ---------- Marca ---------- */
+
+.brand {
+  display: block;
+  padding: 1.75rem 1.5rem 1.5rem;
+  text-decoration: none;
+}
+
+.brandName {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.brandTag {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--menu-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Grupos (categorias) ---------- */
+
+.groups {
+  flex: 1;
+}
+
+.group {
+  border-top: 1px solid color-mix(in srgb, var(--menu-fg) 14%, transparent);
+}
+
+.groupHeading {
+  font: inherit;
+}
+
+.groupButton {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr auto;
+  align-items: baseline;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  text-align: left;
+}
+
+.groupNumber,
+.groupCount {
+  color: var(--menu-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.groupTitle {
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* O grupo aberto ganha o destaque no número: um sinal discreto de "você está aqui". */
+.groupButton[aria-expanded='true'] .groupNumber {
+  color: var(--menu-accent);
+}
+
+.groupButton:hover .groupTitle {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* ---------- Itens (telas) ---------- */
+
+.items {
+  padding: 0 1.5rem 0.9rem calc(1.5rem + 1.75rem + 0.25rem);
+}
+
+.item {
+  position: relative;
+  display: block;
+  padding: 0.28rem 0;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+a.item:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* Tela atual: marcador na margem e peso maior. Forma e peso, não só cor. */
+.item[aria-current='page'] {
+  font-weight: 600;
+}
+
+.item[aria-current='page']::before {
+  content: '';
+  position: absolute;
+  top: 0.72em;
+  left: -1rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--menu-accent);
+}
+
+.itemSoon {
+  color: var(--menu-muted);
+  opacity: 0.75;
+}
+
+/* ---------- Rodapé ---------- */
+
+.footer {
+  padding: 1.1rem 1.5rem 1.4rem;
+  border-top: 1px solid color-mix(in srgb, var(--menu-fg) 14%, transparent);
+  color: var(--menu-muted);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+}

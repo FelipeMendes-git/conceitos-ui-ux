@@ -1,0 +1,186 @@
+/*
+ * Pele padrão do guia: página de catálogo impresso. Papel claro, um título
+ * serifado grande, linhas finas separando as partes, números em fonte
+ * monoespaçada. Sem cartões, sem sombras, sem ícones.
+ */
+
+.page {
+  max-width: 76rem;
+  padding: clamp(2.5rem, 9vh, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 6rem;
+}
+
+/* ---------- Abertura ---------- */
+
+.eyebrow {
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 11ch;
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9.5vw, 8.5rem);
+  font-weight: 350;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+/* A palavra-chave do título em itálico e na cor de destaque: é o único
+   ponto de cor da abertura, então é para onde o olho vai. */
+.title em {
+  color: var(--page-accent);
+  font-weight: 300;
+}
+
+.lede {
+  max-width: 34ch;
+  margin-top: 2.25rem;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+}
+
+/* ---------- Três princípios ---------- */
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(3.5rem, 10vh, 7rem);
+  border-top: 1px solid var(--page-fg);
+}
+
+.principle {
+  padding: 1.25rem 2rem 0 0;
+}
+
+.principle + .principle {
+  padding-left: 2rem;
+  border-left: 1px solid var(--page-rule);
+}
+
+.principleNumber {
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.principleTitle {
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.principleText {
+  max-width: 32ch;
+  margin-top: 0.75rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Mapa ---------- */
+
+.mapHeading {
+  margin-top: clamp(4rem, 12vh, 8rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--page-fg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 17rem) minmax(0, 1fr);
+  gap: 0 2rem;
+  padding: 2rem 0 2.25rem;
+  border-bottom: 1px solid var(--page-rule);
+}
+
+.rowNumber {
+  padding-top: 0.45rem;
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.rowBlurb {
+  max-width: 26ch;
+  margin-top: 0.6rem;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+.rowItems {
+  columns: 2;
+  column-gap: 2rem;
+  padding-top: 0.35rem;
+  font-size: 0.9375rem;
+}
+
+.rowItems li {
+  padding: 0.2rem 0;
+  break-inside: avoid;
+}
+
+.rowLink {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.rowLink:hover {
+  color: var(--page-accent);
+}
+
+.rowSoon {
+  color: var(--page-muted);
+}
+
+/* ---------- Telas estreitas ---------- */
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .rowItems {
+    grid-column: 2;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .principles {
+    grid-template-columns: 1fr;
+  }
+
+  .principle,
+  .principle + .principle {
+    padding: 1.25rem 0 1.5rem;
+    border-left: 0;
+  }
+
+  .principle + .principle {
+    border-top: 1px solid var(--page-rule);
+  }
+
+  .rowItems {
+    columns: 1;
+  }
+}

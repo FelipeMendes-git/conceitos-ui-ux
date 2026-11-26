@@ -1,0 +1,34 @@
+/*
+ * Pele da tela-modelo: uma planta de arquitetura (blueprint).
+ *
+ * Este arquivo é o que faz o menu mudar de aparência nesta tela. Ele não
+ * contém nenhuma regra de layout: só redefine variáveis. O seletor usa o slug
+ * da tela, que a casca escreve no elemento raiz ao abri-la.
+ *
+ * Para criar a pele de uma tela nova, copie este arquivo e troque o slug e os
+ * valores. A lista completa de variáveis está em src/shared/base.css.
+ */
+
+[data-concept='modelo'] {
+  /* Página */
+  --page-bg: #123c8c;
+  --page-fg: #f2f6ff;
+  --page-muted: #b9cbf2;
+  --page-accent: #ffd84a;
+  --page-rule: rgb(255 255 255 / 0.3);
+
+  /* Numa planta, até os títulos são escritos em letra técnica. */
+  --font-display: var(--font-mono);
+
+  /* Menu: uma folha solta sobre a planta, de contorno tracejado. O fundo é
+     um pouco translúcido para a grade da página aparecer por trás dele. */
+  --menu-inset: 14px;
+  --menu-bg: rgb(12 44 108 / 0.78);
+  --menu-fg: #f2f6ff;
+  --menu-muted: #b9cbf2;
+  --menu-accent: #ffd84a;
+  --menu-border: 1px dashed rgb(255 255 255 / 0.6);
+  --menu-divider: 1px dashed rgb(255 255 255 / 0.6);
+  --menu-blur: blur(3px);
+  --menu-font: var(--font-mono);
+}

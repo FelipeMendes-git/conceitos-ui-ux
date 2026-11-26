@@ -1,0 +1,115 @@
+/*
+ * Base do guia: um reset pequeno e a "pele padrão".
+ *
+ * Tudo o que tem aparência usa as variáveis abaixo. Cada tela redefine as que
+ * quiser no próprio theme.css, sob o seletor [data-concept="<slug>"], e assim
+ * veste a página e o menu sem tocar no código deles.
+ */
+
+:root {
+  /* Página: papel claro, tinta escura, um único destaque. */
+  --page-bg: #efebe2;
+  --page-fg: #1b1a17;
+  --page-muted: #6b665c;
+  --page-accent: #c2361a;
+  --page-rule: rgb(27 26 23 / 0.16);
+
+  /* Fontes: serifada com personalidade nos títulos, sem serifa no texto,
+     monoespaçada nos números de catálogo. */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', Consolas, 'Courier New', monospace;
+
+  /* Menu. */
+  --menu-width: 19rem;
+  --menu-inset: 0px; /* maior que zero = menu descolado das bordas da janela */
+  --menu-bg: #e9e4d8;
+  --menu-fg: var(--page-fg);
+  --menu-muted: var(--page-muted);
+  --menu-accent: var(--page-accent);
+  --menu-border: 0 solid transparent;
+  --menu-divider: 1px solid var(--page-rule);
+  --menu-radius: 0px;
+  --menu-shadow: none;
+  --menu-blur: none;
+  --menu-font: var(--font-body);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-bg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--page-fg);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Foco sempre visível para quem navega por teclado. */
+:focus-visible {
+  outline: 2px solid var(--page-accent);
+  outline-offset: 3px;
+}
+
+/* Texto só para leitores de tela. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Quem pede menos movimento no aparelho não vê animações nem transições. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

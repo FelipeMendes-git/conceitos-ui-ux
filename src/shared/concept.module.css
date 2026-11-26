@@ -1,0 +1,202 @@
+/*
+ * Estrutura das peças comuns (ConceptPage, Section, VerdictTable).
+ *
+ * Aqui só há layout e tipografia básica, sempre a partir das variáveis de
+ * página (--page-*, --font-*). A aparência de verdade é de cada tela: ela
+ * redefine as variáveis no theme.css e, se precisar, passa um className.
+ */
+
+/* ---------- ConceptPage ---------- */
+
+.page {
+  max-width: 68rem;
+  padding: clamp(2.5rem, 9vh, 6.5rem) clamp(1.25rem, 5vw, 4.5rem) 6rem;
+}
+
+.eyebrow {
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: 36ch;
+  margin-top: 2rem;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+}
+
+/* ---------- Section ---------- */
+
+.section {
+  margin-top: clamp(3.5rem, 9vh, 6rem);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--page-rule);
+}
+
+.sectionNumber {
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.sectionBody {
+  padding-top: 1.5rem;
+}
+
+/* Texto corrido dentro de uma seção: linhas curtas, fáceis de ler. */
+.sectionBody > p {
+  max-width: 62ch;
+}
+
+.sectionBody > p + p {
+  margin-top: 1em;
+}
+
+/* ---------- VerdictTable ---------- */
+
+/* Tipo de site à esquerda, veredito à direita, justificativa embaixo.
+   Funciona igual em qualquer largura, sem precisar de versão para celular. */
+.verdictRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 1.5rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--page-rule);
+}
+
+.verdictType {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.verdictLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+}
+
+/* O símbolo do veredito: círculo cheio, meio cheio ou vazio. */
+.verdictMark {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+[data-verdict='ok'] .verdictMark {
+  background: currentColor;
+}
+
+[data-verdict='warn'] .verdictMark {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.verdictWhy {
+  grid-column: 1 / -1;
+  max-width: 60ch;
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------- RelatedLinks ---------- */
+
+.relatedItem {
+  display: grid;
+  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--page-rule);
+}
+
+.relatedTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  text-underline-offset: 0.22em;
+}
+
+.relatedSoon {
+  margin-left: 0.4rem;
+  color: var(--page-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.relatedWhy {
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 640px) {
+  .relatedItem {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Anterior / próxima ---------- */
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: clamp(4rem, 12vh, 8rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--page-fg);
+}
+
+.pagerLink {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.pagerLink:hover {
+  color: var(--page-accent);
+}
+
+.pagerNext {
+  text-align: right;
+}
+
+.pagerLabel {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--page-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
