@@ -16,8 +16,8 @@
   box-shadow: var(--menu-shadow);
   color: var(--menu-fg);
   font-family: var(--menu-font);
-  backdrop-filter: var(--menu-blur);
   -webkit-backdrop-filter: var(--menu-blur);
+  backdrop-filter: var(--menu-blur);
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--menu-fg) 28%, transparent) transparent;
 }
