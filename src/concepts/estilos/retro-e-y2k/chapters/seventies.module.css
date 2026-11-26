@@ -1,0 +1,497 @@
+/*
+ * Anos 70: anúncio de revista.
+ * Paleta: creme, dourado, abacate, laranja queimado, ferrugem, marrom.
+ */
+
+.chapter {
+  --cream: #f3e4c4;
+  --gold: #dba032;
+  --avocado: #6f7f2e;
+  --orange: #c9531c;
+  --rust: #a8400f;
+  --brown: #4b2a17;
+
+  position: relative;
+  /* As medidas "cqi" abaixo acompanham a largura do capítulo. */
+  container-type: inline-size;
+  overflow: hidden;
+  padding-bottom: clamp(4rem, 10vh, 7rem);
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'SOFT' 100;
+  /* Deixa espaço para a barra do topo ao chegar pelo índice no celular. */
+  scroll-margin-top: 3.5rem;
+}
+
+/* O grão do papel: pontinhos marrons muito leves por cima de tudo. */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(75 42 23 / 0.2) 0.5px, transparent 0.7px);
+  background-size: 3px 3px;
+  pointer-events: none;
+}
+
+/* ---------- A capa ---------- */
+
+.cover {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 2rem;
+  padding: clamp(3.5rem, 10vh, 6.5rem) clamp(1.25rem, 5cqi, 4.5rem) 0;
+}
+
+.years {
+  font-size: clamp(1.05rem, 2cqi, 1.4rem);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Letras gordas e apertadas, quase encostando. A sombra dourada deslocada
+   imita a segunda cor impressa fora de registro. */
+.title {
+  margin-top: 0.2rem;
+  color: var(--rust);
+  font-size: clamp(4rem, 19cqi, 12.5rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+  text-shadow: 0.035em 0.035em 0 var(--gold);
+}
+
+.tagline {
+  margin-top: 1.4rem;
+  font-size: clamp(1.25rem, 2.8cqi, 2rem);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Arcos encaixados: cada arco é um bloco de topo redondo dentro do outro. */
+.arches {
+  width: clamp(11rem, 28cqi, 21rem);
+  aspect-ratio: 4 / 3.4;
+}
+
+.arches,
+.arches span {
+  display: block;
+  border-radius: 999px 999px 0 0;
+}
+
+.arches span {
+  height: 100%;
+  padding: 9% 9% 0;
+}
+
+.arches > span {
+  background: var(--rust);
+}
+
+.arches > span > span {
+  background: var(--orange);
+}
+
+.arches > span > span > span {
+  background: var(--gold);
+}
+
+.arches > span > span > span > span {
+  background: var(--avocado);
+}
+
+/* ---------- A faixa de listras ---------- */
+
+.ribbon {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: clamp(1.5rem, 4cqi, 3rem);
+  fill: none;
+  stroke-width: 18.5;
+}
+
+/* ---------- Corpo ---------- */
+
+.body {
+  position: relative;
+  display: grid;
+  gap: clamp(3rem, 7cqi, 5rem);
+  max-width: 70rem;
+  margin-top: clamp(2rem, 5cqi, 4rem);
+  padding-inline: clamp(1.25rem, 5cqi, 4.5rem);
+}
+
+.heading {
+  color: var(--rust);
+  font-size: clamp(2rem, 5cqi, 3.25rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* Como era: colunas de revista. O texto corrido é a mesma família em peso
+   normal e tamanho confortável. */
+.columns {
+  margin-top: 1.5rem;
+  columns: 2 20rem;
+  column-gap: 3rem;
+  column-rule: 2px solid rgb(75 42 23 / 0.25);
+}
+
+.columns p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  break-inside: avoid;
+}
+
+.columns p + p {
+  margin-top: 1rem;
+}
+
+/* A primeira letra em destaque, como em abertura de reportagem. */
+.columns p:first-child::first-letter {
+  float: left;
+  margin: 0.05em 0.08em 0 0;
+  color: var(--orange);
+  font-size: 3.9em;
+  font-weight: 900;
+  line-height: 0.8;
+}
+
+/* ---------- Os ingredientes ---------- */
+
+.label {
+  margin-top: 2rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 3px solid var(--brown);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Paleta: amostras em forma de arco, como catálogo de tinta. */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 1.25rem 1rem;
+  margin-top: 1.25rem;
+}
+
+.palette li {
+  display: grid;
+  gap: 0.1rem;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+
+.palette strong {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.chip {
+  height: 6.5rem;
+  margin-bottom: 0.5rem;
+  border: 3px solid var(--brown);
+  border-radius: 999px 999px 10px 10px;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 0 3rem;
+}
+
+.specimens li,
+.shapes li {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgb(75 42 23 / 0.3);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.fat {
+  color: var(--orange);
+  font-size: 3.6rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.tight {
+  color: var(--rust);
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: -0.085em;
+}
+
+.swash {
+  color: var(--avocado);
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* As formas, desenhadas em miniatura. */
+.shape {
+  width: 8.5rem;
+  height: 3.6rem;
+  border: 3px solid var(--brown);
+  border-radius: 10px;
+}
+
+.shapeArch {
+  background:
+    radial-gradient(
+        ellipse 50% 100% at 50% 100%,
+        var(--cream) 0 22%,
+        var(--avocado) 22.5% 42%,
+        var(--gold) 42.5% 62%,
+        var(--orange) 62.5% 82%,
+        var(--rust) 82.5% 99%,
+        transparent 100%
+      )
+      no-repeat,
+    var(--cream);
+}
+
+.shapeStripes {
+  background: linear-gradient(
+    180deg,
+    var(--cream) 0 14%,
+    var(--rust) 14% 32%,
+    var(--orange) 32% 50%,
+    var(--gold) 50% 68%,
+    var(--avocado) 68% 86%,
+    var(--cream) 86%
+  );
+}
+
+.shapeRays {
+  background: repeating-conic-gradient(from 0deg at 50% 100%, var(--gold) 0 9deg, var(--cream) 9deg 18deg);
+}
+
+.shapeGrain {
+  background-color: var(--orange);
+  background-image: radial-gradient(rgb(75 42 23 / 0.55) 0.7px, transparent 0.9px);
+  background-size: 4px 4px;
+}
+
+/* ---------- Uma peça da época: o cartaz ---------- */
+
+/* O cartaz de um lado, a legenda do outro. */
+.pieceGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 30rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5cqi, 3.5rem);
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.piece figcaption {
+  max-width: 34ch;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.poster {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  padding: 2.2rem 1.6rem 1.6rem;
+  border: 4px solid var(--brown);
+  border-radius: 26px;
+  background: var(--gold);
+  /* A folha pousada sobre a página, com a sombra chapada da época. */
+  box-shadow: 10px 10px 0 var(--brown);
+  text-align: center;
+}
+
+/* Raios de sol saindo de trás dos arcos. */
+.rays {
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    from -5deg at 50% 78%,
+    rgb(243 228 196 / 0.55) 0 10deg,
+    transparent 10deg 20deg
+  );
+}
+
+.posterKicker,
+.posterTitle,
+.posterFoot,
+.posterArches {
+  position: relative;
+}
+
+.posterKicker {
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.posterTitle {
+  margin-top: 0.3rem;
+  color: var(--brown);
+  font-size: clamp(2.6rem, 17cqi, 4.9rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.07em;
+  text-shadow: 0.04em 0.04em 0 var(--cream);
+}
+
+.posterArches {
+  width: 72%;
+  margin: 1.4rem auto 0;
+}
+
+.posterArches > span > span > span > span {
+  background: var(--cream);
+}
+
+.posterFoot {
+  margin: 0 -1.6rem -1.6rem;
+  padding: 0.9rem 1rem 1.1rem;
+  background: var(--brown);
+  color: var(--cream);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* O selo em estrela: três quadrados girados formam as doze pontas. */
+.seal {
+  position: absolute;
+  top: 43%;
+  right: 5%;
+  display: grid;
+  place-items: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  background: var(--rust);
+  color: var(--cream);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.1;
+  transform: rotate(-12deg);
+}
+
+.seal::before,
+.seal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+}
+
+.seal::before {
+  transform: rotate(30deg);
+}
+
+.seal::after {
+  transform: rotate(60deg);
+}
+
+.seal > span {
+  position: relative;
+  z-index: 1;
+}
+
+@container (max-width: 46rem) {
+  .pieceGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .cover {
+    grid-template-columns: 1fr;
+  }
+
+  .arches {
+    justify-self: end;
+    margin-top: -1rem;
+  }
+
+  .posterArches {
+    justify-self: auto;
+    margin-top: 1.4rem;
+  }
+
+  .seal {
+    width: 4.6rem;
+    height: 4.6rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* ---------- Um objeto de verdade ---------- */
+
+/* A foto como numa página de catálogo: papel branco, contorno marrom e a
+   sombra chapada da década. */
+.real {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 5cqi, 3.5rem);
+  align-items: center;
+}
+
+.realPhoto {
+  padding: clamp(0.75rem, 2cqi, 1.25rem);
+  border: 4px solid var(--brown);
+  border-radius: 26px;
+  background: #ffffff;
+  box-shadow: 10px 10px 0 var(--gold);
+}
+
+.realPhoto img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.realTitle {
+  color: var(--rust);
+  font-size: clamp(1.6rem, 3.6cqi, 2.4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.realTag {
+  margin-top: 0.6rem;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.real figcaption p {
+  max-width: 40ch;
+  margin-top: 0.75rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.real figcaption .credit {
+  font-size: 0.9375rem;
+  font-style: italic;
+}
+
+@container (max-width: 46rem) {
+  .real {
+    grid-template-columns: 1fr;
+  }
+}

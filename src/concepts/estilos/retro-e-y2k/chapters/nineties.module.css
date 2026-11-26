@@ -1,0 +1,734 @@
+/*
+ * Anos 90: área de trabalho e página pessoal.
+ * Paleta: verde-água, cinza de janela, azul-marinho e as cores puras de tela.
+ */
+
+.chapter {
+  --gray: #c0c0c0;
+  --navy: #000080;
+  --ui-font: Tahoma, Verdana, Arial, sans-serif;
+  --pixel-font: 'Silkscreen', 'Courier New', monospace;
+  --comic-font: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', cursive;
+
+  position: relative;
+  container-type: inline-size;
+  background: #008080;
+  color: #000000;
+  font-family: var(--ui-font);
+  scroll-margin-top: 3.5rem;
+}
+
+.desktop {
+  max-width: 74rem;
+  padding: clamp(2.5rem, 7vh, 4.5rem) clamp(0.75rem, 4cqi, 4rem) clamp(2.5rem, 6vh, 4rem);
+}
+
+/* ---------- Janelas ---------- */
+
+/* O relevo: borda clara em cima e à esquerda, escura embaixo e à direita.
+   Era assim que a tela mostrava onde cada coisa começava e terminava. */
+.window {
+  padding: 3px;
+  border: 2px solid;
+  border-color: #dfdfdf #000000 #000000 #dfdfdf;
+  background: var(--gray);
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #808080,
+    4px 4px 0 rgb(0 0 0 / 0.35);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.25rem 0.3rem 0.25rem 0.5rem;
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #ffffff;
+}
+
+.titleText {
+  overflow: hidden;
+  font-family: var(--ui-font);
+  font-size: 1rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.titleButtons {
+  display: flex;
+  flex: none;
+  gap: 2px;
+}
+
+.titleButtons span {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.1rem;
+  border: 1px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  background: var(--gray);
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.windowBody {
+  padding: 0.9rem 0.85rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ---------- O navegador ---------- */
+
+.menuBar,
+.toolBar,
+.addressBar,
+.statusBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.9375rem;
+}
+
+.menuBar {
+  gap: 0.2rem 1rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.menuBar span::first-letter {
+  text-decoration: underline;
+}
+
+.toolBar {
+  gap: 0.3rem;
+  padding: 0.3rem 0.4rem;
+  border-top: 1px solid #ffffff;
+  box-shadow: 0 -1px 0 #808080;
+}
+
+.toolBar span {
+  padding: 0.3rem 0.7rem;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+}
+
+.addressBar {
+  gap: 0.5rem;
+  padding: 0.3rem 0.5rem 0.45rem;
+}
+
+.address {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #ffffff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.statusBar {
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 3px;
+}
+
+.statusBar span {
+  flex: 1;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+.statusBar span:last-child {
+  flex: 0 0 8rem;
+}
+
+/* ---------- A página pessoal ---------- */
+
+/* O fundo de azulejo: um quadradinho azul-escuro com estrelas, repetido. */
+.homepage {
+  container-type: inline-size;
+  padding: clamp(1.75rem, 5cqi, 3.5rem) clamp(0.75rem, 4cqi, 3rem) 2rem;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background-color: #000033;
+  background-image:
+    radial-gradient(#ffffff 1px, transparent 1.4px), radial-gradient(#ffff66 1.2px, transparent 1.7px),
+    radial-gradient(#99ccff 0.9px, transparent 1.3px);
+  background-position:
+    7px 9px,
+    38px 30px,
+    22px 51px;
+  background-size: 64px 64px;
+  color: #ffffff;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+}
+
+.welcome {
+  color: #ffff00;
+  font-family: var(--comic-font);
+  font-size: clamp(1.1rem, 3.4cqi, 1.6rem);
+  font-weight: 700;
+}
+
+/* O título colorido e com volume, no estilo dos títulos artísticos dos
+   editores de texto da época: degradê de arco-íris e uma lateral escura. */
+.wordart {
+  width: fit-content;
+  margin: 0.2rem auto 0;
+  padding: 0 0.12em 0.05em;
+  color: #ffff00;
+  font-family: Impact, 'Arial Black', 'Haettenschweiler', sans-serif;
+  font-size: clamp(4.2rem, 25cqi, 11rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transform: scaleY(1.12);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .wordart {
+    background-image: linear-gradient(
+      180deg,
+      #ff0000 0%,
+      #ff9900 22%,
+      #ffff00 42%,
+      #00ff00 60%,
+      #00ccff 78%,
+      #cc33ff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* A lateral do volume: quatro degraus de sombra dura. */
+    filter: drop-shadow(1px 1px 0 #ffffff) drop-shadow(2px 2px 0 #6666cc) drop-shadow(2px 2px 0 #333399)
+      drop-shadow(2px 2px 0 #000066);
+  }
+}
+
+.tagline {
+  margin-top: 1.1rem;
+  color: #00ff00;
+  font-family: var(--comic-font);
+  font-size: clamp(1.15rem, 3.6cqi, 1.75rem);
+  font-weight: 700;
+}
+
+.years {
+  margin-top: 0.3rem;
+  color: #00ffff;
+  font-family: var(--pixel-font);
+  font-size: 1rem;
+}
+
+/* A régua de arco-íris que separava os assuntos. */
+.rainbow {
+  height: 6px;
+  margin: 1.6rem 0;
+  background: linear-gradient(
+    90deg,
+    #ff0000 0 16.6%,
+    #ff9900 16.6% 33.3%,
+    #ffff00 33.3% 50%,
+    #00ff00 50% 66.6%,
+    #0099ff 66.6% 83.3%,
+    #cc33ff 83.3%
+  );
+  border: 1px solid #ffffff;
+}
+
+/* A faixa de obra. Nas páginas de verdade ela nunca saía do ar. */
+.construction {
+  padding: 0.5rem;
+  background: repeating-linear-gradient(-45deg, #ffcc00 0 18px, #000000 18px 36px);
+}
+
+.construction span {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  background: #ffcc00;
+  color: #000000;
+  font-family: var(--comic-font);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* A "tabela" de conteúdo: menu de links à esquerda, texto à direita, com
+   borda dupla em relevo. O texto fica preto sobre branco, em bom tamanho. */
+.table {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  margin-top: 1.6rem;
+  border: 4px ridge #c0c0c0;
+  background: #c0c0c0;
+  gap: 2px;
+  text-align: left;
+}
+
+.sideMenu {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  padding: 1rem 0.9rem;
+  background: #000080;
+  font-size: 1.0625rem;
+}
+
+.sideMenu span {
+  color: #ffff00;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.sideMenu span:nth-child(2) {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.content {
+  padding: 1.2rem clamp(0.9rem, 3cqi, 1.75rem) 1.4rem;
+  background: #ffffff;
+  color: #000000;
+}
+
+.content h3 {
+  color: #cc0000;
+  font-family: var(--comic-font);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.content p {
+  max-width: 62ch;
+  margin-top: 0.8rem;
+  font-size: 1.1875rem;
+  line-height: 1.55;
+}
+
+.counterLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  color: #ffffff;
+  font-family: var(--comic-font);
+  font-size: 1.1rem;
+}
+
+/* O contador de visitas: algarismos verdes em caixinhas pretas. */
+.counter {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #404040;
+}
+
+.counter span {
+  display: grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.9rem;
+  background: #000000;
+  color: #00ff00;
+  font-family: var(--pixel-font);
+  font-size: 1.25rem;
+}
+
+/* Os selos do rodapé. */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.badges span {
+  display: grid;
+  place-items: center;
+  width: 11rem;
+  height: 3.6rem;
+  padding: 0 0.4rem;
+  border: 2px solid;
+  font-family: var(--pixel-font);
+  font-size: 1rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.badgeBlue {
+  border-color: #99ccff #000033 #000033 #99ccff;
+  background: #0033cc;
+  color: #ffffff;
+}
+
+.badgeYellow {
+  border-color: #ffffff #666600 #666600 #ffffff;
+  background: #ffff00;
+  color: #000000;
+}
+
+.badgeGreen {
+  border-color: #ccffcc #003300 #003300 #ccffcc;
+  background: #006600;
+  color: #ffffff;
+}
+
+.badgeRed {
+  border-color: #ffcccc #330000 #330000 #ffcccc;
+  background: #cc0000;
+  color: #ffffff;
+}
+
+.webring {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 1.25rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 1.4rem auto 0;
+  padding: 0.5rem 1rem;
+  border: 3px double #ffffff;
+  font-size: 1.0625rem;
+}
+
+.webring span {
+  color: #66ccff;
+  text-decoration: underline;
+}
+
+/* ---------- Os ingredientes ---------- */
+
+/* O rótulo solto na área de trabalho, como o nome embaixo de um ícone. */
+.desktopLabel {
+  width: fit-content;
+  margin-top: clamp(2.5rem, 7cqi, 4rem);
+  padding: 0.2rem 0.6rem;
+  background: var(--navy);
+  color: #ffffff;
+  font-family: var(--pixel-font);
+  font-size: clamp(1.25rem, 3.4cqi, 1.75rem);
+  font-weight: 400;
+  outline: 1px dotted #ffffff;
+  outline-offset: 2px;
+}
+
+.windows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3cqi, 2rem);
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+/* As janelas ficam um pouco desalinhadas, como numa área de trabalho real. */
+.fonts {
+  margin-top: 1.5rem;
+}
+
+.props {
+  margin-left: 1.25rem;
+}
+
+/* A grade das 216 cores. */
+.safeGrid {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(0, 1fr));
+  gap: 1px;
+  padding: 1px;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #000000;
+}
+
+.safeGrid span {
+  aspect-ratio: 1;
+}
+
+.windowBody > p {
+  margin-top: 0.75rem;
+}
+
+.named {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.45rem 1rem;
+  margin-top: 0.9rem;
+}
+
+.named li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.named span {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+}
+
+/* A lista de fontes: cada nome escrito na própria letra. */
+.fontList {
+  margin: 3px 0 0;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #ffffff;
+}
+
+.fontList li {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px dotted #808080;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.fontList li:first-child {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.fontList li > span:first-child {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.times {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.comic {
+  font-family: var(--comic-font);
+}
+
+.verdana {
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+.courier {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.pixel {
+  font-family: var(--pixel-font);
+}
+
+.shapes li {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.button,
+.field,
+.miniBar,
+.tile {
+  display: grid;
+  place-items: center;
+  height: 2.2rem;
+}
+
+.button {
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  background: var(--gray);
+  box-shadow: inset -1px -1px 0 #808080;
+}
+
+.field {
+  justify-items: start;
+  padding-left: 0.4rem;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #ffffff;
+}
+
+.miniBar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+}
+
+.tile {
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background-color: #000033;
+  background-image: radial-gradient(#ffffff 1px, transparent 1.4px), radial-gradient(#ffff66 1px, transparent 1.5px);
+  background-position:
+    3px 4px,
+    11px 12px;
+  background-size: 16px 16px;
+}
+
+.material {
+  padding-top: 0.75rem;
+  border-top: 1px solid #808080;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+/* O bloco de notas: papel branco, letra de máquina de escrever. */
+.note {
+  margin-top: 3px;
+  padding: 0.8rem 0.9rem 1rem;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.note p + p {
+  margin-top: 0.8rem;
+}
+
+.note p:first-child {
+  font-weight: 700;
+}
+
+/* ---------- A barra de tarefas ---------- */
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.3rem;
+  border-top: 2px solid #ffffff;
+  background: var(--gray);
+  font-size: 0.9375rem;
+}
+
+.start,
+.task,
+.clock {
+  padding: 0.3rem 0.7rem;
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+}
+
+.start {
+  font-weight: 700;
+}
+
+.task {
+  flex: 0 1 10rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task:nth-child(2) {
+  border-color: #000000 #ffffff #ffffff #000000;
+  background: #dfdfdf;
+  font-weight: 700;
+}
+
+.clock {
+  margin-left: auto;
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+@media (max-width: 760px) {
+  .windows {
+    grid-template-columns: 1fr;
+  }
+
+  .fonts,
+  .props {
+    margin: 0;
+  }
+
+  .table {
+    grid-template-columns: 1fr;
+  }
+
+  .sideMenu {
+    display: none;
+  }
+
+  .toolBar span {
+    padding: 0.25rem 0.45rem;
+  }
+
+  .task:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+/* ---------- Um objeto de verdade ---------- */
+
+/* A foto aberta numa janela de visualizador de imagens. */
+.viewer {
+  max-width: 54rem;
+  margin-top: clamp(2rem, 5cqi, 3rem);
+  margin-left: clamp(0rem, 4cqi, 3rem);
+}
+
+.real {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin-top: 3px;
+  padding: 0.9rem;
+}
+
+.realPhoto {
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #ffffff;
+}
+
+.realPhoto img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.real figcaption {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.real figcaption p + p {
+  margin-top: 0.7rem;
+}
+
+.realTag {
+  font-weight: 700;
+}
+
+.credit {
+  font-size: 0.875rem;
+}
+
+@container (max-width: 44rem) {
+  .real {
+    grid-template-columns: 1fr;
+  }
+
+  .viewer {
+    margin-left: 0;
+  }
+}

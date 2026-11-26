@@ -1,0 +1,686 @@
+/*
+ * Dose de nostalgia: a mesma página de produto em quatro épocas e cinco doses.
+ *
+ * Ordem do arquivo: os controles, a maquete neutra (dose zero) e depois uma
+ * parte para cada camada (d1 a d4), sempre com as quatro épocas na mesma
+ * ordem: 70, 80, 90, Y2K.
+ */
+
+.demo {
+  margin-top: 2rem;
+}
+
+/* ---------- Controles ---------- */
+
+.controls {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem 2.5rem;
+  align-items: start;
+}
+
+.eras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.eras button {
+  padding: 0.55rem 1rem;
+  border: 1.5px solid var(--page-fg);
+  border-radius: 8px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.eras button:hover {
+  background: rgb(20 22 26 / 0.07);
+}
+
+.eras button[aria-pressed='true'] {
+  background: var(--page-fg);
+  color: var(--page-bg);
+}
+
+.dose label {
+  display: block;
+  font-weight: 600;
+}
+
+.dose input {
+  display: block;
+  width: 100%;
+  margin-top: 0.6rem;
+  accent-color: var(--page-fg);
+}
+
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 0.3rem;
+  color: var(--page-muted);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.ticks span:first-child {
+  text-align: left;
+}
+
+.ticks span:last-child {
+  text-align: right;
+}
+
+.ticks span[data-current='true'] {
+  color: var(--page-fg);
+  font-weight: 600;
+}
+
+/* ---------- O palco e a leitura ---------- */
+
+.stage {
+  display: grid;
+  place-items: center;
+  margin-top: 1.5rem;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  border-radius: 12px;
+  background: #e2e5ea;
+}
+
+.readout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.75rem 2rem;
+  align-items: start;
+  margin-top: 1.1rem;
+}
+
+.readout p:first-child {
+  max-width: 56ch;
+  min-height: 3.2em;
+  line-height: 1.6;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* O sinal da tarefa: cheio, meio cheio ou vazio. Forma, e não só cor. */
+.taskMark {
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 2px solid currentColor;
+  background: currentColor;
+}
+
+.task[data-task='limit'] .taskMark {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.task[data-task='hard'] .taskMark {
+  background: transparent;
+}
+
+/* ---------- A maquete, sem época (dose zero) ---------- */
+
+.mock {
+  container-type: inline-size;
+  width: min(100%, 40rem);
+  overflow: hidden;
+  border: 1px solid #d5d9df;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #14161a;
+  font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid #e3e6ea;
+}
+
+.brand {
+  font-weight: 600;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  color: #4a4f59;
+  font-size: 0.9375rem;
+}
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem 1.2rem 1.7rem;
+}
+
+.photo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: #eceef1;
+}
+
+/* O pacote de café: um retângulo com o topo dobrado. */
+.bag {
+  display: grid;
+  place-items: center;
+  width: 44%;
+  aspect-ratio: 3 / 4;
+  background: #14161a;
+  clip-path: polygon(10% 0, 90% 0, 100% 13%, 100% 100%, 0 100%, 0 13%);
+  color: #ffffff;
+  font-size: 1.9rem;
+  font-weight: 600;
+}
+
+.title {
+  font-size: clamp(1.5rem, 6.4cqi, 2.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.desc {
+  margin-top: 0.6rem;
+  color: #4a4f59;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.price {
+  margin-top: 0.9rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.buy {
+  display: inline-block;
+  margin-top: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  background: #14161a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+@container (max-width: 26rem) {
+  .product {
+    grid-template-columns: 1fr;
+  }
+
+  .photo {
+    aspect-ratio: 16 / 9;
+  }
+
+  .bag {
+    width: 22%;
+  }
+
+  .links span:last-child {
+    display: none;
+  }
+}
+
+/* ---------- Camada 1: um toque (título e cor de destaque) ---------- */
+
+.d1[data-era='70'] {
+  --accent: #a8400f;
+}
+
+.d1[data-era='80'] {
+  --accent: #c4126b;
+}
+
+.d1[data-era='90'] {
+  --accent: #000080;
+}
+
+.d1[data-era='y2k'] {
+  --accent: #1a4fd0;
+}
+
+.d1 .title,
+.d1 .price {
+  color: var(--accent);
+}
+
+.d1 .buy,
+.d1 .bag {
+  background: var(--accent);
+}
+
+.d1[data-era='70'] .title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-variation-settings: 'SOFT' 100;
+  letter-spacing: -0.055em;
+}
+
+.d1[data-era='80'] .title {
+  font-family: 'Monoton', Impact, sans-serif;
+  font-size: clamp(1.3rem, 5.6cqi, 1.9rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.d1[data-era='90'] .title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.d1[data-era='y2k'] .title {
+  font-family: 'Unbounded', 'Arial Black', sans-serif;
+  font-size: clamp(1.3rem, 5.4cqi, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+/* ---------- Camada 2: releitura (fundo, formas, material) ---------- */
+
+/* O texto corrido, o preço e o botão continuam simples e bem contrastados. */
+
+.d2[data-era='70'] {
+  border: 3px solid #4b2a17;
+  border-radius: 22px;
+  background-color: #f3e4c4;
+  background-image: radial-gradient(rgb(75 42 23 / 0.18) 0.5px, transparent 0.7px);
+  background-size: 3px 3px;
+  box-shadow: 7px 7px 0 #dba032;
+  color: #4b2a17;
+}
+
+.d2[data-era='70'] .bar {
+  border-bottom: 3px solid #4b2a17;
+}
+
+.d2[data-era='70'] .desc,
+.d2[data-era='70'] .links {
+  color: #5d3a22;
+}
+
+.d2[data-era='70'] .photo {
+  border: 3px solid #4b2a17;
+  border-radius: 999px 999px 12px 12px;
+  background: repeating-conic-gradient(from 0deg at 50% 100%, #dba032 0 10deg, #f3e4c4 10deg 20deg);
+}
+
+.d2[data-era='80'] {
+  border: 2px solid #ff2e88;
+  border-radius: 0;
+  background:
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 0.035) 0 1px, transparent 1px 3px), #0d0a24;
+  box-shadow: 0 0 16px rgb(255 46 136 / 0.55);
+  color: #f1eeff;
+}
+
+.d2[data-era='80'] .bar {
+  border-bottom: 2px solid #19e3ff;
+}
+
+.d2[data-era='80'] .desc,
+.d2[data-era='80'] .links {
+  color: #d5cff5;
+}
+
+.d2[data-era='80'] .title {
+  color: #ffffff;
+  text-shadow:
+    0 0 0.1em #ff2e88,
+    0 0 0.4em #ff2e88;
+}
+
+.d2[data-era='80'] .price {
+  color: #19e3ff;
+}
+
+.d2[data-era='80'] .buy {
+  background: #ff2e88;
+  color: #1a0420;
+}
+
+.d2[data-era='80'] .photo {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #19e3ff;
+  border-radius: 0;
+  background: linear-gradient(180deg, #1c0d4a 0 55%, #0d0a24 55%);
+}
+
+.d2[data-era='80'] .photo::before {
+  content: '';
+  position: absolute;
+  inset: 55% -60% 0 -60%;
+  background:
+    repeating-linear-gradient(90deg, #ff2e88 0 1px, transparent 1px 1.4rem),
+    repeating-linear-gradient(0deg, #ff2e88 0 1px, transparent 1px 0.8rem);
+  transform: perspective(4rem) rotateX(58deg);
+  transform-origin: top;
+}
+
+.d2[data-era='80'] .bag {
+  position: relative;
+  background: linear-gradient(180deg, #ffd60a, #ff2e88);
+  color: #1a0420;
+}
+
+.d2[data-era='90'] {
+  padding: 3px;
+  border: 2px solid;
+  border-color: #dfdfdf #000000 #000000 #dfdfdf;
+  border-radius: 0;
+  background: #c0c0c0;
+  box-shadow:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #808080;
+  color: #000000;
+}
+
+.d2[data-era='90'] .bar {
+  border: 0;
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #ffffff;
+}
+
+.d2[data-era='90'] .links {
+  color: #ffffff;
+}
+
+.d2[data-era='90'] .desc {
+  color: #000000;
+}
+
+.d2[data-era='90'] .photo {
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  border-radius: 0;
+  background-color: #000033;
+  background-image: radial-gradient(#ffffff 1px, transparent 1.4px), radial-gradient(#ffff66 1px, transparent 1.5px);
+  background-position:
+    4px 5px,
+    17px 19px;
+  background-size: 26px 26px;
+}
+
+.d2[data-era='90'] .bag {
+  background: #ffff00;
+  color: #000080;
+}
+
+.d2[data-era='y2k'] {
+  border: 2px solid #ffffff;
+  border-radius: 34px 10px 34px 10px;
+  background:
+    repeating-linear-gradient(0deg, rgb(255 255 255 / 0.5) 0 1px, transparent 1px 4px),
+    linear-gradient(170deg, #f2f5f9 0%, #c9d6e4 100%);
+  box-shadow:
+    inset 0 0 0 4px rgb(30 107 255 / 0.25),
+    0 12px 24px rgb(19 27 46 / 0.2);
+  color: #131b2e;
+}
+
+.d2[data-era='y2k'] .bar {
+  border-bottom: 2px solid #ffffff;
+}
+
+.d2[data-era='y2k'] .desc,
+.d2[data-era='y2k'] .links {
+  color: #2c3954;
+}
+
+.d2[data-era='y2k'] .photo {
+  border: 4px solid rgb(30 107 255 / 0.3);
+  border-radius: 28px 8px 28px 8px;
+  background: linear-gradient(180deg, #ffffff, #dbe6f1) padding-box;
+}
+
+.d2[data-era='y2k'] .bag {
+  background: linear-gradient(180deg, #ffc48f 0%, #ff8a2b 46%, #f25c00 54%, #ff8f3a 100%);
+  color: #2b1200;
+}
+
+/* ---------- Camada 3: carregada (botão e rótulos vestidos) ---------- */
+
+.d3[data-era='70'] .brand {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 900;
+  font-variation-settings: 'SOFT' 100;
+}
+
+.d3[data-era='70'] .links,
+.d3[data-era='70'] .desc,
+.d3[data-era='70'] .price {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+}
+
+.d3[data-era='70'] .buy {
+  border: 3px solid #4b2a17;
+  border-radius: 999px;
+  background: #c9531c;
+  box-shadow: 4px 4px 0 #4b2a17;
+  color: #fff3dc;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 800;
+}
+
+.d3[data-era='80'] .brand {
+  color: #ffffff;
+  font-family: 'Mr Dafoe', cursive;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  text-shadow: 0 0 0.3em #ff2e88;
+}
+
+.d3[data-era='80'] .links,
+.d3[data-era='80'] .desc {
+  font-family: 'Jost', 'Century Gothic', sans-serif;
+}
+
+.d3[data-era='80'] .links {
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.d3[data-era='80'] .price {
+  font-family: 'Jost', 'Century Gothic', sans-serif;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.d3[data-era='80'] .buy {
+  border: 2px solid #19e3ff;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: 0 0 10px rgb(25 227 255 / 0.6);
+  color: #19e3ff;
+  font-family: 'Jost', 'Century Gothic', sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.d3[data-era='90'] .brand {
+  font-family: Tahoma, Verdana, sans-serif;
+  font-weight: 700;
+}
+
+.d3[data-era='90'] .links {
+  font-family: Tahoma, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+.d3[data-era='90'] .desc,
+.d3[data-era='90'] .price {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.d3[data-era='90'] .price {
+  color: #cc0000;
+}
+
+.d3[data-era='90'] .buy {
+  border: 2px solid;
+  border-color: #ffffff #000000 #000000 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px 0 #808080;
+  color: #000000;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-weight: 400;
+}
+
+.d3[data-era='y2k'] .brand {
+  font-family: 'Unbounded', 'Arial Black', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.d3[data-era='y2k'] .links {
+  font-family: 'Silkscreen', 'Courier New', monospace;
+}
+
+.d3[data-era='y2k'] .desc,
+.d3[data-era='y2k'] .price {
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+.d3[data-era='y2k'] .buy {
+  border: 1px solid #a94400;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffc48f 0%, #ff8a2b 46%, #f25c00 54%, #ff8f3a 100%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    0 2px 5px rgb(19 27 46 / 0.3);
+  color: #2b1200;
+}
+
+/* ---------- Camada 4: fantasia ---------- */
+
+/* Aqui a página erra de propósito: o texto corrido vira letra de enfeite,
+   o preço encolhe e o botão se disfarça de decoração. É o exemplo do que
+   não fazer; por isso é uma ilustração, não uma página de verdade. */
+
+.d4 .title {
+  font-size: clamp(2rem, 10cqi, 3.4rem);
+}
+
+.d4 .desc {
+  font-size: 0.8125rem;
+  line-height: 1.25;
+}
+
+.d4 .price {
+  font-size: 0.8125rem;
+}
+
+/* ".mock.d4" dá a esta regra o mesmo peso das regras de botão da camada 3,
+   para que ela, vindo depois, desfaça o botão em todas as épocas. */
+.mock.d4 .buy {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-size: 0.8125rem;
+}
+
+.d4[data-era='70'] .desc {
+  color: #c9531c;
+  font-style: normal;
+  font-weight: 900;
+  font-variation-settings: 'SOFT' 100;
+  letter-spacing: -0.07em;
+}
+
+.d4[data-era='70'] .price,
+.d4[data-era='70'] .buy {
+  color: #dba032;
+}
+
+.d4[data-era='80'] .desc {
+  color: #ff2e88;
+  font-family: 'Monoton', Impact, sans-serif;
+  text-shadow: 0 0 0.5em #ff2e88;
+}
+
+.d4[data-era='80'] .price {
+  color: #8a4bff;
+  font-family: 'Mr Dafoe', cursive;
+}
+
+.d4[data-era='80'] .buy {
+  color: #6a2cff;
+  font-family: 'Monoton', Impact, sans-serif;
+}
+
+.d4[data-era='90'] {
+  background-color: #000033;
+  background-image: radial-gradient(#ffffff 1px, transparent 1.4px), radial-gradient(#ffff66 1px, transparent 1.5px);
+  background-position:
+    4px 5px,
+    17px 19px;
+  background-size: 26px 26px;
+}
+
+.d4[data-era='90'] .title {
+  color: #ffff00;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+.d4[data-era='90'] .desc {
+  color: #00ff00;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+}
+
+.d4[data-era='90'] .price {
+  color: #cc0000;
+}
+
+.d4[data-era='90'] .buy {
+  color: #0000ee;
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: underline;
+}
+
+.d4[data-era='y2k'] .desc {
+  color: #8195b0;
+  font-family: 'Silkscreen', 'Courier New', monospace;
+  font-size: 0.6875rem;
+}
+
+.d4[data-era='y2k'] .price,
+.d4[data-era='y2k'] .buy {
+  color: #a9b8ca;
+  font-family: 'Unbounded', 'Arial Black', sans-serif;
+}
+
+@media (max-width: 760px) {
+  .controls,
+  .readout {
+    grid-template-columns: 1fr;
+  }
+
+  .task {
+    white-space: normal;
+  }
+}

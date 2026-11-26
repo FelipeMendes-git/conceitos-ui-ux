@@ -1,0 +1,168 @@
+/*
+ * De volta a hoje: o fechamento da página.
+ *
+ * Depois de quatro capítulos carregados, esta parte é quieta de propósito:
+ * fundo claro, uma letra só, muito espaço. As cores vêm da pele "hoje".
+ */
+
+.today {
+  max-width: 62rem;
+  padding: clamp(4rem, 12vh, 7rem) clamp(1.25rem, 5vw, 4.5rem) 3rem;
+  color: var(--page-fg);
+}
+
+.opening h2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.opening p {
+  max-width: 34ch;
+  margin-top: 1.25rem;
+  color: var(--page-muted);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.part {
+  margin-top: clamp(3.5rem, 9vh, 5.5rem);
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--page-fg);
+}
+
+.part > h3 {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.prose {
+  margin-top: 1rem;
+}
+
+.prose p {
+  max-width: 62ch;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+/* ---------- Releitura não é cópia ---------- */
+
+.distinctions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.75rem 2.5rem;
+  margin-top: 2.25rem;
+}
+
+.distinctions dt {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.distinctions dd {
+  margin-top: 0.5rem;
+  color: var(--page-muted);
+  line-height: 1.6;
+}
+
+/* ---------- O que cada passado diz ---------- */
+
+.cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 2.5rem 3rem;
+  margin-top: 2.25rem;
+}
+
+.caseGroup h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.caseLead {
+  margin-top: 0.4rem;
+  color: var(--page-muted);
+  line-height: 1.5;
+}
+
+.caseGroup ul {
+  margin-top: 1rem;
+}
+
+.caseGroup li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.95rem 0;
+  border-top: 1px solid var(--page-rule);
+  line-height: 1.6;
+}
+
+.caseGroup li strong {
+  font-weight: 600;
+}
+
+.caseGroup li span {
+  color: var(--page-muted);
+}
+
+/* O caso em que tirar o passado deu errado: destacado com um fio à esquerda. */
+.mirror {
+  max-width: 62ch;
+  margin-top: 2.25rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--page-accent);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/* ---------- Onde serve ---------- */
+
+.verdicts {
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--page-rule);
+}
+
+/* ---------- Quanto custa ---------- */
+
+.costs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 2rem 2.5rem;
+  margin-top: 1.75rem;
+}
+
+.costs li {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+}
+
+.costName {
+  color: var(--page-muted);
+  font-size: 0.9375rem;
+}
+
+.costs strong {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.costs p {
+  color: var(--page-muted);
+  line-height: 1.6;
+}
+
+/* ---------- Para ir além ---------- */
+
+.related {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--page-rule);
+}
