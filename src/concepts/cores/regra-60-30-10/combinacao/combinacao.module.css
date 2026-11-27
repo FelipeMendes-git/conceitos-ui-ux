@@ -1,0 +1,273 @@
+/*
+ * A seção das combinações: os botões que pintam a página, a leitura da
+ * combinação em uso e o relógio anotado.
+ */
+
+/* Um brilho do destaque atrás do relógio e um degradê leve no fundo. */
+.section {
+  background:
+    radial-gradient(
+      34rem 26rem at 78% 58%,
+      color-mix(in srgb, var(--c10) 30%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in srgb, var(--ink60) 6%, transparent)
+    );
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5cqi, 4.5rem);
+  align-items: center;
+}
+
+@container (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.text,
+.object {
+  min-width: 0;
+}
+
+/* ---------- Os botões ---------- */
+
+.palettes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+@container (max-width: 480px) {
+  .palettes {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Cada combinação é um botão com as três cores dela em miniatura. */
+.palette {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem 0.75rem;
+  background: var(--c60-sombra);
+  color: var(--ink60);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.palette:hover {
+  background: var(--c60-fundo);
+}
+
+/* A escolhida: a cor secundária da página, com um fio do destaque. */
+.palette[aria-pressed='true'] {
+  background: var(--c30);
+  color: var(--ink30);
+  box-shadow: inset 0 -4px 0 var(--c10);
+}
+
+.swatch {
+  display: flex;
+  gap: 2px;
+  height: 0.85rem;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink60) 35%, transparent);
+}
+
+.swatch i {
+  flex-basis: 0;
+}
+
+/* ---------- A leitura ---------- */
+
+.reading {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  margin-top: 1.75rem;
+}
+
+@container (max-width: 480px) {
+  .reading {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.reading dt {
+  color: var(--apoio60);
+  font-size: 0.9375rem;
+}
+
+.reading dd {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.125rem, 1rem + 0.5cqi, 1.4375rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+/* ---------- O relógio ---------- */
+
+.stage {
+  position: relative;
+  width: min(100%, 30rem);
+  margin-inline: auto;
+}
+
+.watch {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: inherit;
+}
+
+.shadow {
+  position: absolute;
+  right: 14%;
+  bottom: -4%;
+  left: 14%;
+  height: 20%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.36), transparent);
+}
+
+.body {
+  fill: var(--c30);
+}
+
+.action {
+  fill: var(--c10);
+}
+
+.groove {
+  fill: none;
+  stroke: rgb(0 0 0 / 0.22);
+  stroke-width: 1.6;
+}
+
+.hole {
+  fill: rgb(0 0 0 / 0.5);
+}
+
+.bezel {
+  fill: #101114;
+}
+
+.face {
+  fill: #050607;
+}
+
+.track,
+.progress {
+  fill: none;
+  stroke-width: 5;
+}
+
+.track {
+  stroke: rgb(255 255 255 / 0.13);
+}
+
+.progress {
+  stroke: var(--c10);
+  stroke-linecap: round;
+}
+
+.faceSmall {
+  fill: rgb(255 255 255 / 0.68);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.faceTime {
+  fill: #ffffff;
+  font-size: 50px;
+  font-weight: 800;
+  font-stretch: 78%;
+  letter-spacing: -1.5px;
+}
+
+.faceValue {
+  fill: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.stopAccent {
+  stop-color: var(--c10);
+}
+
+.chart {
+  fill: none;
+  stroke: var(--c10);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chartDot {
+  fill: #ffffff;
+}
+
+/* As etiquetas: a tinta do fundo, para aparecerem em qualquer combinação. */
+.leader {
+  fill: none;
+  stroke: var(--ink60);
+  stroke-width: 1.6;
+}
+
+.leaderDot {
+  fill: var(--ink60);
+  stroke: var(--c60);
+  stroke-width: 1.5;
+}
+
+.tag {
+  fill: var(--ink60);
+}
+
+.tagText {
+  fill: var(--c60);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+/* ---------- A legenda das etiquetas ---------- */
+
+.legend {
+  display: grid;
+  gap: 0.5rem;
+  width: min(100%, 26rem);
+  margin: 1.5rem auto 0;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+.legend li {
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.legend b {
+  display: grid;
+  place-items: center;
+  height: 1.7rem;
+  border-radius: 1rem;
+  background: var(--ink60);
+  color: var(--c60);
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+
+.legend strong {
+  font-weight: 700;
+}

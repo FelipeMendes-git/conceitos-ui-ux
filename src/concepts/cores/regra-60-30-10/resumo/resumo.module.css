@@ -1,0 +1,98 @@
+/* O conteúdo dos campos de "Na prática" e a lista de "Para ir além". */
+
+/* ---------- Onde serve: os seis tipos de site ---------- */
+
+.where {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem clamp(1.25rem, 3cqi, 2.5rem);
+  margin-top: 1.5rem;
+}
+
+@container (max-width: 560px) {
+  .where {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.where li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.15rem 0.75rem;
+  align-items: baseline;
+}
+
+.where h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+/* O símbolo do veredito: círculo cheio ou meio cheio. Forma e texto, não
+   só cor. */
+.mark {
+  flex: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+}
+
+[data-verdict='ok'] .mark {
+  background: currentColor;
+}
+
+[data-verdict='warn'] .mark {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.why {
+  grid-column: 1 / -1;
+  color: var(--apoio60);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+/* ---------- Quanto custa ---------- */
+
+.costs {
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.costs dt {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.costs dd {
+  margin: 0.1rem 0 0;
+  color: var(--apoio30);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+/* ---------- Para ir além ---------- */
+
+.related {
+  margin-top: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.related li {
+  border-bottom: 2px solid var(--c60-sombra);
+}
+
+/* O link tem a tinta do texto e um sublinhado grosso no destaque: a cor
+   reforça, mas não é o único sinal. */
+.related a {
+  text-decoration-color: var(--c10);
+  text-decoration-thickness: 3px;
+}

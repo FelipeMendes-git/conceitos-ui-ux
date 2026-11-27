@@ -1,0 +1,35 @@
+/* A régua: três campos retos lado a lado, separados por um fio do fundo. */
+
+.regua {
+  min-width: 0;
+}
+
+.bar {
+  display: flex;
+  gap: 3px;
+  height: 2.25rem;
+}
+
+.segment {
+  display: flex;
+  flex-basis: 0;
+  align-items: center;
+  min-width: 3px;
+  overflow: hidden;
+  /* Recuo no texto, e não espaço interno: um segmento de 1% precisa poder
+     ficar com poucos pixels. */
+  text-indent: 0.55rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.4rem;
+  margin-top: 0.55rem;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}

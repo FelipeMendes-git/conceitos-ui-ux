@@ -1,0 +1,48 @@
+/* No mundo real: uma linha por site, o nome de um lado e a régua do outro. */
+
+.sites {
+  display: grid;
+  gap: clamp(1.75rem, 3.5cqi, 2.5rem);
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
+}
+
+.site {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 0.9rem clamp(1.5rem, 4cqi, 3.5rem);
+  align-items: start;
+}
+
+@container (max-width: 820px) {
+  .site {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.note {
+  max-width: 40ch;
+  margin-top: 0.4rem;
+  color: var(--apoio30);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+/* A faixa da conclusão fecha a seção, de ponta a ponta. */
+.section {
+  padding-bottom: 0;
+}
+
+.lessonBand {
+  margin-top: clamp(3rem, 8vh, 5rem);
+  padding-block: clamp(2rem, 5vh, 3rem);
+  background: var(--c10);
+  color: var(--ink10);
+}
+
+.lesson {
+  font-size: clamp(2.25rem, 1.6rem + 3.2cqi, 4.5rem);
+  font-weight: 800;
+  font-stretch: 78%;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}

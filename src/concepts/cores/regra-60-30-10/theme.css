@@ -1,0 +1,124 @@
+/*
+ * Pele da tela "Regra 60-30-10".
+ *
+ * A página inteira é pintada com três cores, uma por papel:
+ *   --c60 · dominante: o fundo e o menu
+ *   --c30 · secundária: os textos e as faixas
+ *   --c10 · destaque: o que se clica e o campo menor de cada bloco
+ * Cada uma tem a tinta do texto que vai sobre ela (--ink60, --ink30, --ink10)
+ * e o destaque tem uma versão legível como texto sobre o fundo (--c10t).
+ *
+ * Os valores abaixo são os da combinação da casa (celadon, berinjela e
+ * fúcsia). Os botões de combinação da página trocam essas sete variáveis no
+ * elemento raiz, e tudo o mais (os tons, o menu, as faixas) é calculado a
+ * partir delas, então a página inteira muda junto.
+ *
+ * Fonte: Bricolage Grotesque, uma família só, com três eixos (peso, largura e
+ * tamanho óptico).
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap');
+
+/* Registrar as variáveis como cores deixa o navegador fazer a passagem suave
+   de uma combinação para a outra. Onde isso não existir, a troca é seca. */
+@property --c60 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d5e5d8;
+}
+
+@property --c30 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2a1530;
+}
+
+@property --c10 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #c8186f;
+}
+
+@property --ink60 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #2a1530;
+}
+
+@property --ink30 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d5e5d8;
+}
+
+@property --ink10 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #f2f7f3;
+}
+
+@property --c10t {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #a1105a;
+}
+
+[data-concept='regra-60-30-10'] {
+  --c60: #d5e5d8;
+  --c30: #2a1530;
+  --c10: #c8186f;
+  --ink60: #2a1530;
+  --ink30: #d5e5d8;
+  --ink10: #f2f7f3;
+  --c10t: #a1105a;
+
+  /* Tons de cada papel: a cor com um pouco da tinta que vai sobre ela. */
+  --c60-sombra: color-mix(in srgb, var(--c60) 91%, var(--ink60));
+  --c60-fundo: color-mix(in srgb, var(--c60) 84%, var(--ink60));
+  --c30-media: color-mix(in srgb, var(--c30) 88%, var(--ink30));
+  --c30-fundo: color-mix(in srgb, var(--c30) 82%, var(--ink30));
+  /* Texto de apoio sobre o fundo e sobre as faixas. */
+  --apoio60: color-mix(in srgb, var(--ink60) 85%, var(--c60));
+  --apoio30: color-mix(in srgb, var(--ink30) 90%, var(--c30));
+
+  /* Página */
+  --page-bg: var(--c60);
+  --page-fg: var(--ink60);
+  --page-muted: var(--apoio60);
+  --page-accent: var(--c10t);
+  /* Sem linhas: as partes da página se separam por campos de cor. */
+  --page-rule: transparent;
+
+  --font-display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+  /* O guia usa letra monoespaçada em rótulos pequenos; aqui ela não entra. */
+  --font-mono: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+
+  /* Menu: um tom do 60. Assim a abertura conta o menu dentro dos 60% da
+     janela. O item atual ganha o destaque. */
+  --menu-inset: 0px;
+  --menu-bg: var(--c60-sombra);
+  --menu-fg: var(--ink60);
+  --menu-muted: var(--apoio60);
+  --menu-accent: var(--c10t);
+  --menu-border: 0 solid transparent;
+  --menu-divider: 0 solid transparent;
+  --menu-radius: 0px;
+  --menu-shadow: none;
+  --menu-blur: none;
+  --menu-font: var(--font-body);
+
+  transition:
+    --c60 0.5s,
+    --c30 0.5s,
+    --c10 0.5s,
+    --ink60 0.5s,
+    --ink30 0.5s,
+    --ink10 0.5s,
+    --c10t 0.5s;
+}
+
+[data-concept='regra-60-30-10'] ::selection {
+  background: var(--c10);
+  color: var(--ink10);
+}
