@@ -8,7 +8,7 @@
 .today {
   max-width: 70rem;
   margin-inline: auto;
-  padding: clamp(4rem, 12vh, 7rem) clamp(1.25rem, 5cqi, 4.5rem) 3rem;
+  padding: clamp(3.5rem, 9vh, 5rem) clamp(1.25rem, 5cqi, 4.5rem) 3rem;
   color: var(--page-fg);
 }
 
@@ -19,7 +19,7 @@
   letter-spacing: -0.045em;
 }
 
-.opening p {
+.opening > p {
   max-width: 34ch;
   margin-top: 1.25rem;
   color: var(--page-muted);
@@ -28,7 +28,7 @@
 }
 
 .part {
-  margin-top: clamp(3.5rem, 9vh, 5.5rem);
+  margin-top: clamp(2.75rem, 6vh, 3.75rem);
   padding-top: 1.5rem;
   border-top: 2px solid var(--page-fg);
 }
@@ -50,34 +50,13 @@
   line-height: 1.65;
 }
 
-/* ---------- Releitura não é cópia ---------- */
-
-.distinctions {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.75rem 2.5rem;
-  margin-top: 2.25rem;
-}
-
-.distinctions dt {
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.3;
-}
-
-.distinctions dd {
-  margin-top: 0.5rem;
-  color: var(--page-muted);
-  line-height: 1.6;
-}
-
 /* ---------- O que cada passado diz ---------- */
 
 .cases {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 2.5rem 3rem;
-  margin-top: 2.25rem;
+  gap: 2rem 3rem;
+  margin-top: 1.75rem;
 }
 
 .caseGroup h4 {
@@ -110,16 +89,6 @@
 
 .caseGroup li span {
   color: var(--page-muted);
-}
-
-/* O caso em que tirar o passado deu errado: destacado com um fio à esquerda. */
-.mirror {
-  max-width: 62ch;
-  margin-top: 2.25rem;
-  padding-left: 1.25rem;
-  border-left: 3px solid var(--page-accent);
-  font-size: 1.0625rem;
-  line-height: 1.65;
 }
 
 /* ---------- Onde serve ---------- */

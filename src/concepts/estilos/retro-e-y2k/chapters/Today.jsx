@@ -8,111 +8,83 @@ import s from './today.module.css'
  *
  * Depois dos quatro capítulos de época, a pele volta a ser a de hoje, limpa
  * e discreta, para tratar do que fazer com tudo aquilo: o que separa uma
- * releitura de uma cópia, quanta época usar, o que cada passado comunica,
- * onde serve e quanto custa.
+ * releitura de uma cópia (na abertura), quanta época usar, o que cada passado
+ * comunica, onde serve e quanto custa. Cada parte é curta.
  */
-
-const DISTINCTIONS = [
-  {
-    title: 'Retrô não é vintage',
-    text: 'Vintage é o objeto que realmente tem aquela idade. Retrô é o novo feito para parecer antigo. Nesta página, as quatro fotos de objetos são vintage; todo o resto é retrô.',
-  },
-  {
-    title: 'Y2K não é tudo dos anos 2000',
-    text: 'O Y2K original é futurista e limpo. O exagero de strass, rosa e ostentação que veio logo depois tem outro nome, McBling. As bolhas brilhantes com céu azul e grama, do fim da década, também: Frutiger Aero.',
-  },
-  {
-    title: 'O passado volta em ciclos, mais ou menos',
-    text: 'Costuma-se dizer que a cultura revisita o que aconteceu vinte a trinta anos antes, quando quem cresceu com aquilo vira adulto e passa a criar e a comprar. É um padrão observado, não uma lei: no começo de 2026 as redes sociais já estavam com saudade de 2016.',
-  },
-]
 
 const OWN_PAST = [
   {
     name: 'Burger King, 2021',
-    text: 'Voltou ao desenho do nome entre dois pães, usado a partir de 1969, e trocou o azul por laranjas, marrons e creme. A justificativa: comida de verdade, sem nada artificial.',
-  },
-  {
-    name: 'Pepsi, 2023',
-    text: 'Nos 125 anos da marca, o nome voltou para o centro do globo, em preto, como era dos anos 80 ao fim dos 90. Segundo a empresa, era a versão que tinha ficado na memória das pessoas.',
+    text: 'Voltou ao desenho do nome entre dois pães, usado a partir de 1969.',
   },
   {
     name: 'Kolynos e Kibon, 2025 e 2026',
-    text: 'No Brasil, a Sorriso relançou a Kolynos com a embalagem verde e amarela de antes de 1997, e a Kibon vestiu Chicabon e Eski-bon com embalagens antigas nos seus 85 anos. As duas em edição limitada, que é a dose mais segura.',
+    text: 'No Brasil, a Kolynos foi relançada com a embalagem de antes de 1997, e a Kibon vestiu Chicabon e Eski-bon com embalagens antigas, em edição limitada.',
   },
 ]
 
 const BORROWED_PAST = [
   {
     name: 'Nothing, 2022',
-    text: 'Um celular novo, de marca nova, com a traseira transparente. O fundador o descreveu como retrofuturista, inspirado em aparelhos antigos; a imprensa viu ali a volta do plástico translúcido dos anos 90.',
-  },
-  {
-    name: 'Stranger Things',
-    text: 'A abertura da série usa uma letra dos anos 70 e 80, escolhida a partir de capas de livros da época. Uma única letra carrega uma década inteira.',
-  },
-  {
-    name: 'Poolsuite FM',
-    text: 'Uma rádio na internet com cara de computador dos anos 90. Funciona de verdade, e ao ir para o celular ganhou um desenho próprio em vez de imitar janelas em tela pequena.',
+    text: 'Um celular novo, de marca nova, com a traseira transparente, como o plástico translúcido dos anos 90.',
   },
 ]
 
 const VERDICTS = {
   ecommerce: {
     verdict: 'warn',
-    why: 'Ótimo para moda, música, comida e edições limitadas, na vitrine e nos banners. A foto do produto, o preço e o botão de comprar ficam sem fantasia.',
+    why: 'Ótimo na vitrine de moda, música e comida. Preço e botão de comprar ficam sem fantasia.',
   },
   landing: {
     verdict: 'ok',
-    why: 'Campanha, lançamento, evento: pouco texto, muito impacto e vida curta. A página sai do ar antes de a moda passar.',
+    why: 'Campanha, lançamento, evento: muito impacto e vida curta.',
   },
   dashboard: {
     verdict: 'avoid',
-    why: 'Ferramenta de uso diário pede neutralidade. Letra de época e janelas de mentira cansam e atrapalham; no máximo, um toque na marca.',
+    why: 'Ferramenta de uso diário pede neutralidade. Letra de época cansa.',
   },
   app: {
     verdict: 'warn',
-    why: 'Funciona em música, jogos e câmera. Imitar janelas de computador antigo não cabe na tela pequena.',
+    why: 'Funciona em música, jogos e câmera. Janelas de computador antigo não cabem na tela pequena.',
   },
   blog: {
     verdict: 'warn',
-    why: 'Capas e títulos de época funcionam bem em cultura e música. O texto corrido fica em letra de leitura.',
+    why: 'Capas e títulos de época, sim. O texto corrido fica em letra de leitura.',
   },
   portfolio: {
     verdict: 'ok',
-    why: 'Mostra personalidade e repertório. Cuidado com o clichê: o portfólio que imita a área de trabalho dos anos 90 já foi muito feito.',
+    why: 'Mostra personalidade. Cuidado com o clichê da área de trabalho dos anos 90.',
   },
 }
 
 const COSTS = [
   {
     name: 'Velocidade',
-    headline: 'A cor não pesa; a letra e a textura, sim',
-    text: 'Cores e formas não deixam o site mais lento. O peso vem de cada letra de época, que é um arquivo a mais, e principalmente de texturas, fotos granuladas, vídeos e animações.',
+    headline: 'A cor não pesa; a textura, sim',
+    text: 'Cores e formas não pesam. O peso vem das letras de época e, principalmente, de texturas, fotos granuladas e vídeos.',
   },
   {
     name: 'Leitura',
     headline: 'O maior risco está na cópia fiel',
-    text: 'Letra de pixel pequena, neon sobre preto, pares de cores que vibram, texto piscando. A releitura resolve mantendo o texto corrido simples, como nos quatro capítulos desta página.',
+    text: 'Letra de pixel pequena, neon sobre preto, texto piscando. A releitura mantém o texto corrido simples, como nesta página.',
   },
   {
     name: 'Produção',
-    headline: 'Fácil de fazer mal, trabalhoso de fazer bem',
-    text: 'Um modelo pronto com cara de antigo sai em minutos. Acertar a época exige pesquisar os detalhes: a letra, a cor e o material certos daquele ano.',
+    headline: 'Fácil de fazer mal',
+    text: 'Um modelo pronto sai em minutos. Acertar a época exige pesquisar a letra, a cor e o material daquele ano.',
   },
   {
     name: 'Durabilidade',
     headline: 'Envelhece duas vezes',
-    text: 'A época imitada já é antiga, e a moda de imitá-la também passa. O Y2K barulhento de 2021 a 2023 já esfriou. Dura mais quando o passado é da própria marca e quando a dose é pequena.',
+    text: 'A época imitada já é antiga, e a moda de imitá-la também passa. Dura mais quando o passado é da própria marca.',
   },
 ]
 
 const RELATED = [
-  { to: 'estilos/memphis', why: 'O lado geométrico e colorido dos anos 80, que ficou de fora daqui.' },
-  { to: 'estilos/esqueumorfismo', why: 'Imitar objetos reais, em vez de imitar épocas.' },
-  { to: 'estilos/glassmorphism', why: 'O vidro de hoje tem um pé no plástico e no gel da virada do milênio.' },
-  { to: 'estilos/maximalismo', why: 'Quando o excesso é a intenção, com ou sem nostalgia.' },
-  { to: 'estilos/linha-do-tempo', why: 'Como cada estilo nasceu em reação ao anterior.' },
+  { to: 'estilos/memphis', why: 'O lado geométrico dos anos 80, que ficou de fora daqui.' },
+  { to: 'estilos/esqueumorfismo', why: 'Imitar objetos reais, em vez de épocas.' },
+  { to: 'estilos/glassmorphism', why: 'O vidro de hoje tem um pé no gel da virada do milênio.' },
+  { to: 'estilos/maximalismo', why: 'Quando o excesso é a intenção.' },
 ]
 
 function Cases({ title, lead, items }) {
@@ -135,34 +107,22 @@ function Cases({ title, lead, items }) {
 export default function Today() {
   return (
     <section className={s.today} aria-labelledby="titulo-hoje">
+      {/* A abertura já diz o que separa a releitura da cópia. */}
       <header className={s.opening}>
         <h2 id="titulo-hoje">De volta a hoje</h2>
         <p>
           Você atravessou trinta e cinco anos de estilos. Agora, o que fazer
           com eles.
         </p>
-      </header>
-
-      {/* ---------- Releitura não é cópia ---------- */}
-      <div className={s.part}>
-        <h3>Releitura não é cópia</h3>
         <div className={s.prose}>
           <p>
-            Nenhum dos quatro capítulos acima é uma cópia. Uma página de 1997
-            de verdade teria letra miúda, texto piscando e largura pensada
-            para um monitor pequeno. O que você viu são releituras: a
-            aparência é de época, a organização e a leitura são de hoje.
+            Nenhum dos quatro capítulos acima é uma cópia. O que você viu são
+            releituras: a aparência é de época, a leitura é de hoje. E retrô
+            não é vintage: vintage é o objeto que tem mesmo aquela idade;
+            retrô é o novo feito para parecer antigo.
           </p>
         </div>
-        <dl className={s.distinctions}>
-          {DISTINCTIONS.map((item) => (
-            <div key={item.title}>
-              <dt>{item.title}</dt>
-              <dd>{item.text}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
+      </header>
 
       {/* ---------- Quanta época usar ---------- */}
       <div className={s.part}>
@@ -171,8 +131,7 @@ export default function Today() {
           <p>
             A regra prática é a dose. A época entra na pele, que são as cores,
             os títulos e as ilustrações, e fica fora da tarefa, que é ler,
-            comparar, preencher e pagar. Escolha uma época e aumente a dose na
-            mesma página de produto.
+            comparar e pagar. Escolha uma época e aumente a dose.
           </p>
         </div>
         <DoseDemo />
@@ -200,26 +159,13 @@ export default function Today() {
             items={BORROWED_PAST}
           />
         </div>
-
-        <p className={s.mirror}>
-          <strong>O caso espelhado.</strong> Em agosto de 2025, a rede americana
-          de restaurantes Cracker Barrel trocou o logotipo antigo, com a figura
-          de um senhor ao lado de um barril, por uma versão só com o nome. A
-          reação foi tão forte que a empresa voltou atrás em cerca de uma
-          semana. A nostalgia tem dono, e tirá-la também custa.
-        </p>
       </div>
 
       {/* ---------- Onde serve ---------- */}
       <div className={s.part}>
         <h3>Onde serve</h3>
         <div className={s.prose}>
-          <p>
-            Quanto mais curta a vida da página, maior a dose que ela aguenta.
-            Combina com moda, música, eventos, comida e marcas jovens; destoa
-            em banco, saúde e serviços públicos, onde o visitante quer
-            confiança antes de diversão.
-          </p>
+          <p>Quanto mais curta a vida da página, maior a dose que ela aguenta.</p>
         </div>
         <VerdictTable verdicts={VERDICTS} className={s.verdicts} />
       </div>

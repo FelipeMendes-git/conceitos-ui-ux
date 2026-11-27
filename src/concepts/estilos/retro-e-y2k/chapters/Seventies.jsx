@@ -1,12 +1,11 @@
-import atari from '../images/anos-70-atari-2600.jpg'
 import s from './seventies.module.css'
 
 /*
  * ANOS 70: um anúncio de revista.
  *
  * Papel creme, tinta marrom, letras gordas e apertadas, arcos e uma faixa de
- * listras que faz curva. Todo capítulo tem as mesmas quatro partes: a capa,
- * "Como era", "Os ingredientes" e "Uma peça da época".
+ * listras que faz curva. Todo capítulo tem as mesmas quatro partes, curtas: a
+ * capa, "Como era" (um parágrafo), "Os ingredientes" e "Uma peça da época".
  */
 
 const PALETTE = [
@@ -58,47 +57,13 @@ export default function Seventies() {
         {/* ---------- Como era ---------- */}
         <div className={s.story}>
           <h3 className={s.heading}>Como era</h3>
-          <div className={s.columns}>
-            <p>
-              A década abriu com o primeiro Dia da Terra, em 1970, e a casa
-              inteira foi atrás da natureza: geladeira verde-abacate, fogão
-              dourado, tapete laranja queimado. Os tons de terra eram também
-              uma resposta aos tons pastel da geração anterior.
-            </p>
-            <p>
-              As letras engordaram e se apertaram. Os textos passaram a ser
-              compostos por fotografia, no lugar das peças de metal, e isso
-              deixava encostar uma letra na outra. Os títulos ficaram bem
-              juntos, quase se tocando, como o desta página.
-            </p>
-            <p>
-              Em 1970 surgiram duas famílias de letras que marcaram a década,
-              a Avant Garde e a Souvenir. A Cooper Black, desenhada em 1922,
-              virou a cara das capas de disco e das placas de loja.
-            </p>
-            <p>
-              Listras de arco-íris apareciam em tudo, da roupa de ginástica ao
-              logotipo da Apple de 1977. E existiu outra década de 70 ao mesmo
-              tempo, a da discoteca, metálica e brilhante. Esta página fica
-              com a terrosa.
-            </p>
-          </div>
+          <p className={s.lead}>
+            A década abriu com o primeiro Dia da Terra, em 1970, e a casa foi
+            atrás da natureza: geladeira verde-abacate, fogão dourado, tapete
+            laranja queimado. As letras engordaram e se apertaram, como no
+            título desta página.
+          </p>
         </div>
-
-        {/* ---------- Um objeto de verdade ---------- */}
-        <figure className={s.real}>
-          <div className={s.realPhoto}>
-            <img src={atari} alt="Videogame Atari preto, com uma faixa que imita madeira na frente, detalhes em laranja e um controle de alavanca." width="900" height="525" loading="lazy" />
-          </div>
-          <figcaption>
-            <h3 className={s.realTitle}>Um objeto de verdade</h3>
-            <p className={s.realTag}>Isto é vintage: é mesmo da época, não uma releitura.</p>
-            <p>
-              Um Atari, o videogame lançado em 1977; o aparelho da foto é de alguns anos depois. Repare na faixa que imita madeira e nos detalhes em laranja: até a tecnologia se vestia de tons de terra.
-            </p>
-            <p className={s.credit}>Foto de Evan-Amos, em domínio público, via Wikimedia Commons.</p>
-          </figcaption>
-        </figure>
 
         {/* ---------- Os ingredientes ---------- */}
         <div className={s.ingredients}>
@@ -198,8 +163,7 @@ export default function Seventies() {
 
             <figcaption>
               O cartaz de um festival inventado, com os ingredientes da década:
-              título gordo e apertado, arcos, raios de sol, um selo em estrela e
-              a segunda cor impressa um pouco fora do lugar.
+              título gordo e apertado, arcos, raios de sol e um selo em estrela.
             </figcaption>
           </div>
         </figure>

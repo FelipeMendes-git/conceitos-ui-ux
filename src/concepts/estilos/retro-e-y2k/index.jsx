@@ -80,13 +80,9 @@ export default function RetroEY2k() {
         <div className={styles.intro}>
           <p>
             Retrô é um visual novo que imita, de propósito, o de uma época
-            passada. Esta página percorre quatro delas na ordem em que
-            aconteceram. Role para baixo e ela muda de década: as cores, as
-            letras, as formas e até o menu.
-          </p>
-          <p>
-            Uma coisa não muda: o texto continua fácil de ler e nada pisca. A
-            pele é de época, a leitura é de hoje.
+            passada. Esta página percorre quatro delas em ordem: role, e ela
+            muda de década, das cores e das letras até o menu. O texto
+            continua fácil de ler e nada pisca.
           </p>
         </div>
 

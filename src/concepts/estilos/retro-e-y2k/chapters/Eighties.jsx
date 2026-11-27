@@ -1,4 +1,3 @@
-import vhs from '../images/anos-80-fita-vhs.jpg'
 import s from './eighties.module.css'
 
 /*
@@ -50,21 +49,8 @@ export default function Eighties() {
             <div className={s.text}>
               <p>
                 A MTV entrou no ar em 1981 com um logotipo que nunca era o
-                mesmo: aparecia de tijolo, de pelúcia, de neon, de cromo. A
-                regra da década estava dada. Mais brilho, mais cor, mais
-                movimento.
-              </p>
-              <p>
-                Neon, metal cromado e degradês feitos com aerógrafo davam a
-                qualquer coisa um ar de alta tecnologia. As grades, vindas dos
-                primeiros desenhos feitos em computador, completavam a ideia
-                de futuro.
-              </p>
-              <p>
-                E o computador chegou à mesa de quem desenhava. O Macintosh,
-                de 1984, ganhou no ano seguinte um programa de montar páginas
-                e uma impressora a laser. Pela primeira vez dava para compor
-                uma página inteira na tela, sem tesoura nem cola.
+                mesmo: de tijolo, de pelúcia, de neon, de cromo. A regra da
+                década estava dada: mais brilho, mais cor, mais movimento.
               </p>
             </div>
 
@@ -72,42 +58,13 @@ export default function Eighties() {
             <aside className={s.miami}>
               <h4>O lado Miami</h4>
               <p>
-                De dia, a década era pastel. A série Miami Vice, de 1984, tinha
-                uma regra de figurino que resume a virada em relação aos anos
-                70: nada de tons de terra, nada de cores primárias, só pastel.
-                O rosa e o azul-piscina vinham dos prédios antigos da cidade.
+                De dia, a década era pastel. O rosa e o azul-piscina vinham
+                dos prédios antigos de Miami e do figurino da série Miami
+                Vice, de 1984.
               </p>
             </aside>
           </div>
-
-          <ul className={s.warnings}>
-            <li>
-              <strong>Uma lembrança editada.</strong> O sol listrado sobre uma
-              grade, que hoje resume os anos 80, foi desenhado depois. É um
-              estilo dos anos 2000 e 2010, uma homenagem à década.
-            </li>
-            <li>
-              <strong>Faltou um pedaço.</strong> O lado geométrico e colorido
-              dos anos 80, com formas soltas e padrões, tem tela própria neste
-              guia: Memphis.
-            </li>
-          </ul>
         </div>
-
-        {/* ---------- Um objeto de verdade ---------- */}
-        <figure className={s.real}>
-          <div className={s.realPhoto}>
-            <img src={vhs} alt="Fita de vídeo VHS preta, vista de cima, com os dois carretéis aparecendo pelas janelas transparentes." width="900" height="552" loading="lazy" />
-          </div>
-          <figcaption>
-            <h3 className={s.realTitle}>Um objeto de verdade</h3>
-            <p className={s.realTag}>Isto é vintage: é mesmo da época, não uma releitura.</p>
-            <p>
-              Uma fita de vídeo. Por fora, a tecnologia da década era sóbria: preta, retangular, cheia de ranhuras. A cor e o neon ficavam na caixa em que ela vinha, como a da peça da época, mais abaixo.
-            </p>
-            <p className={s.credit}>Foto de Evan-Amos, em domínio público, via Wikimedia Commons.</p>
-          </figcaption>
-        </figure>
 
         {/* ---------- Os ingredientes ---------- */}
         <div className={s.ingredients}>
@@ -226,8 +183,8 @@ export default function Eighties() {
 
           <figcaption>
             A caixa de um filme inventado e a tela da TV ao lado. Repare no
-            título cromado com a palavra de pincel por cima, nas listras
-            diagonais, na grade ao fundo e nas linhas que atravessam a tela.
+            título cromado com a palavra de pincel por cima e na grade ao
+            fundo.
           </figcaption>
         </figure>
       </div>

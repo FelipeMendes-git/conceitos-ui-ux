@@ -1,4 +1,3 @@
-import macintosh from '../images/anos-90-macintosh-lc.jpg'
 import s from './nineties.module.css'
 
 /*
@@ -6,8 +5,8 @@ import s from './nineties.module.css'
  *
  * O capítulo inteiro é uma área de trabalho verde-água com janelas cinza em
  * relevo. A janela maior é um navegador mostrando uma página pessoal, que é
- * ao mesmo tempo a capa, o "Como era" e a peça da época. As janelas menores
- * trazem os ingredientes.
+ * ao mesmo tempo a capa, o "Como era" (um parágrafo) e a peça da época. As
+ * janelas menores trazem os ingredientes.
  */
 
 // As 216 cores "seguras": seis níveis de vermelho, de verde e de azul,
@@ -25,9 +24,9 @@ const NAMED_COLORS = [
 ]
 
 const FONTS = [
-  { sample: 'Times New Roman', className: 'times', note: 'A letra padrão de toda página.' },
-  { sample: 'Comic Sans', className: 'comic', note: 'Criada para balões de personagens; foi parar em tudo.' },
-  { sample: 'Verdana', className: 'verdana', note: 'De 1996, desenhada para ser lida em tela.' },
+  { sample: 'Times New Roman', className: 'times', note: 'A padrão de toda página.' },
+  { sample: 'Comic Sans', className: 'comic', note: 'Feita para balões; foi parar em tudo.' },
+  { sample: 'Verdana', className: 'verdana', note: 'De 1996, feita para ler em tela.' },
   { sample: 'Courier New', className: 'courier', note: 'A da máquina de escrever, para endereços.' },
   { sample: 'Letra de pixel', className: 'pixel', note: 'Menus, contadores e botões pequenos.' },
 ]
@@ -114,24 +113,11 @@ export default function Nineties() {
               <div className={s.content}>
                 <h3>Como era</h3>
                 <p>
-                  O computador virou coisa de casa, e a tela dele era cinza.
-                  No Windows 95, cada botão tinha uma aresta clara e uma
-                  escura para parecer em relevo. Os próprios criadores
-                  contaram que usaram sombras e arestas para marcar onde cada
-                  coisa começava e terminava.
-                </p>
-                <p>
-                  Muitos monitores mostravam só 256 cores. Para a cor não
-                  mudar de um computador para outro, os sites usavam uma
-                  paleta segura de 216 cores, puras e fortes. É por isso que a
-                  internet da época parece pintada com canetinha.
-                </p>
-                <p>
-                  Qualquer pessoa podia ter uma página pessoal, e quase todas
-                  tinham as mesmas peças: fundo repetido como azulejo, placa
-                  de "em construção" que nunca saía, contador de visitas,
-                  livro de visitas e um anel de sites amigos, em que uma
-                  página levava à próxima.
+                  O computador virou coisa de casa, e a tela dele era cinza,
+                  com botões em relevo. Qualquer pessoa podia ter uma página
+                  pessoal, e quase todas tinham as mesmas peças: fundo
+                  repetido como azulejo, placa de "em construção", contador e
+                  livro de visitas.
                 </p>
               </div>
             </div>
@@ -169,37 +155,6 @@ export default function Nineties() {
             <span>Internet</span>
           </div>
         </div>
-
-        {/* ---------- Um objeto de verdade ---------- */}
-        <Window
-          title="Um objeto de verdade - Visualizador de imagens"
-          heading="h3"
-          className={s.viewer}
-        >
-          <figure className={s.real}>
-            <div className={s.realPhoto}>
-              <img
-                src={macintosh}
-                alt="Computador Macintosh bege dos anos 90, com monitor de tubo sobre a base, teclado e mouse de um botão."
-                width="900"
-                height="578"
-                loading="lazy"
-              />
-            </div>
-            <figcaption>
-              <p className={s.realTag}>Isto é vintage: é mesmo da época, não uma releitura.</p>
-              <p>
-                Um Macintosh LC, de 1990. O computador de casa era uma caixa
-                bege, de cantos retos, com uma tela pequena e funda. A cor
-                ficava do lado de dentro.
-              </p>
-              <p className={s.credit}>
-                Foto de Benoît Prieur, cedida ao domínio público, via Wikimedia
-                Commons.
-              </p>
-            </figcaption>
-          </figure>
-        </Window>
 
         {/* ---------- Os ingredientes ---------- */}
         <h3 className={s.desktopLabel}>Os ingredientes</h3>
@@ -264,7 +219,7 @@ export default function Nineties() {
               </ul>
               <p className={s.material}>
                 <strong>Material:</strong> o pixel. Tudo é feito de
-                quadradinhos visíveis, sem curvas suaves nem sombras macias.
+                quadradinhos visíveis, sem curvas suaves.
               </p>
             </div>
           </Window>
@@ -272,18 +227,10 @@ export default function Nineties() {
           <Window title="leia-me.txt - Bloco de notas" heading="h3" className={s.notepad}>
             <div className={s.note}>
               <p>UMA PEÇA DA ÉPOCA</p>
-              <p>
-                A peça deste capítulo é a própria página pessoal aí em cima,
-                dentro da janela do navegador.
-              </p>
+              <p>A peça deste capítulo é a própria página pessoal aí em cima.</p>
               <p>
                 Repare no título colorido e com volume, no fundo de estrelas
-                que se repete, nas réguas de arco-íris, na faixa de "em
-                construção", no contador e nos selos do rodapé.
-              </p>
-              <p>
-                A diferença para uma página de verdade da época: aqui o texto
-                está em tamanho confortável e nada pisca.
+                que se repete, no contador e nos selos do rodapé.
               </p>
             </div>
           </Window>

@@ -1,4 +1,3 @@
-import gameBoy from '../images/y2k-game-boy-color.jpg'
 import s from './y2k.module.css'
 
 /*
@@ -22,15 +21,15 @@ const PALETTE = [
 const MOMENTS = [
   {
     year: '1998',
-    text: 'O iMac troca o bege dos computadores por plástico colorido e translúcido. Em dois anos, tudo era translúcido.',
+    text: 'O iMac troca o bege por plástico colorido e translúcido.',
   },
   {
     year: '2000',
-    text: 'A Apple mostra a interface Aqua, com botões de gel que Steve Jobs chamou de "lambíveis".',
+    text: 'A Apple mostra botões de gel que Steve Jobs chamou de "lambíveis".',
   },
   {
     year: '2001',
-    text: 'O Windows XP responde com barra azul, botões arredondados e uma colina verde de fundo.',
+    text: 'O Windows XP responde com barra azul e botões arredondados.',
   },
 ]
 
@@ -83,21 +82,9 @@ export default function Y2k() {
 
           <div className={s.text}>
             <p>
-              A virada do milênio veio com medo do bug do ano 2000, a pane que
-              os computadores poderiam ter na troca de data, e com a certeza
-              de que o futuro seria ótimo. O visual ficou com o otimismo: tudo
-              brilhava, tudo era redondo, tudo parecia novo.
-            </p>
-            <p>
-              O lado gráfico vinha dos jogos e da música eletrônica. O estúdio
-              inglês The Designers Republic desenhou para o jogo de corrida
-              Wipeout, de 1995, logotipos, painéis e marcas de equipes
-              inventadas que pareciam vindos do futuro.
-            </p>
-            <p>
-              Na internet, os sites abriam com uma animação de entrada e um
-              botão para pular a introdução. A navegação imitava o painel de
-              um aparelho, com botões de gel e telas dentro da tela.
+              A virada do milênio veio com medo do bug do ano 2000 e com a
+              certeza de que o futuro seria ótimo. O visual ficou com o
+              otimismo: tudo brilhava e tudo era redondo.
             </p>
           </div>
 
@@ -110,21 +97,6 @@ export default function Y2k() {
             ))}
           </ol>
         </div>
-
-        {/* ---------- Um objeto de verdade ---------- */}
-        <figure className={s.real}>
-          <div className={s.realPhoto}>
-            <img src={gameBoy} alt="Videogame portátil Game Boy Color de plástico roxo translúcido, com as peças internas visíveis através da carcaça." width="900" height="1224" loading="lazy" />
-          </div>
-          <figcaption>
-            <h3 className={s.realTitle}>Um objeto de verdade</h3>
-            <p className={s.realTag}>Isto é vintage: é mesmo da época, não uma releitura.</p>
-            <p>
-              Um Game Boy Color de 1998, na versão de plástico roxo translúcido. Dá para ver as peças por dentro. É a mesma ideia do iMac, lançado no mesmo ano: a tecnologia deixou de se esconder.
-            </p>
-            <p className={s.credit}>Foto de Evan-Amos, em domínio público, via Wikimedia Commons.</p>
-          </figcaption>
-        </figure>
 
         {/* ---------- Os ingredientes ---------- */}
         <div className={s.ingredients}>
@@ -232,8 +204,7 @@ export default function Y2k() {
 
           <figcaption>
             A abertura do site de uma marca inventada. Repare no nome cromado,
-            nas cápsulas de gel do alto, na barra de carregamento em gomos, nas
-            cantoneiras e nas linhas onduladas do fundo.
+            nas cápsulas de gel do alto e na barra de carregamento em gomos.
           </figcaption>
         </figure>
       </div>

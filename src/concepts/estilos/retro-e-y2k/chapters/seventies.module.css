@@ -122,9 +122,9 @@
 .body {
   position: relative;
   display: grid;
-  gap: clamp(3rem, 7cqi, 5rem);
+  gap: clamp(2.25rem, 5cqi, 3.25rem);
   max-width: 70rem;
-  margin: clamp(2rem, 5cqi, 4rem) auto 0;
+  margin: clamp(1.5rem, 3cqi, 2.5rem) auto 0;
   padding-inline: clamp(1.25rem, 5cqi, 4.5rem);
 }
 
@@ -136,27 +136,17 @@
   letter-spacing: -0.05em;
 }
 
-/* Como era: colunas de revista. O texto corrido é a mesma família em peso
-   normal e tamanho confortável. */
-.columns {
-  margin-top: 1.5rem;
-  columns: 2 20rem;
-  column-gap: 3rem;
-  column-rule: 2px solid rgb(75 42 23 / 0.25);
-}
-
-.columns p {
+/* Como era: um parágrafo só, na mesma família em peso normal e tamanho
+   confortável. */
+.lead {
+  max-width: 62ch;
+  margin-top: 1.25rem;
   font-size: 1.125rem;
   line-height: 1.6;
-  break-inside: avoid;
-}
-
-.columns p + p {
-  margin-top: 1rem;
 }
 
 /* A primeira letra em destaque, como em abertura de reportagem. */
-.columns p:first-child::first-letter {
+.lead::first-letter {
   float: left;
   margin: 0.05em 0.08em 0 0;
   color: var(--orange);
@@ -437,64 +427,5 @@
     width: 4.6rem;
     height: 4.6rem;
     font-size: 0.8125rem;
-  }
-}
-
-/* ---------- Um objeto de verdade ---------- */
-
-/* A foto como numa página de catálogo: papel branco, contorno marrom e a
-   sombra chapada da década. */
-.real {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(1.75rem, 5cqi, 3.5rem);
-  align-items: center;
-}
-
-.realPhoto {
-  padding: clamp(0.75rem, 2cqi, 1.25rem);
-  border: 4px solid var(--brown);
-  border-radius: 26px;
-  background: #ffffff;
-  box-shadow: 10px 10px 0 var(--gold);
-}
-
-.realPhoto img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 14px;
-}
-
-.realTitle {
-  color: var(--rust);
-  font-size: clamp(1.6rem, 3.6cqi, 2.4rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.05em;
-}
-
-.realTag {
-  margin-top: 0.6rem;
-  font-size: 1.125rem;
-  font-style: italic;
-  font-weight: 700;
-}
-
-.real figcaption p {
-  max-width: 40ch;
-  margin-top: 0.75rem;
-  font-size: 1.125rem;
-  line-height: 1.6;
-}
-
-.real figcaption .credit {
-  font-size: 0.9375rem;
-  font-style: italic;
-}
-
-@container (max-width: 46rem) {
-  .real {
-    grid-template-columns: 1fr;
   }
 }

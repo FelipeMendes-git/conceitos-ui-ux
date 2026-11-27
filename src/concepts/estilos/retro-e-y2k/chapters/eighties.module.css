@@ -51,7 +51,7 @@
 
 .cover {
   position: relative;
-  padding: clamp(3.5rem, 10vh, 6.5rem) clamp(1.25rem, 5cqi, 4.5rem) clamp(9rem, 24cqi, 15rem);
+  padding: clamp(3rem, 7vh, 4.5rem) clamp(1.25rem, 5cqi, 4.5rem) clamp(7rem, 17cqi, 10.5rem);
   /* O espaço lateral cresce em janelas largas para o texto da capa começar
      na mesma coluna de 70rem do resto do capítulo. */
   padding-inline: calc(max(0px, (100% - 70rem) / 2) + clamp(1.25rem, 5cqi, 4.5rem));
@@ -149,7 +149,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: clamp(7rem, 20cqi, 12rem);
+  height: clamp(5.5rem, 14cqi, 8.5rem);
   overflow: hidden;
   border-top: 2px solid var(--cyan);
   box-shadow: 0 -0.4rem 2rem rgb(25 227 255 / 0.5);
@@ -171,9 +171,9 @@
 .body {
   position: relative;
   display: grid;
-  gap: clamp(3rem, 7cqi, 5rem);
+  gap: clamp(2.25rem, 5cqi, 3.25rem);
   max-width: 70rem;
-  margin: clamp(2.5rem, 6cqi, 4.5rem) auto 0;
+  margin: clamp(2rem, 4cqi, 3rem) auto 0;
   padding-inline: clamp(1.25rem, 5cqi, 4.5rem);
 }
 
@@ -229,33 +229,6 @@
   margin-top: 0.8rem;
   font-size: 1.0625rem;
   line-height: 1.55;
-}
-
-.warnings {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.25rem;
-}
-
-.warnings li {
-  padding: 1.1rem 1.25rem 1.2rem;
-  border: 2px solid var(--magenta);
-  box-shadow:
-    0 0 12px rgb(255 46 136 / 0.5),
-    inset 0 0 14px rgb(255 46 136 / 0.14);
-  font-size: 1.0625rem;
-  line-height: 1.55;
-}
-
-.warnings strong {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--yellow);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 /* ---------- Os ingredientes ---------- */
@@ -655,68 +628,5 @@
 
   .stripes {
     opacity: 0.55;
-  }
-}
-
-/* ---------- Um objeto de verdade ---------- */
-
-/* A foto numa caixa de luz: fundo branco aceso por um fio de neon ciano. */
-.real {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(1.75rem, 5cqi, 3.5rem);
-  align-items: center;
-}
-
-.realPhoto {
-  padding: clamp(0.6rem, 1.6cqi, 1rem);
-  border: 2px solid var(--cyan);
-  background: #ffffff;
-  box-shadow:
-    0 0 14px rgb(25 227 255 / 0.7),
-    0 0 46px rgb(25 227 255 / 0.3);
-}
-
-.realPhoto img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.realTitle {
-  color: #ffffff;
-  font-family: 'Monoton', Impact, sans-serif;
-  font-size: clamp(1.4rem, 3.2cqi, 2rem);
-  font-weight: 400;
-  line-height: 1.2;
-  text-shadow:
-    0 0 0.1em var(--magenta),
-    0 0 0.4em var(--magenta);
-}
-
-.realTag {
-  margin-top: 0.7rem;
-  color: var(--yellow);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.real figcaption p {
-  max-width: 42ch;
-  margin-top: 0.75rem;
-  font-size: 1.125rem;
-  line-height: 1.6;
-}
-
-.real figcaption .credit {
-  color: #bdb6e6;
-  font-size: 0.9375rem;
-}
-
-@container (max-width: 46rem) {
-  .real {
-    grid-template-columns: 1fr;
   }
 }
