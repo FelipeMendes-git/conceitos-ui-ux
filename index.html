@@ -9,6 +9,13 @@
     />
     <title>Conceitos UI/UX</title>
 
+    <!-- Ícone da aba: o C itálico do guia. O SVG serve aos navegadores atuais; o .ico,
+         ao Safari, que ainda não usa SVG na aba; o PNG, à tela de início do iPhone.
+         O sizes="32x32" no .ico evita que o Chrome o prefira ao SVG. -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
     <!-- Fontes padrão do guia. Cada tela pode trocar as suas no próprio theme.css. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
