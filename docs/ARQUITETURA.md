@@ -17,7 +17,7 @@ Este documento é para quem clonou o repositório e quer entender como o código
 
 Deliberadamente **sem** Tailwind e **sem** biblioteca de componentes: um framework visual imporia um estilo único, e o projeto existe para mostrar estilos diferentes lado a lado.
 
-As dependências instaladas são `react`, `react-dom`, `vite`, `@vitejs/plugin-react` e `gsap`. Nenhuma outra entra sem um bom motivo. O GSAP entrou com a tela que o explica; como cada tela é carregada à parte, só quem abre essa tela baixa a biblioteca (cerca de 96 kB comprimidos, junto com o código da própria tela), e a página inicial continua sem ela.
+As dependências instaladas são `react`, `react-dom`, `vite`, `@vitejs/plugin-react` e `gsap`. Nenhuma outra entra sem um bom motivo. O GSAP entrou com a tela que o explica; como cada tela é carregada à parte, só quem abre essa tela baixa a biblioteca (cerca de 80 kB comprimidos, junto com o código da própria tela), e a página inicial continua sem ela.
 
 ## Estrutura de pastas
 
