@@ -9,12 +9,11 @@ import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { Draggable } from 'gsap/Draggable'
 import { InertiaPlugin } from 'gsap/InertiaPlugin'
-import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 
-// Rolagem, texto partido, arrastar com inércia e forma que vira outra.
-gsap.registerPlugin(ScrollTrigger, SplitText, Draggable, InertiaPlugin, MorphSVGPlugin)
+// Rolagem, texto partido e arrastar com inércia.
+gsap.registerPlugin(ScrollTrigger, SplitText, Draggable, InertiaPlugin)
 
 // A barra de endereço do celular encolhe e cresce durante a rolagem. Sem isto,
 // cada mudança recalcularia as cenas fixadas e a tela daria saltos.

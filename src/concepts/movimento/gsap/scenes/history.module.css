@@ -1,26 +1,15 @@
 /*
- * Cena "De onde vem". Parada (padrão), a história é uma lista vertical com
- * uma linha à esquerda. Fixada (data-mode='pin'), é uma faixa horizontal que
- * passa de lado, com a linha no meio e a agulha parada.
+ * Cena "De onde vem": seis momentos. No celular, uma lista com a linha do
+ * tempo à esquerda; na janela larga, uma grade de três colunas em que a
+ * linha passa por cima de cada momento.
  */
-
-/* ---------- Lista vertical (estado parado) ---------- */
-
-.viewport {
-  position: relative;
-  max-width: var(--coluna);
-  margin: clamp(2.5rem, 6vh, 4rem) auto 0;
-  padding-inline: var(--margem);
-}
-
-.needle {
-  display: none;
-}
 
 .track {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.75rem;
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
   padding-left: 2rem;
 }
 
@@ -39,15 +28,6 @@
   position: relative;
 }
 
-.when {
-  color: var(--cor);
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 750;
-  font-stretch: 66%;
-  line-height: 1;
-}
-
 /* O losango de cada momento, em cima da linha. */
 .key {
   position: absolute;
@@ -56,108 +36,44 @@
   width: 0.8rem;
   height: 0.8rem;
   background: var(--cor);
-  transform: rotate(45deg);
+  rotate: 45deg;
+}
+
+.when {
+  color: var(--cor);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 750;
+  font-stretch: 66%;
+  line-height: 1;
 }
 
 .what {
-  max-width: 52ch;
+  max-width: 44ch;
   margin-top: 0.5rem;
   font-size: 1rem;
   line-height: 1.55;
 }
 
-/* ---------- Faixa horizontal (fixada) ---------- */
+@media (min-width: 760px) {
+  .track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem clamp(1.5rem, 3vw, 3rem);
+    padding-left: 0;
+  }
 
-.scene[data-mode='pin'] {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  padding-block: 2rem;
-  overflow: hidden;
-}
+  .track::before {
+    content: none;
+  }
 
-.scene[data-mode='pin'] .head {
-  flex: none;
-}
+  /* Cada momento carrega o seu trecho da linha, com o losango em cima. */
+  .event {
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--grade);
+  }
 
-/* min-width: 0 impede que a faixa comprida alargue a janela dela: sem isso,
-   a janela cresce até a largura da faixa e não sobra nada para rolar. */
-.scene[data-mode='pin'] .viewport {
-  width: 100%;
-  min-width: 0;
-  max-width: none;
-  margin-top: clamp(2rem, 6vh, 3.5rem);
-  padding: 0;
-  overflow: hidden;
-}
-
-/* A agulha: parada, no mesmo lugar, enquanto a história passa por ela. Só
-   na altura da linha, para não riscar o texto. */
-.scene[data-mode='pin'] .needle {
-  position: absolute;
-  top: 2.3rem;
-  left: 42%;
-  z-index: 1;
-  display: block;
-  width: 2px;
-  height: 3.6rem;
-  background: var(--verde);
-}
-
-.scene[data-mode='pin'] .track {
-  display: flex;
-  gap: 0;
-  width: max-content;
-  padding: 0 50vw 0 var(--margem);
-}
-
-/* A linha horizontal, na altura dos losangos. */
-.scene[data-mode='pin'] .track::before {
-  top: 4.1rem;
-  bottom: auto;
-  left: 0;
-  right: 0;
-  width: auto;
-  height: 2px;
-}
-
-.scene[data-mode='pin'] .event {
-  display: grid;
-  grid-template-rows: 3.2rem 1.8rem auto;
-  width: clamp(16rem, 23vw, 21rem);
-  padding-right: 2.5rem;
-}
-
-.scene[data-mode='pin'] .when {
-  align-self: end;
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-
-.scene[data-mode='pin'] .key {
-  position: relative;
-  top: auto;
-  left: 0;
-  align-self: center;
-  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
-}
-
-.scene[data-mode='pin'] .what {
-  margin-top: 0.4rem;
-  color: var(--prata);
-  transition: color 0.3s;
-}
-
-/* O momento que está na agulha acende. */
-.event[data-active] .when {
-  opacity: 1;
-}
-
-.event[data-active] .key {
-  transform: rotate(45deg) scale(1.7);
-}
-
-.event[data-active] .what {
-  color: var(--gesso);
+  .key {
+    top: -0.45rem;
+    left: 0;
+  }
 }

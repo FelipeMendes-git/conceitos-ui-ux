@@ -7,8 +7,9 @@ import { useSceneIntro } from './useSceneIntro.js'
 /*
  * CENA: QUANTO CUSTA
  *
- * Os quatro custos com um medidor de risco cada, e a lista de perguntas para
- * fazer antes de encomendar um site assim, que o leitor pode ir marcando.
+ * Os quatro custos com um medidor de risco cada, o cuidado com quem pede
+ * menos movimento e a lista de perguntas para fazer antes de encomendar um
+ * site assim, que o leitor pode ir marcando.
  */
 
 const COSTS = [
@@ -16,34 +17,32 @@ const COSTS = [
     name: 'Velocidade do site',
     level: 2,
     levelName: 'médio',
-    text: 'A ferramenta em si é leve: a parte principal do GSAP pesa cerca de 27 kB, menos que uma foto. O peso de um site premiado vem do que costuma vir junto: 3D, vídeo, fotos grandes, várias fontes. O custo que mais aparece é a fluidez: em celular simples, muita coisa se movendo engasga e gasta bateria.',
+    text: 'A ferramenta é leve; o peso vem do que costuma vir junto, como 3D e vídeo. Em celular simples, muito movimento engasga e gasta bateria.',
   },
   {
     name: 'Leitura e acessibilidade',
     level: 3,
     levelName: 'alto',
-    text: 'Movimento grande ligado à rolagem dá enjoo e tontura em quem tem distúrbios de equilíbrio. Mexer na rolagem desorienta: no estudo do Nielsen Norman Group, a maioria dos participantes ficou ao menos um pouco desorientada. Texto partido em letras pode ser lido letra por letra ou nem ser lido. Tudo tem solução, se for pedido e testado.',
+    text: 'Movimento grande ligado à rolagem dá enjoo em quem tem distúrbios de equilíbrio. E mexer na rolagem desorienta: num estudo do Nielsen Norman Group, a maioria dos participantes ficou ao menos um pouco desorientada.',
   },
   {
     name: 'Produção',
     level: 3,
     levelName: 'alto',
-    text: 'Caro e lento. Precisa de quem desenhe o movimento, de um desenvolvedor criativo que o construa e, muitas vezes, de um artista 3D. Cada cena é ajustada no detalhe, em cada tamanho de tela. E trocar um texto depois pode desmontar a coreografia.',
+    text: 'Caro e lento. Cada cena é desenhada e construída à mão, em cada tamanho de tela. E trocar um texto depois pode desmontar a coreografia.',
   },
   {
     name: 'Durabilidade',
     level: 2,
     levelName: 'médio',
-    text: 'O efeito da moda envelhece depressa e logo vem pronto em ferramentas visuais e assistentes de inteligência artificial; quando qualquer um consegue o efeito padrão, ele deixa de diferenciar. O que não envelhece é o ofício do tempo: ordem, ritmo e moderação.',
+    text: 'O efeito da moda envelhece depressa e logo vem pronto em qualquer ferramenta. O que não envelhece é o ofício do tempo: ordem, ritmo e moderação.',
   },
 ]
 
 const QUESTIONS = [
-  'Como o site fica num celular simples? (Peça para ver, não só para ouvir.)',
-  'O site respeita quem pede menos movimento no aparelho?',
-  'O conteúdo aparece se a animação falhar ou demorar?',
-  'Dá para trocar textos e imagens sem desmontar a coreografia?',
-  'A rolagem continua sendo de quem visita?',
+  'Como o site fica num celular simples? Peça para ver.',
+  'Ele respeita quem pede menos movimento no aparelho?',
+  'O conteúdo aparece se a animação falhar?',
   'Quanto do orçamento vai para o movimento e quanto para o conteúdo?',
 ]
 
@@ -79,8 +78,7 @@ export default function Cost({ motionOn }) {
           Quanto custa
         </h2>
         <p className={common.intro} data-intro="">
-          Em linguagem de quem decide: o que um site assim cobra em velocidade, em leitura, em produção
-          e em tempo de vida. O medidor é a nossa avaliação do risco, a partir da pesquisa.
+          O que um site assim cobra. O medidor é a nossa avaliação do risco, a partir da pesquisa.
         </p>
       </div>
 
@@ -102,6 +100,15 @@ export default function Cost({ motionOn }) {
           </li>
         ))}
       </ul>
+
+      {/* O cuidado que a própria página pratica. */}
+      <div className={common.column}>
+        <p className={styles.measure} data-intro="">
+          <strong>Movimento na medida.</strong> Celulares e computadores têm uma opção de reduzir
+          movimento, e um site bem feito obedece. Esta página obedece e tem um interruptor no canto
+          da tela: desligado, nada se move.
+        </p>
+      </div>
 
       <div className={`${common.column} ${styles.questions}`}>
         <div className={styles.questionsHead} data-intro="">

@@ -6,9 +6,7 @@ import Cost from './scenes/Cost.jsx'
 import Credits from './scenes/Credits.jsx'
 import Fit from './scenes/Fit.jsx'
 import History from './scenes/History.jsx'
-import Measure from './scenes/Measure.jsx'
 import Muybridge from './scenes/Muybridge.jsx'
-import Myths from './scenes/Myths.jsx'
 import Repertoire from './scenes/Repertoire.jsx'
 import Timeline from './scenes/Timeline.jsx'
 import Voice from './scenes/Voice.jsx'
@@ -57,7 +55,7 @@ const TRICKS = [
   'Letra que estica',
   'Arrastar com peso',
   'Ritmo com mola',
-  'Contador que rola',
+  'Rolagem suave',
   'Cor que muda com a cena',
 ]
 const TICKER = [...TRICKS, ...TRICKS]
@@ -367,14 +365,12 @@ export default function Gsap() {
 
         <Muybridge motionOn={motionOn} />
         <Timeline motionOn={motionOn} />
-        <Myths motionOn={motionOn} />
         <History motionOn={motionOn} />
         <Repertoire motionOn={motionOn} />
         <Awards motionOn={motionOn} />
         <Voice motionOn={motionOn} />
         <Fit motionOn={motionOn} />
         <Cost motionOn={motionOn} />
-        <Measure motionOn={motionOn} deviceReduce={deviceReduce} toggle={toggle} />
         <Credits motionOn={motionOn} />
       </ConceptPage>
 

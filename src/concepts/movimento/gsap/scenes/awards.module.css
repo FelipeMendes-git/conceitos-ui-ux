@@ -1,6 +1,6 @@
 /*
- * Cena "Como se ganha um prêmio": pesos da nota, selos em degraus e o
- * boletim do Site do Ano, sobre o veludo.
+ * Cena "Como se ganha um prêmio": os pesos da nota e o boletim do Site do
+ * Ano, sobre o veludo.
  */
 
 /* minmax(0, 1fr): a coluna não cresce para caber o conteúdo mais largo, o
@@ -8,8 +8,8 @@
 .blocks {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: clamp(3rem, 8vh, 5rem);
-  margin-top: clamp(3rem, 7vh, 4.5rem);
+  gap: clamp(2.5rem, 6vh, 3.5rem);
+  margin-top: clamp(2.5rem, 6vh, 3.5rem);
 }
 
 .block {
@@ -82,58 +82,6 @@
   font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-/* ---------- Selos em degraus ---------- */
-
-.badges {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: end;
-  gap: 0.75rem;
-}
-
-/* Cada selo é um degrau mais alto que o anterior. */
-.badge {
-  display: grid;
-  align-content: end;
-  gap: 0.4rem;
-  min-height: calc(9rem + var(--degrau) * 3rem);
-  padding: 1rem;
-  border-top: 3px solid var(--lavanda);
-  background: rgb(179 155 255 / calc(0.08 + var(--degrau) * 0.06));
-}
-
-.badgeKey {
-  width: 1.1rem;
-  height: 1.1rem;
-  margin-bottom: auto;
-  background: var(--lavanda);
-  transform: rotate(45deg);
-}
-
-.badgeName {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
-  font-weight: 750;
-  font-stretch: 66%;
-  line-height: 1;
-}
-
-.badgeNote {
-  color: var(--prata);
-  font-size: 0.875rem;
-  line-height: 1.45;
-}
-
-@media (max-width: 640px) {
-  .badges {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .badge {
-    min-height: 8rem;
-  }
 }
 
 /* ---------- O boletim ---------- */
@@ -247,37 +195,4 @@
   border-top: 1px solid rgb(179 155 255 / 0.3);
   font-size: 1.125rem;
   line-height: 1.55;
-}
-
-/* ---------- Outros casos ---------- */
-
-.cases {
-  display: grid;
-  gap: 1.5rem;
-}
-
-@media (min-width: 900px) {
-  .cases {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 3rem);
-  }
-}
-
-.cases li {
-  padding-top: 1rem;
-  border-top: 1px solid var(--grade);
-  color: var(--prata);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-.caseName {
-  display: block;
-  margin-bottom: 0.4rem;
-  color: var(--gesso);
-  font-family: var(--font-display);
-  font-size: 1.375rem;
-  font-weight: 750;
-  font-stretch: 68%;
-  line-height: 1.05;
 }

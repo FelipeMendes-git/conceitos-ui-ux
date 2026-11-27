@@ -35,24 +35,6 @@ const MOODS = [
   },
 ]
 
-const FITS = [
-  'Lançamentos e campanhas',
-  'Moda e luxo',
-  'Automóveis',
-  'Esporte e atletas',
-  'Música e entretenimento',
-  'Eventos e festivais',
-  'Estúdios de design e agências',
-  'Apresentação de produtos de tecnologia',
-]
-
-const MISFITS = [
-  'O que se usa com pressa ou preocupação: saúde, banco no dia a dia, governo, suporte',
-  'Lojas com catálogo grande',
-  'Ferramentas de trabalho',
-  'Texto para leitura diária',
-]
-
 export default function Voice({ motionOn }) {
   const sceneRef = useRef(null)
   const cardRef = useRef(null)
@@ -99,9 +81,9 @@ export default function Voice({ motionOn }) {
           O que comunica
         </h2>
         <p className={common.intro} data-intro="">
-          Um site com movimento caprichado diz ao visitante que alguém pensou em cada segundo daquela
-          página: ofício, investimento, ousadia. E o ritmo é tom de voz. Escolha um temperamento e veja
-          o mesmo cartão mudar de personalidade.
+          Movimento caprichado diz que alguém pensou em cada segundo da página: ofício, investimento,
+          ousadia. E o ritmo é tom de voz. Escolha um temperamento e veja o mesmo cartão mudar de
+          personalidade.
         </p>
       </div>
 
@@ -158,30 +140,11 @@ export default function Voice({ motionOn }) {
         </div>
       </div>
 
-      <div className={`${common.column} ${styles.lists}`}>
-        <div data-intro="">
-          <h3 className={common.subtitle}>Combina com</h3>
-          <ul className={styles.list}>
-            {FITS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div data-intro="">
-          <h3 className={common.subtitle}>Não combina com</h3>
-          <ul className={`${styles.list} ${styles.misfit}`}>
-            {MISFITS.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div data-intro="">
-          <h3 className={common.subtitle}>O risco</h3>
-          <p className={styles.risk}>
-            O site se mostrar mais que o produto. A marca parece mais interessada no prêmio do que no
-            cliente, e para quem tem pressa o espetáculo vira irritação.
-          </p>
-        </div>
+      <div className={common.column}>
+        <p className={styles.risk} data-intro="">
+          <strong>O risco:</strong> o site se mostrar mais que o produto. A marca parece mais
+          interessada no prêmio do que no cliente, e para quem tem pressa o espetáculo vira irritação.
+        </p>
       </div>
     </section>
   )

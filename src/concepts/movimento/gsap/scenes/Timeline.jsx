@@ -440,10 +440,9 @@ export default function Timeline({ motionOn }) {
           A linha do tempo
         </h2>
         <p className={styles.intro}>
-          O coração do GSAP é a linha do tempo. Ela decide quando cada elemento da página se move,
-          por quanto tempo e em que ritmo, como a partitura de uma música. Neste cartaz, os
-          elementos e os efeitos são sempre os mesmos. Troque a arrumação e o ritmo e veja o
-          caráter dele mudar.
+          O coração do GSAP é a linha do tempo. Ela decide quando cada elemento se move, por quanto
+          tempo e em que ritmo, como a partitura de uma música. Troque a arrumação e o ritmo e veja
+          o cartaz mudar de caráter.
         </p>
       </div>
 

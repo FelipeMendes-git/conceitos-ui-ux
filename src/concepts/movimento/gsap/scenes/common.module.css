@@ -5,7 +5,7 @@
 
 .section {
   position: relative;
-  padding-block: clamp(5rem, 13vh, 9rem);
+  padding-block: clamp(4rem, 9vh, 6rem);
 }
 
 /* A coluna comum: todos os blocos começam na mesma linha vertical. */

@@ -7,10 +7,10 @@ import { useSceneIntro } from './useSceneIntro.js'
 /*
  * CENA: COMO SE GANHA UM PRÊMIO
  *
- * Os pesos da nota do Awwwards numa barra só, os selos em degraus e o
- * boletim do Site do Ano de 2025, com as notas desenhadas como barras que
- * crescem e números que contam até o valor. Números conferidos na página do
- * próprio prêmio, em novembro de 2026.
+ * Os pesos da nota do Awwwards numa barra só e o boletim do Site do Ano de
+ * 2025, com as notas desenhadas como barras que crescem e números que contam
+ * até o valor. Números conferidos na página do próprio prêmio, em novembro
+ * de 2026.
  */
 
 const WEIGHTS = [
@@ -18,13 +18,6 @@ const WEIGHTS = [
   { name: 'Usabilidade', value: 30, color: 'var(--azul)' },
   { name: 'Criatividade', value: 20, color: 'var(--ambar)' },
   { name: 'Conteúdo', value: 10, color: 'var(--verde)' },
-]
-
-const BADGES = [
-  { name: 'Menção honrosa', note: 'O site passou pelo júri com boa nota.' },
-  { name: 'Site do Dia', note: 'A melhor nota daquele dia.' },
-  { name: 'Site do Mês', note: 'Escolhido entre os Sites do Dia do mês.' },
-  { name: 'Site do Ano', note: 'Escolhido entre os do ano inteiro.' },
 ]
 
 const JURY = [
@@ -83,16 +76,6 @@ export default function Awards({ motionOn }) {
         scrollTrigger: { trigger: `.${styles.weights}`, start: 'top 80%', once: true },
       })
 
-      // Os selos sobem como degraus.
-      gsap.from(`.${styles.badge}`, {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.12,
-        ease: 'back.out(1.8)',
-        scrollTrigger: { trigger: `.${styles.badges}`, start: 'top 80%', once: true },
-      })
-
       // No boletim, cada barra cresce até a nota e o número conta junto.
       gsap.utils.toArray(`.${styles.scores}`).forEach((list) => {
         const bars = list.querySelectorAll(`.${styles.scoreBar}`)
@@ -125,22 +108,20 @@ export default function Awards({ motionOn }) {
         <h2 id="cena-premios" className={common.title} data-title="">
           Como se ganha um prêmio
         </h2>
-        <div>
-          <p className={common.intro} data-intro="">
-            Os prêmios de sites nasceram junto com eles. O FWA, de 2000, premiava sites feitos em
-            Flash. O Awwwards, criado em 2009 na Espanha, escolhe um Site do Dia todos os dias. O
-            Webby, de 1996, cobre a internet inteira, de sites a podcasts.
-          </p>
-        </div>
+        <p className={common.intro} data-intro="">
+          O Awwwards, criado em 2009 na Espanha, escolhe um Site do Dia todos os dias; dele saem o
+          Site do Mês e o Site do Ano. No Brasil, o estúdio Programatório, de Londrina, já levou o
+          Site do Dia quatro vezes.
+        </p>
       </div>
 
       <div className={`${common.column} ${styles.blocks}`}>
         {/* Os pesos da nota. */}
         <div className={styles.block} data-intro="">
-          <h3 className={common.subtitle}>Como o Awwwards dá a nota</h3>
+          <h3 className={common.subtitle}>Como o júri dá a nota</h3>
           <p className={styles.text}>
-            Um júri de profissionais da área dá notas de 0 a 10 em quatro critérios, que pesam assim na
-            nota final:
+            Profissionais da área dão notas de 0 a 10 em quatro critérios, que pesam assim na nota
+            final:
           </p>
           <div className={styles.weights} role="img" aria-label="Design vale 40%, usabilidade 30%, criatividade 20% e conteúdo 10% da nota.">
             {WEIGHTS.map((weight) => (
@@ -157,34 +138,13 @@ export default function Awards({ motionOn }) {
           </div>
         </div>
 
-        {/* Os selos. */}
-        <div className={styles.block}>
-          <h3 className={common.subtitle} data-intro="">
-            Os selos
-          </h3>
-          <ol className={styles.badges}>
-            {BADGES.map((badge, i) => (
-              <li key={badge.name} className={styles.badge} style={{ '--degrau': i }}>
-                <span className={styles.badgeKey} aria-hidden="true" />
-                <span className={styles.badgeName}>{badge.name}</span>
-                <span className={styles.badgeNote}>{badge.note}</span>
-              </li>
-            ))}
-          </ol>
-          <p className={styles.text} data-intro="">
-            Há também um prêmio separado de desenvolvimento, que olha a parte técnica: animação,
-            velocidade, adaptação a cada tela, acessibilidade.
-          </p>
-        </div>
-
         {/* O boletim do Site do Ano. */}
         <div className={`${styles.block} ${styles.report}`}>
           <div className={styles.reportHead} data-intro="">
             <h3 className={common.subtitle}>O boletim do Site do Ano de 2025</h3>
             <p className={styles.text}>
               O site do piloto de Fórmula 1 Lando Norris, feito pelo estúdio OFF+BRAND com Webflow,
-              GSAP e 3D. Foi Site do Dia em 17 de novembro de 2025, depois Site do Ano, e também o mais
-              votado pelo público.
+              GSAP e 3D. Além das notas do júri, o prêmio faz uma avaliação técnica à parte.
             </p>
           </div>
           <div className={styles.reportColumns}>
@@ -198,30 +158,11 @@ export default function Awards({ motionOn }) {
             </div>
           </div>
           <p className={styles.lesson} data-intro="">
-            O melhor movimento do ano teve a acessibilidade como ponto mais fraco. É o resumo desta
-            tela: o prêmio mede ofício diante de colegas de profissão. Não mede venda, cadastro nem a
-            satisfação de quem usa.
+            O melhor movimento do ano teve a acessibilidade como ponto mais fraco. O prêmio mede
+            ofício diante de colegas de profissão, não venda nem satisfação de quem usa. E ele é do
+            estúdio: o resultado é da marca que contratou.
           </p>
         </div>
-
-        {/* Outros casos. */}
-        <ul className={styles.cases} data-intro="">
-          <li>
-            <span className={styles.caseName}>Scout Motors</span>
-            Loja do ano de 2025 no Awwwards: o site de uma marca de veículos, feito pelo estúdio
-            Locomotive. Produto caro, compra rara, apresentação contada como narrativa.
-          </li>
-          <li>
-            <span className={styles.caseName}>Programatório, de Londrina</span>
-            Estúdio brasileiro com quatro prêmios de Site do Dia e quatro de desenvolvimento no
-            Awwwards.
-          </li>
-          <li>
-            <span className={styles.caseName}>A vitrine do estúdio</span>
-            Ganhar atrai clientes e talentos para quem fez o site. Para a marca que contrata, o prêmio é
-            do estúdio; o resultado é dela.
-          </li>
-        </ul>
       </div>
     </section>
   )

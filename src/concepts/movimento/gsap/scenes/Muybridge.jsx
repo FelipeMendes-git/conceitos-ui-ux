@@ -25,12 +25,12 @@ import styles from './muybridge.module.css'
 const GALLOP = 11
 // Quadro em que as quatro patas estão no ar (índice 2 = quadro 3).
 const ANSWER = 2
-// Duas passadas completas e mais três quadros, para parar no quadro 3.
-const LAST_STEP = GALLOP * 2 + ANSWER
+// Uma passada completa e mais três quadros, para parar no quadro 3.
+const LAST_STEP = GALLOP + ANSWER
 
 const CAPTIONS = [
   'Junho de 1878. Doze câmeras em fila na pista de Palo Alto, cada uma disparada quando o cavalo rompia um fio esticado no caminho.',
-  'Mostrados um depois do outro, os quadros viram movimento. Entre uma foto e a seguinte passou cerca de um vinte e cinco avos de segundo, quase o ritmo do vídeo de hoje. Aqui, quem gira a manivela é a sua rolagem.',
+  'Mostrados um depois do outro, os quadros viram movimento. Aqui, quem gira a manivela é a sua rolagem.',
   'No quadro 3, as quatro patas estão no ar. Era a pergunta de Leland Stanford, o dono do cavalo, e a resposta foi sim.',
 ]
 
@@ -38,7 +38,7 @@ const DIGITS = Array.from({ length: 10 }, (_, digit) => digit)
 
 /** Qual quadro aparece em cada passo da reprodução. */
 function frameAt(step) {
-  return step >= GALLOP * 2 ? Math.min(ANSWER, step - GALLOP * 2) : step % GALLOP
+  return step >= GALLOP ? Math.min(ANSWER, step - GALLOP) : step
 }
 
 export default function Muybridge({ motionOn }) {
@@ -137,13 +137,13 @@ export default function Muybridge({ motionOn }) {
       })
       timeline.to(`.${styles.number}`, { autoAlpha: 1, duration: 0.3 }, '-=0.3')
 
-      // 2. A manivela: um quadro por vez, duas passadas, até parar no quadro 3.
+      // 2. A manivela: um quadro por vez, uma passada, até parar no quadro 3.
       timeline.addLabel('galope', '+=0.15')
       timeline.to(
         playhead,
         {
           step: LAST_STEP + 0.999,
-          duration: 4,
+          duration: 2.3,
           onUpdate() {
             const step = Math.floor(playhead.step)
             show(frameAt(step), step >= LAST_STEP)
@@ -168,7 +168,7 @@ export default function Muybridge({ motionOn }) {
       ScrollTrigger.create({
         trigger: scene,
         start: 'top top',
-        end: '+=280%',
+        end: '+=160%',
         pin: true,
         scrub: 0.7,
         animation: timeline,

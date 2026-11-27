@@ -21,7 +21,7 @@ const FIT = {
       { label: 'Benefícios', moves: true },
       { label: 'Chamada', moves: false },
     ],
-    why: 'Campanha, lançamento, evento: vida curta, impacto alto e quase nenhuma tarefa. O movimento entra na abertura e em dois ou três momentos; o botão principal fica parado e fácil de achar.',
+    why: 'Campanha, lançamento, evento: vida curta, impacto alto e quase nenhuma tarefa. O botão principal fica parado.',
   },
   portfolio: {
     verdict: 'ok',
@@ -30,7 +30,7 @@ const FIT = {
       { label: 'Trabalhos', moves: true },
       { label: 'Projeto', moves: true },
     ],
-    why: 'Sobretudo de estúdios e de quem trabalha com movimento: o site é a prova do ofício. O trabalho precisa aparecer rápido; tela de carregamento longa espanta quem contrata.',
+    why: 'O site é a prova do ofício, sobretudo para estúdios. Mas o trabalho precisa aparecer rápido.',
   },
   ecommerce: {
     verdict: 'warn',
@@ -39,7 +39,7 @@ const FIT = {
       { label: 'Vitrine', moves: false },
       { label: 'Pagamento', moves: false },
     ],
-    why: 'Funciona na apresentação de um produto caro e de compra rara: a loja do ano de 2025 no Awwwards foi a de uma marca de veículos. Na vitrine, no carrinho e no pagamento, atrapalha: quem compra quer rapidez.',
+    why: 'Funciona na apresentação de um produto caro e de compra rara. No carrinho e no pagamento, atrapalha.',
   },
   blog: {
     verdict: 'warn',
@@ -48,7 +48,7 @@ const FIT = {
       { label: 'Texto', moves: false },
       { label: 'Texto', moves: false },
     ],
-    why: 'A reportagem especial, feita uma vez e lida com calma, ganha com a rolagem que conta a história, como Snow Fall em 2012. O texto do dia a dia não: movimento atrapalha a leitura.',
+    why: 'A reportagem especial ganha com a rolagem que conta a história, como "Snow Fall", do New York Times, em 2012. O texto do dia a dia, não.',
   },
   app: {
     verdict: 'warn',
@@ -57,7 +57,7 @@ const FIT = {
       { label: 'Lista', moves: false },
       { label: 'Rolagem', moves: false },
     ],
-    why: 'Em site aberto no celular, cenas paradas e efeitos pesados de rolagem cansam e travam em aparelhos simples. Movimento pequeno, de resposta ao toque, funciona bem.',
+    why: 'No celular, efeitos pesados cansam e travam em aparelhos simples. Resposta pequena ao toque funciona bem.',
   },
   dashboard: {
     verdict: 'avoid',
@@ -66,7 +66,7 @@ const FIT = {
       { label: 'Tabela', moves: false },
       { label: 'Clique', moves: true },
     ],
-    why: 'Ferramenta de uso diário pede velocidade: cada segundo de animação se repete centenas de vezes. No produto, só respostas pequenas a cliques.',
+    why: 'Ferramenta de uso diário pede velocidade: cada segundo de animação se repete centenas de vezes.',
   },
 }
 
@@ -100,8 +100,7 @@ export default function Fit({ motionOn }) {
         </h2>
         <p className={common.intro} data-intro="">
           O movimento de prêmio serve a quem visita para conhecer e atrapalha quem vem para fazer alguma
-          coisa. Quanto mais curta a visita e mais emocional a decisão, mais movimento cabe. Em cada
-          roteiro, o losango verde marca o quadro onde o movimento entra.
+          coisa. O losango verde marca onde o movimento entra.
         </p>
       </div>
 
@@ -129,7 +128,7 @@ export default function Fit({ motionOn }) {
                     </span>
                     <span className={styles.frameLabel}>
                       {frame.label}
-                      <span className="sr-only">{frame.moves ? ': com movimento' : ': sem movimento'}</span>
+                      <span className="sr-only">{frame.moves ? ': animado' : ': parado'}</span>
                     </span>
                   </li>
                 ))}
