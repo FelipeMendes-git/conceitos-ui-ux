@@ -22,7 +22,11 @@ As dependências instaladas são `react`, `react-dom`, `vite`, `@vitejs/plugin-r
 ## Estrutura de pastas
 
 ```
-index.html                  # página única; carrega as fontes padrão
+index.html                  # página única; carrega as fontes padrão e o ícone da aba
+public/                     # vai sem mudança para o site publicado
+├── favicon.svg             # ícone da aba: o C itálico do guia
+├── favicon.ico             # o mesmo ícone em 32 px, para o Safari
+└── apple-touch-icon.png    # ícone da tela de início do iPhone
 src/
 ├── main.jsx                # ponto de entrada
 ├── app/                    # a casca
